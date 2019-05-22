@@ -157,3 +157,16 @@ table{
 .table-rwd {
     width: 100%;
 }
+.estado-center-content{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.mat-chip-list-desac-style{
+    background: #e74c3c;
+    color: #ffffff;
+}
+.mat-chip-list-ac-style{
+    background: #27ae60;
+    color: #ffffff;
+}

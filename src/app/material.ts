@@ -17,18 +17,19 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule,
         MatIconModule, MatMenuModule, MatCardModule, MatGridListModule,
         MatSelectModule, MatPaginatorModule, MatSortModule, MatTableModule,
         MatDialogModule, MatExpansionModule, MatRadioModule, MatProgressSpinnerModule,
-        MatFormFieldModule, MatInputModule],
+        MatFormFieldModule, MatInputModule, MatChipsModule],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule,
         MatIconModule, MatMenuModule, MatCardModule, MatGridListModule,
         MatSelectModule, MatPaginatorModule, MatSortModule, MatTableModule,
         MatDialogModule, MatExpansionModule, MatRadioModule, MatProgressSpinnerModule,
-        MatFormFieldModule, MatInputModule],
+        MatFormFieldModule, MatInputModule, MatChipsModule],
 })
 export class MaterialModule { }
 

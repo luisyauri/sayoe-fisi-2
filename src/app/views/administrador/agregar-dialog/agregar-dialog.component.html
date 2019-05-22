@@ -24,14 +24,14 @@
         </mat-form-field>
     </div>
     <mat-form-field>
-        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Correo Principal" required>
-    </mat-form-field>
-    <mat-form-field>
         <mat-select [(ngModel)]="data.sexo" placeholder="Sexo" required>
             <mat-option value="0">Masculino</mat-option>
             <mat-option value="1">Femenino</mat-option>
             <mat-option value="2">Otro</mat-option>
         </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Correo Principal" required>
     </mat-form-field>
     <mat-form-field>
         <input matInput [(ngModel)]="data.contrasenha" placeholder="Contraseña" required>
