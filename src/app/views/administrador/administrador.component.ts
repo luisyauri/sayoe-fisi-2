@@ -39,11 +39,8 @@ export class AdministradorComponent implements OnInit {
     private router: Router,  public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.openDialog();
   }
-  
   openDialog(): void {
-    
     let dialogRef = this.dialog.open(AgregarDialogComponent, {
       data: { /*correo: "a", facebook: "b",celular: "c",wsp: "d",auto_descripcion: "e"*/ }
     });

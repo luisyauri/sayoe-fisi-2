@@ -16,14 +16,14 @@ export class RedireccionComponent implements OnInit {
   ngOnInit() {
     this.rolUnayoe = 542687;
     this.rolAlumno = 128963;
-    this.rolAdministrador = 123456;
+    this.rolAdministrador = 685429;
     if (localStorage.getItem('access_token') != null) {
       const decodToken = jwt_decode(localStorage.getItem('access_token'));
       const idRol = decodToken.rol.id;
       if (idRol === this.rolUnayoe ) {
-        this.router.navigate(['administrador']);
+        this.router.navigate(['unayoe/inicio']);
       } else if (idRol === this.rolAlumno ) {
-        this.router.navigate(['administrador']);
+        this.router.navigate(['alumno/inicio']);
       } else if (idRol === this.rolAdministrador) {
         this.router.navigate(['administrador']);
       } else {

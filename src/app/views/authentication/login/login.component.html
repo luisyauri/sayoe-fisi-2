@@ -44,6 +44,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div *ngIf="banderaLogin == -1">
+                    </div>
+                    <div *ngIf="banderaLogin==0">
+                        <div *ngIf="error == ''">
+                            <div class="mat-span-style">
+                                <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+                            </div>
+                        </div>
+                        <div class="mat-span-style">
+                            <span class="span-error-style">{{error}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

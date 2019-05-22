@@ -6,7 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   templateUrl: './agregar-dialog.component.html',
   styleUrls: ['./agregar-dialog.component.css']
 })
-export class AgregarDialogComponent implements OnInit {
+export class AgregarDialogComponent  {
 
   constructor(public dialogRef: MatDialogRef<AgregarDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
