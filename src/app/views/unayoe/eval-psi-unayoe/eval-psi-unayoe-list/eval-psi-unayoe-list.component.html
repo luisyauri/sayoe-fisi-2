@@ -1,0 +1,33 @@
+<mat-card class="dialog-card-list">
+  <mat-card-header>
+    <mat-card-title>{{this.evalPiscoTitulo}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!--DEPLE-->
+    <mat-accordion class="accordion-global">
+      <mat-expansion-panel *ngFor="let preguntas of this.listPreguntas; let i = index" [attr.data-index]="i"
+                           class="accordion-global" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{i+1}}. {{preguntas.pregunta}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!--RADIO-->
+        <mat-radio-group class="alternativas-radio-group" [(ngModel)]="alternativaSeleccionada"
+                         *ngFor="let alternativas of preguntas.alternativas" >
+          <mat-radio-button class="alternativas-radio-button" [value]="alternativas.id">
+            {{alternativas.descripcion}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <!--<div>Su alternativa seleccionada es : {{alternativaSeleccionada}}</div>-->
+        <!--RADIO-->
+      </mat-expansion-panel>
+    </mat-accordion>
+    <!--FIN DESPLE-->
+  </mat-card-content>
+  <mat-card-actions class="mat-card-actions-style">
+    <button mat-flat-button class="cancelar-ep" (click)="onNoClick()"><i class="fas fa-times"></i></button>
+    <button mat-flat-button class="enviar-ep" [disabled]="true"><i class="fas fa-paper-plane"></i></button>
+  </mat-card-actions>
+</mat-card>

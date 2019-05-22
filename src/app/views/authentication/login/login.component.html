@@ -1,0 +1,90 @@
+<div class="top-bar">
+    <div class="top-bar-text">Versión Beta</div>
+</div>
+<div class="container-background">
+    <mat-card class="card-style">
+        <img class="mat-header-image" src="http://i64.tinypic.com/2zjgjkg.png" alt="">
+        <mat-card-content>
+            <form (ngSubmit)="submit()">
+                <div class="row">
+                    <div class="col-sm">
+                        <mat-form-field class="mat-form-field-input">
+                            <input name="correo" [(ngModel)]="correo" type="email" matInput
+                                   placeholder="Ingrese su correo institucional">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <mat-form-field class="mat-form-field-input">
+                            <input name="contrasenha" [(ngModel)]="contrasenha" type="password" matInput
+                                   placeholder="Ingrese su contraseña">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="mat-button-style">
+                            <button class="mat-button-login" mat-flat-button>Ingresar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="mat-button-style">
+                        <button class="mat-button-registrar" mat-flat-button>Registrar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="mat-span-style">
+                        <span class="span-style">Olvidaste tu contraseña?</span>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+<!--<div id="contenedor-login" class="contenedor-login">-->
+<!--<div class="contenedor">-->
+<!--<div class="titulo">-->
+<!--<i class="fas fa-clipboard"></i>-->
+<!--<h2>SAYOE</h2>-->
+<!--</div>-->
+<!--<h3>Bienvenido ;) </h3>-->
+<!--<h4>Comienza una nueva experiencia con nosotros.</h4>-->
+<!--<form (ngSubmit)="submit()">-->
+<!--<div class="input-username">-->
+<!--<label for="correo">Correo Electrónico</label>-->
+<!--<div class="inputWithIcon">-->
+<!--<input type="text" name="username" placeholder="Correo" [(ngModel)]="correo">-->
+<!--<i class="fas fa-user"></i>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="input-password">-->
+<!--<label for="contrasenha">Contraseña</label>-->
+<!--<div class="inputWithIcon">-->
+<!--<input type="password" name="password" placeholder="Contraseña" [(ngModel)]="contrasenha">-->
+<!--<i class="fas fa-lock"></i>-->
+<!--</div>-->
+<!--</div>-->
+<!--<button class="primary-btn">Login</button>-->
+<!--</form>-->
+<!--<button class="primary-btn second">Registro</button>-->
+<!--<div class="olvidaste-contrasena">-->
+<!--<a href="#">Olvidaste tu contraseña?</a>-->
+<!--</div>-->
+<!--<div *ngIf="banderaLogin==0">-->
+<!--<mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>-->
+<!--</div>-->
+<!--<h4 *ngIf="error">{{error}}</h4>-->
+<!--</div>-->
+
+
+<!--<div id="contenedor-img" class="contenedor-img">-->
+<!--<h3>Copyright &#169; 2019 All rights reserverd.</h3>-->
+<!--</div>-->

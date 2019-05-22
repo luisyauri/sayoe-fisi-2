@@ -1,0 +1,264 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 20px auto;
+}
+
+.primero {
+    order: 0;
+    background: rgba(168, 159, 159, 0.2);
+    border-radius: 5px;
+    box-shadow: 4px 4px 1px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    display: flex;
+}
+
+.primero i {
+    display: block;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.tercero {
+    order: 2;
+    background: rgba(168, 159, 159, 0.2);
+    border-radius: 5px;
+    box-shadow: 4px 4px 1px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.tercero i {
+    display: block;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.cuarto {
+    order: 3;
+    background: rgba(168, 159, 159, 0.2);
+    border-radius: 5px;
+    box-shadow: 4px 4px 1px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.cuarto i {
+    display: block;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.second-div {
+    order: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.second-div .left {
+    background: rgba(168, 159, 159, 0.2);
+    border-radius: 5px;
+    box-shadow: 4px 4px 1px 0px rgba(0, 0, 0, 0.2);
+    margin-right: 40px;
+    width: 48%;
+}
+
+.second-div .right .title {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.second-div .right .title i {
+    display: block;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.second-div .right {
+    background: rgba(168, 159, 159, 0.2);
+    border-radius: 5px;
+    box-shadow: 4px 4px 1px 0px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    padding-bottom: 0px;
+}
+
+.contenido {
+    margin: 30px auto;
+    margin-bottom: 20px;
+}
+
+.contenido .datos {
+    display: flex;
+}
+
+
+.contenido .datos h4:nth-child(1) {
+    color: #000;
+    font-size: 17px;
+}
+
+
+.contenido .datos h4:nth-child(2) {
+    margin-left: 10px;
+    color: rgba(65, 50, 50,.85);
+}
+
+.primary-btn {
+    margin: 0px auto;
+    margin-top: 10px;
+    line-height: 45px;
+    padding: 0 25px;
+    border-radius: 0px;
+    background: #152343;
+    border: 1px solid #152343;
+    color: #fff;
+    display: inline-block;
+    font-weight: normal;
+    position: relative;
+    letter-spacing: 2px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+}
+
+.primary-btn:focus {
+    outline: none;
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: #152343;
+}
+
+.second-div .left .title {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.second-div .left .title i {
+    display: block;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.facebook {
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 2.2em;
+    margin-right: 15px;
+    text-align: center;
+    width: 2.2em;
+    height: 2.2em;
+    text-decoration: none;
+    border: 2px solid #3b5998;
+}
+
+.facebook a {
+    text-decoration: none;
+    color: #3b5998;
+}
+
+.facebook:hover {
+    background: #3b5998;
+    color: #ffffff;
+}
+
+.facebook:hover i {
+    color: #ffffff;
+}
+
+.wsp {
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 2.2em;
+    margin-right: 15px;
+    text-align: center;
+    width: 2.2em;
+    height: 2.2em;
+    text-decoration: none;
+    border: 2px solid #075E54;
+}
+
+.wsp a {
+    text-decoration: none;
+    color: #075E54;
+}
+
+.wsp:hover {
+    background: #075E54;
+    color: #ffffff;
+}
+
+.wsp:hover i {
+    color: #ffffff;
+}
+
+.data-bottom {
+    width: 50%;
+    margin: auto;
+}
+
+.imagen {
+    width: 180px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.imagen img {
+    width: 100%;
+}
+
+.redes-sociales {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.data-bottom .datos {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.data-bottom .datos h4 {
+    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+    .second-div {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    .second-div .left {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .second-div .right {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    .primero {
+        margin-top: 5px;
+    }
+    .tercero{
+        margin-top: 15px;
+    }
+    
+    .cuarto{
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+        
+}

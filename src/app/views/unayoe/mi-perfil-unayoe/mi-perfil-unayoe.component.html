@@ -1,0 +1,92 @@
+<div class="contenedor">
+    <mat-card class="primero">
+        <i class="fas fa-user-tie"></i>
+        <h3>Mi perfil</h3>
+    </mat-card>
+
+    <div class="second-div">
+        <mat-card class="left">
+            <div class="title">
+                <i class="far fa-calendar-check"></i>
+                <h3>Ultima sesion</h3>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div class="contenido">
+                <div class="imagen">
+                    <img src="https://i.pinimg.com/originals/b6/f9/44/b6f9447f7dfe2ec58c62882ae5fedc41.png" alt="">
+                </div>
+
+                <div class="data-bottom">
+                    <div class="datos">
+                        <h4>Última sesion: </h4>
+                        <h4>{{ this.datos.usuario.ultima_sesion }}
+                        </h4>
+                    </div>
+                    <div class="redes-sociales">
+                        <div class="facebook"><a href="{{ this.datos.facebook }}"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                        <div class="wsp"><a href="https://api.whatsapp.com/send?phone={{ this.datos.celular }}"><i class="fab fa-whatsapp"></i></a></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-card>
+
+        <mat-card class="right">
+            <div class="title">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Datos generales</h3>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="contenido">
+                <div class="datos">
+                    <h4>Nombres y Apellidos: </h4>
+                    <h4>{{ this.datos.nombre + " " + this.datos.apellido_paterno  + " " + this.datos.apellido_materno }}
+                    </h4>
+                </div>
+                <div class="datos">
+                    <h4>Profesión: </h4>
+                    <h4>{{ this.datos.profesion }}</h4>
+                </div>
+                <div class="datos">
+                    <h4>Facultad: </h4>
+                    <h4>{{ this.datos.facultad }}</h4>
+                </div>
+                <div class="datos">
+                    <h4>Cargo: </h4>
+                    <h4>{{ this.datos.usuario.id_rol }}</h4>
+                </div>
+                <div class="datos">
+                    <h4>Correo: </h4>
+                    <h4>{{ this.datos.usuario.correo }}</h4>
+                </div>
+                <div class="datos">
+                    <h4>Correo alternativo: </h4>
+                    <h4>{{ this.datos.correo }}</h4>
+                </div>
+                <div class="datos">
+                    <h4>Celular: </h4>
+                    <h4>{{ this.datos.celular }}</h4>
+                </div>
+
+            </div>
+
+            <mat-divider></mat-divider>
+            <button class="primary-btn" (click)="openDialog()"><i class="fas fa-pen"></i> EDITAR</button>
+        </mat-card>
+    </div>
+
+    <mat-card class="tercero">
+        <i class="far fa-address-card"></i>
+        <h3>Acerca de</h3>
+    </mat-card>
+
+    <mat-card class="cuarto">
+        <i class="far fa-copyright"></i>
+        <h3>2019 - Team Sayoe</h3>
+    </mat-card>
+</div>

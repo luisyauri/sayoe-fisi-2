@@ -1,0 +1,74 @@
+
+.size-icon-title{
+    padding: 10px 20px 10px 0px;
+    height: 20px;
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
+.title-card{
+    margin: 10px;
+    -webkit-box-shadow: none;
+    /*background-color: #3558A8;*/
+    /*border-color: #3558A8;*/
+    color: #152343;
+    font-weight: bold;
+    text-transform: uppercase;
+    /*background-image: url("~src/assets/titlecard/bgtitle.svg");*/
+}
+
+.body-card{
+    margin: 10px;
+    -webkit-box-shadow: none;
+}
+
+
+.select-g-a{
+    width: 100%;
+}
+
+
+.div-btn-expa{
+    background-color: #35a876;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* TABLA*/
+/*table {*/
+    /*width: 100%;*/
+/*}*/
+.table-container{
+    overflow-x: auto;
+}
+.table-rwd {
+    width: 100%;
+}
+.table-th {
+    /*background-color: #152343;*/
+    /*color: #ffffff;*/
+    font-size: 15px;
+    /*text-align: center;*/
+}
+.table-td {
+    /*text-align: center;*/
+}
+.table-detalles-icon {
+    color: #8dc351;
+    /*background-color: #8dc351;*/
+}
+/* FIN TABLA*/
+.spinner-style{
+    display: block;
+    justify-content: center;
+}
+
+.spinner-style-item{
+    padding: 5px;
+}
