@@ -6,31 +6,35 @@
 <div mat-dialog-content class="flex">
     <div class="fila">
         <mat-form-field>
-            <input matInput [(ngModel)]="data.apellidos" placeholder="Apellido Paterno">
+            <input matInput [(ngModel)]="data.apellido_paterno" placeholder="Apellido Paterno" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput [(ngModel)]="data.nombres" placeholder="Apellido Materno">
+            <input matInput [(ngModel)]="data.apellido_materno" placeholder="Apellido Materno" v>
         </mat-form-field>
     </div>
     <mat-form-field>
-        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Nombres">
+        <input matInput [(ngModel)]="data.nombre" placeholder="Nombres" required>
     </mat-form-field>
     <div class="fila">
         <mat-form-field>
-            <input matInput [(ngModel)]="data.profesion" placeholder="Profesión">
+            <input matInput [(ngModel)]="data.profesion" placeholder="Profesión" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput [(ngModel)]="data.celular" placeholder="Celular">
+            <input matInput [(ngModel)]="data.celular" placeholder="Celular" required>
         </mat-form-field>
     </div>
     <mat-form-field>
-        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Correo Principal">
+        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Correo Principal" required>
     </mat-form-field>
     <mat-form-field>
-        <input matInput [(ngModel)]="data.correoAlternativo" placeholder="Correo Alternativo">
+        <mat-select [(ngModel)]="data.sexo" placeholder="Sexo" required>
+            <mat-option value="0">Masculino</mat-option>
+            <mat-option value="1">Femenino</mat-option>
+            <mat-option value="2">Otro</mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <input matInput [(ngModel)]="data.contrasena" placeholder="Contraseña">
+        <input matInput [(ngModel)]="data.contrasenha" placeholder="Contraseña" required>
     </mat-form-field>
 </div>
 <div mat-dialog-actions class="botones">

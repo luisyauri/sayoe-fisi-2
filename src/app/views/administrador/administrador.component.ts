@@ -9,25 +9,7 @@ import {AgregarDialogComponent} from '../administrador/agregar-dialog/agregar-di
 import {EvalPsiUnayoeService} from '../../services/unayoe/eval-psi-unayoe.service';
 import {AdministradorService} from '../../services/administrador/administrador.service';
 
-export interface PeriodicElement {
-    name: string;
-    position: number;
-    weight: number;
-    symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { PsicologoNuevo } from '../../models/psicologoNuevo';
 
 @Component({
     selector: 'app-administrador',
@@ -35,6 +17,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     styleUrls: ['./administrador.component.css']
 })
 export class AdministradorComponent implements OnInit {
+    nuevo: PsicologoNuevo;
+
     displayedColumns: string[] = ['id', 'apellidos', 'nombres', 'sexo', 'celular', 'rol', 'estado', 'detalles'];
     dataSource: any;
     listaUnayoPerfil: any;
@@ -55,11 +39,11 @@ export class AdministradorComponent implements OnInit {
             data: { /*correo: "a", facebook: "b",celular: "c",wsp: "d",auto_descripcion: "e"*/}
         });
 
-        dialogRef.afterClosed().subscribe((result: any) => {
-            /*this.dataActualizar = result;
-            this.actualizarDatos(result);
-            this.getPerfil();*/
-            //alert("Se cerro");
+        dialogRef.afterClosed().subscribe((result: PsicologoNuevo) => {
+            this.nuevo = result;
+            //console.log(this.nuevo);
+            this.registrarPsicologo(this.nuevo);
+            this.getUnayoePerfiles();
         });
     }
 
@@ -79,6 +63,10 @@ export class AdministradorComponent implements OnInit {
                 console.log(error as any);
             }
         );
+    }
+
+    registrarPsicologo(datosNuevos: PsicologoNuevo) {
+        this.administradorService.registrarPsicologo(datosNuevos).subscribe();
     }
 
 }
