@@ -31,7 +31,10 @@ import { EvalPsiUnayoeListComponent } from './views/unayoe/eval-psi-unayoe/eval-
 import { MiPerfilDialogComponent } from './views/unayoe/mi-perfil-dialog/mi-perfil-dialog.component';
 import { AdministradorComponent } from './views/administrador/administrador.component';
 
-
+import {MatTableModule,
+        MatPaginatorModule,
+  } from '@angular/material';
+import { AgregarDialogComponent } from './views/administrador/agregar-dialog/agregar-dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -55,6 +58,7 @@ export function tokenGetter() {
     EvalPsiUnayoeListComponent,
     MiPerfilDialogComponent,
     AdministradorComponent,
+    AgregarDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,11 +79,13 @@ export function tokenGetter() {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [AuthService, UnayoeGuard, AlumnoGuard,EvalPsiUnayoeService ],
   bootstrap: [AppComponent],
-  entryComponents: [EvalPsiUnayoeDialogComponent,EvalPsiUnayoeListComponent,MiPerfilDialogComponent]
+  entryComponents: [EvalPsiUnayoeDialogComponent,EvalPsiUnayoeListComponent,MiPerfilDialogComponent,AgregarDialogComponent]
 })
 export class AppModule { }
 export class PizzaPartyAppModule { }

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap');
+.line {
+    font-family: 'Baloo Bhai', cursive;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    background: #071338;
+    color: #fff;
+    padding: 20px 45px;
+}
+hr {
+    display: block;
+    background: rgba(22, 37, 73,.8);
+    padding: 6px;
+    border: 0px;
+}
+.title i{
+    display: block;
+    font-size: 45px;
+}
+.admi-title{
+    display: flex;
+}
+.contenedor{
+    width: 90%;
+    margin: auto;
+}
+.title .contenedor{
+    display: flex;
+    justify-content: space-between;
+}
+.cards{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.cards mat-card{
+    padding: 30px 50px;
+}
+.cards mat-card:first-child{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+.cards mat-card:first-child img{
+    width: 80%;
+}
+.cards mat-card:first-child .datos{
+    width: 80%;
+}
+
+.cards mat-card:first-child h3{
+    font-size: 24px;
+}
+
+mat-card .correo, mat-card .sexo, mat-card .celular{
+    display: flex;
+    margin: 15px 0px;
+}
+
+mat-card .correo i, mat-card .sexo i, mat-card .celular i{
+    margin-right: 15px;
+}
+/*--------------SEGUNA Y TERCERA TARJETA--------------*/
+.cards mat-card:nth-child(2),
+.cards mat-card:nth-child(3){
+    width: 20%;
+}
+
+.cards mat-card:nth-child(2) h3,
+.cards mat-card:nth-child(3) h3{
+    text-align: center;
+    display: block;
+    margin: 15px;
+    font-size: 80px;
+}
+
+.cards mat-card:nth-child(2) p,
+.cards mat-card:nth-child(3) p{
+    text-align: center;
+    display: block;
+    margin-top  : 15px;
+    font-size: 16px;
+}
+
+.persona-card{
+    padding-left: 40px;
+}
+.lista{
+    margin: 40px 0px;
+}
+.lista-header{
+    display: flex;   
+}
+
+.lista-header p{
+    display: block;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.line{
+    font-weight: bold;
+    
+    display: block;
+    margin-right: 10px;
+    margin-top: -3px;
+    font-size: 20px;
+}
+
+.div-btn-expa{
+    background-color: #35a876;
+    color: #ffffff;
+    font-weight: bold;
+    width: 20%;
+    margin: 20px;
+}
+table{
+    width: 100%;
+}
+
+.admi-title .line{
+    font-size: 34px;
+    margin-top: -5px;
+}

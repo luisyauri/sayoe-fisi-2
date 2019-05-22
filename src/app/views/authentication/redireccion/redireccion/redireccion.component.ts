@@ -21,9 +21,9 @@ export class RedireccionComponent implements OnInit {
       const decodToken = jwt_decode(localStorage.getItem('access_token'));
       const idRol = decodToken.rol.id;
       if (idRol === this.rolUnayoe ) {
-        this.router.navigate(['unayoe/inicio']);
+        this.router.navigate(['administrador']);
       } else if (idRol === this.rolAlumno ) {
-        this.router.navigate(['alumno/inicio']);
+        this.router.navigate(['administrador']);
       } else if (idRol === this.rolAdministrador) {
         this.router.navigate(['administrador']);
       } else {

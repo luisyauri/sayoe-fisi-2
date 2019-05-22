@@ -38,7 +38,6 @@ export class MiPerfilUnayoeComponent implements OnInit {
     this.getPerfil();
   }
 
-  // Platos Service
   getPerfil() {
     this.miPerfilService.getPerfil().subscribe(
       (res: Data) => {

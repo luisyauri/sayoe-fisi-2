@@ -36,7 +36,9 @@ const routes: Routes = [
             {path: 'inicio', component: InicioAlumnoComponent,}
         ]
     },
-    {path: 'administrador', component: AdministradorComponent,},
+    {
+        path: 'administrador', component:AdministradorComponent , canActivate: [UnayoeGuard],
+    },
     {path: '**', redirectTo: ''}
 ];
 

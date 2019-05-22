@@ -1,0 +1,60 @@
+
+.title h1{
+    display: block;
+    margin-top: 20px;
+    width: 50%;
+    line-height : 40px;
+}
+.flex-vertical{
+    display: flex;
+}
+.title{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.imagen{
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 15px;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+}
+.fila{
+    display: flex;
+    justify-content: space-between;
+
+}
+.fila mat-form-field:first-child{
+    margin-right: 20px;
+}
+.botones{
+    
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.agregar{
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+    background: rgb(135, 103, 209);
+    margin-left: 8px;
+}
+.cancelar{
+   
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+    background: rgb(35, 21, 63);
+}
