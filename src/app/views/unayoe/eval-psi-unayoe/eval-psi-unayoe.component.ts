@@ -19,7 +19,7 @@ export class EvalPsiUnayoeComponent implements OnInit {
   selected = '';
   displayedColumns: string[] = ['titulo', 'autor', 'preguntas', 'detalles'];
   dataSource: any;
-  banderaSpinner=true;
+  banderaSpinner = true;
   constructor(public dialog: MatDialog, private  evalPsiUnayoeService: EvalPsiUnayoeService) { }
 
   ngOnInit() {
@@ -27,15 +27,15 @@ export class EvalPsiUnayoeComponent implements OnInit {
 
   }
 
-  getEvaluacionesPsicologicas(){
+  getEvaluacionesPsicologicas() {
     this.evalPsiUnayoeService.getEvaluacionesPsicologicas().subscribe(
-        result=>{
+        result => {
           this.evalPisco = JSON.parse(JSON.stringify(result['data']));
           this.dataSource = this.evalPisco;
           this.banderaSpinner = false;
         },
-        error =>{
-          console.log(<any>error);
+        error => {
+          console.log(<any> error);
         }
     )
   }

@@ -1,37 +1,39 @@
-<h1 class="flex-vertical title" mat-dialog-title>  
-  <img class="imagen" src="../../../../assets/add-friend.png" alt="ADD">
-  <h1>Agregar Psicólogo</h1>
+<h1 class="flex-vertical title" mat-dialog-title>
+    <img class="imagen" src="../../../../assets/add-friend.png" alt="ADD">
+    <h1>Agregar Psicólogo</h1>
 </h1>
 <mat-divider></mat-divider>
 <div mat-dialog-content class="flex">
-  <div class="fila">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.apellidos" placeholder="Apellidos">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.nombres" placeholder="Nombres">
-      </mat-form-field>
-  </div>
-  <div class="fila">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.profesion" placeholder="Profesión">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.celular" placeholder="Celular">
-      </mat-form-field>
-
-  </div>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Correo Principal">
-  </mat-form-field>
-  <mat-form-field>
-      <input matInput [(ngModel)]="data.correoAlternativo" placeholder="Correo Alternativo">
-  </mat-form-field>    
-  <mat-form-field>
-      <input matInput [(ngModel)]="data.contrasena" placeholder="Contraseña">
-  </mat-form-field>
+    <div class="fila">
+        <mat-form-field>
+            <input matInput [(ngModel)]="data.apellidos" placeholder="Apellido Paterno">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [(ngModel)]="data.nombres" placeholder="Apellido Materno">
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Nombres">
+    </mat-form-field>
+    <div class="fila">
+        <mat-form-field>
+            <input matInput [(ngModel)]="data.profesion" placeholder="Profesión">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [(ngModel)]="data.celular" placeholder="Celular">
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.correoPrincipal" placeholder="Correo Principal">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.correoAlternativo" placeholder="Correo Alternativo">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.contrasena" placeholder="Contraseña">
+    </mat-form-field>
 </div>
 <div mat-dialog-actions class="botones">
-  <button class="agregar" mat-button [mat-dialog-close]= 'data' cdkFocusInitial>Agregar</button>
-  <button class="cancelar" mat-button (click)="onNoClick()">Cancelar</button>
+    <button class="agregar" mat-button [mat-dialog-close]='data' cdkFocusInitial>Agregar</button>
+    <button class="cancelar" mat-button (click)="onNoClick()">Cancelar</button>
 </div>

@@ -22,6 +22,10 @@ hr {
 .admi-title{
     display: flex;
 }
+.button-style{
+    background: #071338;
+    color: #ffffff;
+}
 .contenedor{
     width: 90%;
     margin: auto;
@@ -123,4 +127,33 @@ table{
 .admi-title .line{
     font-size: 34px;
     margin-top: -5px;
+}
+
+/*--------------TABLA--------------*/
+.table-th{
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.table-th-items{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.table-td-items{
+    text-align: center;
+}
+.mat-span-style{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.table-container{
+    overflow-x: auto;
+}
+.table-rwd {
+    width: 100%;
 }

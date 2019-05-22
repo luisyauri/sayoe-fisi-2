@@ -35,6 +35,7 @@ import {MatTableModule,
         MatPaginatorModule,
   } from '@angular/material';
 import { AgregarDialogComponent } from './views/administrador/agregar-dialog/agregar-dialog.component';
+import {AdministradorService} from './services/administrador/administrador.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -83,9 +84,9 @@ export function tokenGetter() {
     MatTableModule,
     MatPaginatorModule,
   ],
-  providers: [AuthService, UnayoeGuard, AlumnoGuard,EvalPsiUnayoeService ],
+  providers: [AuthService, UnayoeGuard, AlumnoGuard, EvalPsiUnayoeService, AdministradorService ],
   bootstrap: [AppComponent],
-  entryComponents: [EvalPsiUnayoeDialogComponent,EvalPsiUnayoeListComponent,MiPerfilDialogComponent,AgregarDialogComponent]
+  entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent, MiPerfilDialogComponent, AgregarDialogComponent]
 })
 export class AppModule { }
 export class PizzaPartyAppModule { }
