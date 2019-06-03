@@ -1,0 +1,45 @@
+<div mat-dialog-title class="title-style">
+    <i class="fas fa-edit"></i>
+    Actualizar Datos
+</div>
+
+<div mat-dialog-content>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="expand-style">
+                <input class="text-style" type="email" matInput placeholder="Digite su correo alternativo" [(ngModel)]="data.correoAlternativo">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="expand-style">
+                <input class="text-style" type="text" matInput placeholder="Digite la ruta de su Facebook" [(ngModel)]="data.facebook">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <mat-form-field class="expand-style">
+                <input class="text-style" type="number" matInput placeholder="Digite su numero de celular" [(ngModel)]="data.celular">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field class="expand-style">
+                <input class="text-style" type="number" matInput placeholder="Digite su numero de whatsapp" [(ngModel)]="data.wsp">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="expand-style">
+                <textarea class="text-style" matInput placeholder="Digite una autodescripcion"
+                          [(ngModel)]="data.auto_descripcion"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions class="button-dialog-style">
+    <button class="close-button" mat-button (click)="onNoClick()">Cancelar</button>
+    <button class="send-button" mat-button [mat-dialog-close]='data'>Actualizar</button>
+</div>

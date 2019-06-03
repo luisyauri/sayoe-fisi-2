@@ -1,68 +1,83 @@
-
-import { Component, OnInit } from '@angular/core';
-import { MiPerfilService } from '../../../services/mi-perfil.service';
-import { Usuario,Data,RootObject } from '../../../models/miPerfil';
-
-import { Inject} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DatosMiPerfilUnayoe} from '../../../models/unayoe/mi-perfil-unayoe/miPerfilUnayoe.model';
+import {DatosActualizarUnayoe} from '../../../models/unayoe/mi-perfil-unayoe/datosActualizarUnayoe.model';
+import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
-import { MiPerfilDialogComponent } from '../mi-perfil-dialog/mi-perfil-dialog.component';
-
-export interface datosNuevos {
-  correo: string;
-  facebook: string;
-  celular: string;
-  wsp: string;
-  auto_descripcion: string;
-}
-
+import {MiPerfilDialogComponent} from './mi-perfil-dialog/mi-perfil-dialog.component';
+import {MiPerfilUnayoeService} from '../../../services/unayoe/mi-perfil-unayoe.service';
+import {UnayoeService} from '../../../services/unayoe/unayoe.service';
 
 @Component({
-  selector: 'app-mi-perfil-unayoe',
-  templateUrl: './mi-perfil-unayoe.component.html',
-  styleUrls: ['./mi-perfil-unayoe.component.css']
+    selector: 'app-mi-perfil-unayoe',
+    templateUrl: './mi-perfil-unayoe.component.html',
+    styleUrls: ['./mi-perfil-unayoe.component.css']
 })
 export class MiPerfilUnayoeComponent implements OnInit {
 
-  constructor( private miPerfilService: MiPerfilService , public dialog: MatDialog) { }
+    //Variables
+    datos: DatosMiPerfilUnayoe;
+    dataActualizar: DatosActualizarUnayoe;
 
-  datos: Data;
+    //Constructor
+    constructor( private unayoeService: UnayoeService,
+                 private miPerfilUnayoeService: MiPerfilUnayoeService,
+                 public dialog: MatDialog) {
+    }
 
-  dataActualizar: datosNuevos;
-  correo: String;
-  facebook: String;
-  celular: String;
-  wsp: String;
-  auto_descripcion: String;
+    ngOnInit() {
+        this.getPerfilUnayoe();
+    }
 
-  ngOnInit() {
-    this.getPerfil();
-  }
+    //Métodos
+    getPerfilUnayoe() {
+        this.miPerfilUnayoeService.getPerfilUnayoe().subscribe(
+            (res: DatosMiPerfilUnayoe) => {
+                this.datos = res['data'][0];
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
+    }
+    sendFacebook(){
+        window.location.href=this.datos.facebook;
+    }
+    sendWsp(){
+        window.location.href="https://api.whatsapp.com/send?phone="+this.datos.wsp;
+    }
 
-  getPerfil() {
-    this.miPerfilService.getPerfil().subscribe(
-      (res: Data) => {
-          this.datos = res['data'][0];
-      },
-      error => {
-          console.log(<any>error);
-      }
-  );
-  }
+    actualizarDatos(datos:DatosActualizarUnayoe ){
+      this.miPerfilUnayoeService.updateDataPerfilUnatyoe(datos).subscribe();
+    }
 
-  actualizarDatos(datos:datosNuevos ){
-    this.miPerfilService.actualizarDatos(datos).subscribe();
-  }
+    openDialog(): void {
 
-  openDialog(): void {
-    
-    let dialogRef = this.dialog.open(MiPerfilDialogComponent, {
-      data: { correo: this.correo, facebook: this.facebook,celular: this.celular,wsp: this.wsp,auto_descripcion: this.auto_descripcion }
-    });
+      let dialogRef = this.dialog.open(MiPerfilDialogComponent, {
+        data: {
+            id: this.unayoeService.getIdUnayoe(),
+            nombre: this.datos.nombre,
+            apellido_paterno: this.datos.apellido_paterno,
+            apellido_materno: this.datos.apellido_materno,
+            sexo: this.datos.sexo,
+            profesion: this.datos.profesion,
+            facebook: this.datos.facebook,
+            celular: this.datos.celular,
+            correoAlternativo: this.datos.correoAlternativo,
+            wsp: this.datos.wsp,
+            foto:this.datos.foto,
+            auto_descripcion:this.datos.auto_descripcion
+        }
+      });
+      dialogRef.afterClosed().subscribe( (result:DatosActualizarUnayoe) => {
+          if(result){
+              this.dataActualizar = result;
+              this.actualizarDatos(result);
+              this.getPerfilUnayoe();
+          }else{
+              console.log("Cerrado")
+          }
 
-    dialogRef.afterClosed().subscribe( (result:datosNuevos) => {
-      this.dataActualizar = result;
-      this.actualizarDatos(result);
-      this.getPerfil();
-    });
-  }
+      });
+    }
+
 }

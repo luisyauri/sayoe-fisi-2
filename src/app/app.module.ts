@@ -28,7 +28,7 @@ import { RedireccionComponent } from './views/authentication/redireccion/redirec
 import { EvalPsiUnayoeDialogComponent } from './views/unayoe/eval-psi-unayoe/eval-psi-unayoe-dialog/eval-psi-unayoe-dialog.component';
 import {EvalPsiUnayoeService} from './services/unayoe/eval-psi-unayoe.service';
 import { EvalPsiUnayoeListComponent } from './views/unayoe/eval-psi-unayoe/eval-psi-unayoe-list/eval-psi-unayoe-list.component';
-import { MiPerfilDialogComponent } from './views/unayoe/mi-perfil-dialog/mi-perfil-dialog.component';
+import { MiPerfilDialogComponent } from './views/unayoe/mi-perfil-unayoe/mi-perfil-dialog/mi-perfil-dialog.component';
 import { AdministradorComponent } from './views/administrador/administrador.component';
 
 import {MatTableModule,
@@ -36,6 +36,8 @@ import {MatTableModule,
   } from '@angular/material';
 import { AgregarDialogComponent } from './views/administrador/agregar-dialog/agregar-dialog.component';
 import {AdministradorService} from './services/administrador/administrador.service';
+import {UnayoeService} from './services/unayoe/unayoe.service';
+import {MiPerfilUnayoeService} from './services/unayoe/mi-perfil-unayoe.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -84,7 +86,7 @@ export function tokenGetter() {
     MatTableModule,
     MatPaginatorModule,
   ],
-  providers: [AuthService, UnayoeGuard, AlumnoGuard, EvalPsiUnayoeService, AdministradorService ],
+  providers: [AuthService, UnayoeGuard, AlumnoGuard, EvalPsiUnayoeService, AdministradorService,UnayoeService,MiPerfilUnayoeService ],
   bootstrap: [AppComponent],
   entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent, MiPerfilDialogComponent, AgregarDialogComponent]
 })

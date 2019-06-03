@@ -1,0 +1,29 @@
+.expand-style{
+    width: 100%;
+}
+.title-style{
+    color: #0460a5;
+    display: flex;
+    justify-content: center;
+}
+.button-dialog-style{
+    display: flex;
+    justify-content: end;
+}
+.send-button{
+    background: #28a745;
+    color: #ffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.close-button{
+    background: #23272b;
+    color: #ffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+}
+.text-style{
+    color: #444445;
+    font-size: 13px;
+}

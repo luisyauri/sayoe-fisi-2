@@ -74,6 +74,7 @@ export class AdministradorComponent implements OnInit {
 
     registrarPsicologo(datosNuevos: PsicologoNuevo) {
         this.administradorService.registrarPsicologo(datosNuevos).subscribe();
+        this.getUnayoePerfiles();
     }
 
     getDatoAdministrador() {

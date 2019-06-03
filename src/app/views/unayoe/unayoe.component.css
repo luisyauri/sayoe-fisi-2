@@ -15,8 +15,8 @@
 }
 
 .style-toolbar{
-    background: #152343;
-    color: #ffffff;
+    background: #ffffff;
+    color: #152343;
 }
 
 .sayoe-spacer {
@@ -62,4 +62,31 @@ h1.sayoe-app-name {
     width: 30px;
     font-size: 20px;
     text-align: center;
+}
+.avatarRedondo{
+    width:40px;
+    height:40px;
+    border-radius:150px;
+}
+.avatarNombre{
+    margin-right: 10px;
+    //text-transform: uppercase;
+    font-weight: bold;
+    color: #444445;
+}
+.barra-color{
+    height: 1px;
+    background: #e3e6ea;
+}
+.barra-lateral-estilo{
+    background: #ffffff;
+}
+.barra-lateral-texto-estilo{
+    font-size: 14px;
+    color: #444445;
+}
+.barra-lateral-texto-estilo:hover{
+    border-left : 2.5pt ridge  #0460a5;
+    background: #ffffff;
+    color: #0460a5;
 }
