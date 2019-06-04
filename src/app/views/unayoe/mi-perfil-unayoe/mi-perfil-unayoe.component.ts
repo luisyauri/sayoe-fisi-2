@@ -66,7 +66,8 @@ export class MiPerfilUnayoeComponent implements OnInit {
             wsp: this.datos.wsp,
             foto:this.datos.foto,
             auto_descripcion:this.datos.auto_descripcion
-        }
+        },
+          width: "30%",
       });
       dialogRef.afterClosed().subscribe( (result:DatosActualizarUnayoe) => {
           if(result){

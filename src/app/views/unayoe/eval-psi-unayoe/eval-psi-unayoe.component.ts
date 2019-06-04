@@ -1,61 +1,72 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {EvalPsiUnayoeDialogComponent} from './eval-psi-unayoe-dialog/eval-psi-unayoe-dialog.component';
 import {EvalPsiUnayoeService} from '../../../services/unayoe/eval-psi-unayoe.service';
 import {EvalPsiUnayoeListComponent} from './eval-psi-unayoe-list/eval-psi-unayoe-list.component';
+import {EvalPsicoUnayoe} from '../../../models/unayoe/evaluaciones-psicologicas-unayoe/evalPsicoUnayoe.model';
 
 export interface DialogSelected {
-  valueSelected: string;
+    valueSelected: string;
 }
+
 @Component({
-  selector: 'app-eval-psi-unayoe',
-  templateUrl: './eval-psi-unayoe.component.html',
-  styleUrls: ['./eval-psi-unayoe.component.css']
+    selector: 'app-eval-psi-unayoe',
+    templateUrl: './eval-psi-unayoe.component.html',
+    styleUrls: ['./eval-psi-unayoe.component.css']
 })
 export class EvalPsiUnayoeComponent implements OnInit {
 
-  valueSelected: string;
-  evalPisco: any;
-  selected = '';
-  displayedColumns: string[] = ['titulo', 'autor', 'preguntas', 'detalles'];
-  dataSource: any;
-  banderaSpinner = true;
-  constructor(public dialog: MatDialog, private  evalPsiUnayoeService: EvalPsiUnayoeService) { }
+    // Variables
+    datos: EvalPsicoUnayoe;
+    banderaSpinner = true;
+    displayedColumns: string[] = ['titulo', 'autor', 'preguntas', 'detalles'];
+    selected = '';
 
-  ngOnInit() {
-    this.getEvaluacionesPsicologicas();
 
-  }
+    // Constructor
+    constructor(public dialog: MatDialog, private  evalPsiUnayoeService: EvalPsiUnayoeService) {
+    }
 
-  getEvaluacionesPsicologicas() {
-    this.evalPsiUnayoeService.getEvaluacionesPsicologicas().subscribe(
-        result => {
-          this.evalPisco = JSON.parse(JSON.stringify(result['data']));
-          this.dataSource = this.evalPisco;
-          this.banderaSpinner = false;
-        },
-        error => {
-          console.log(<any> error);
+    ngOnInit() {
+        this.getEvaluacionesPsicologicas();
+
+    }
+
+    // Metodos
+    getEvaluacionesPsicologicas() {
+        this.evalPsiUnayoeService.getEvaluacionesPsicologicas().subscribe(
+            (res: EvalPsicoUnayoe) => {
+                this.datos = res['data'];
+                this.banderaSpinner = false;
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
+    }
+
+    openDialog() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = false;
+        dialogConfig.width = '50%';
+        dialogConfig.data ={
+            selected: this.selected,
+            dataEvalPsi : this.datos,
         }
-    )
-  }
+        this.dialog.open(EvalPsiUnayoeDialogComponent, dialogConfig);
+    }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.width = "50%";
-    this.dialog.open(EvalPsiUnayoeDialogComponent, dialogConfig);
-  }
-
-  openDialogList(id){
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = false;
-      dialogConfig.width = "70%";
-      dialogConfig.height = "90%";
-      dialogConfig.data = {id: id};
-
-      this.dialog.open(EvalPsiUnayoeListComponent, dialogConfig);
-  }
+    openDialogList(id) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = false;
+        dialogConfig.width = '70%';
+        dialogConfig.height = '90%';
+        dialogConfig.data = {
+            titulo: this.datos[id-1].titulo,
+            preguntas: this.datos[id-1].preguntas,
+        };
+        this.dialog.open(EvalPsiUnayoeListComponent, dialogConfig);
+    }
 }
 
 

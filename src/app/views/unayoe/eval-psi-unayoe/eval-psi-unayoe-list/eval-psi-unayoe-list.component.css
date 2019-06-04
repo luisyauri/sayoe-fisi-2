@@ -41,5 +41,14 @@
 .mat-card-actions-style{
     text-align: end;
 }
-
+.spinner-style{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.spinner-style-item{
+    padding: 5px;
+}
 

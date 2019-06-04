@@ -38,6 +38,10 @@ import { AgregarDialogComponent } from './views/administrador/agregar-dialog/agr
 import {AdministradorService} from './services/administrador/administrador.service';
 import {UnayoeService} from './services/unayoe/unayoe.service';
 import {MiPerfilUnayoeService} from './services/unayoe/mi-perfil-unayoe.service';
+import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CdkTableModule} from '@angular/cdk/table';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -85,10 +89,13 @@ export function tokenGetter() {
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   providers: [AuthService, UnayoeGuard, AlumnoGuard, EvalPsiUnayoeService, AdministradorService,UnayoeService,MiPerfilUnayoeService ],
   bootstrap: [AppComponent],
-  entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent, MiPerfilDialogComponent, AgregarDialogComponent]
+  entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent, MiPerfilDialogComponent, AgregarDialogComponent, AlumnosUnayoeComponent]
 })
 export class AppModule { }
 export class PizzaPartyAppModule { }

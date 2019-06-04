@@ -65,7 +65,10 @@ mat-grid-tile {
 }
 /* FIN TABLA*/
 .spinner-style{
-    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: row wrap;
     justify-content: center;
 }
 

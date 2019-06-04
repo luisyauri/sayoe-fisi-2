@@ -18,18 +18,24 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule,
         MatIconModule, MatMenuModule, MatCardModule, MatGridListModule,
         MatSelectModule, MatPaginatorModule, MatSortModule, MatTableModule,
         MatDialogModule, MatExpansionModule, MatRadioModule, MatProgressSpinnerModule,
-        MatFormFieldModule, MatInputModule, MatChipsModule],
+        MatFormFieldModule, MatInputModule, MatChipsModule, MatDatepickerModule,
+        MatAutocompleteModule,MatSlideToggleModule,],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule,
         MatIconModule, MatMenuModule, MatCardModule, MatGridListModule,
         MatSelectModule, MatPaginatorModule, MatSortModule, MatTableModule,
         MatDialogModule, MatExpansionModule, MatRadioModule, MatProgressSpinnerModule,
-        MatFormFieldModule, MatInputModule, MatChipsModule],
+        MatFormFieldModule, MatInputModule, MatChipsModule, MatDatepickerModule,
+        MatAutocompleteModule,MatSlideToggleModule,],
 })
 export class MaterialModule { }
 
