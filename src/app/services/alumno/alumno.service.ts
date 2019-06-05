@@ -10,7 +10,7 @@ export class AlumnoService {
     headers = new HttpHeaders();
 
     // URL
-    API_DATOS_GENERALES_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/unayoe-perfil/short/';
+    API_DATOS_GENERALES_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumno/short/';
 
     constructor(private http: HttpClient) {
     }

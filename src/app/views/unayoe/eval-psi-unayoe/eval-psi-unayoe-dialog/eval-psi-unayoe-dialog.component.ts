@@ -28,11 +28,17 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
     datosUnAlumno: DatosUnAlumnoUnayoe;
     asignarAlumno: AsignarAlumnoUnayoe = {alumnos: [], test: [], fecha_limite: ''};
     allTest: EvalPsicoUnayoe;
-    selecionarFecha: string;
     banderaCodigoRepetido = false;
     banderaEPRepetido = false;
     // Banderas
     banderaTest=false;
+
+    //Fecha
+    fecha: Date;
+    dia: string;
+    mes: string;
+    year: string;
+    sendFecha:string;
 
     readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
@@ -49,7 +55,7 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
     addOnBlurTest = true;
     tests: TestAsignarAlumnoUnayoe[] = [];
 
-    // Constructor
+    //Constructor
     constructor(private evalPsiUnayoeService: EvalPsiUnayoeService,
                 public dialogConfig: MatDialogRef<EvalPsiUnayoeDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public dataMain: SendDatosDialogUnayoe,
@@ -60,17 +66,21 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
         this.getCargarTest();
     }
 
-    // Metodos
-    // Chips Alumnos
+    //Metodos
+    //DatePicker
+
+
+    //Chips Alumnos
     add(event: MatChipInputEvent): void {
         const input = event.input;
         const value = event.value;
-
+        // console.log('VALOR '+ value);
         if (value == '' || value == null) {
-            console.log('NO ENTRO');
+            // console.log('NO ENTRO');
         } else {
             this.evalPsiUnayoeService.getDatosUnEstudiante(value).subscribe(
                 (res: DatosUnAlumnoUnayoe) => {
+                    console.log("FUNCIONO");
                     this.datosUnAlumno = res['data'];
                     for (let alumno of this.alumnos) {
                         if (alumno.codigo == this.datosUnAlumno.codigo) {
@@ -92,6 +102,7 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
 
                 },
                 error => {
+                    console.log("NO FUNCIONO");
                     Swal.fire({
                         position: 'center',
                         type: 'error',
@@ -127,11 +138,11 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
         const value = event.value;
 
         if (value == '' || value == null) {
-            console.log('NO ENTRO');
+            // console.log('NO ENTRO');
         } else {
             this.evalPsiUnayoeService.getUnaEvaluacionPsicologica(value).subscribe(
                 (res: EvalPsicoUnayoe) => {
-                    console.log('ID ENTRA');
+                    // console.log('ID ENTRA');
                     this.allTest = res['data'][0];
                     if(this.allTest != null){
                         for (let test of this.tests) {
@@ -164,7 +175,7 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
 
                 },
                 error => {
-                    console.log('ID INVÁLIDO');
+                    // console.log('ID INVÁLIDO');
                     console.log(<any> error);
                 }
             );
@@ -187,11 +198,10 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
 
     //Asignar
     sendAsignar() {
-
-        if(this.alumnos != null && this.banderaTest==true && this.selecionarFecha != null){
+        if(this.alumnos != null && this.banderaTest==true && this.sendFecha != null){
             this.asignarAlumno.alumnos = this.alumnos;
             this.asignarAlumno.test = this.tests;
-            this.asignarAlumno.fecha_limite = this.selecionarFecha;
+            this.asignarAlumno.fecha_limite = this.sendFecha;
             this.evalPsiUnayoeService.getAsignar(this.asignarAlumno).subscribe(
                 value => {
                     Swal.fire({
@@ -229,4 +239,21 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
         this.dialogConfig.close();
     }
 
+    actualizarFecha(newDate) {
+        this.fecha = newDate;
+        const dia = this.fecha.getDate().toString();
+        const mes = (this.fecha.getMonth()+1).toString();
+        this.year = this.fecha.getFullYear().toString();
+        if(dia.length<2){
+            this.dia = '0'+dia;
+        }else{
+            this.dia = dia;
+        }
+        if(mes.length<2){
+            this.mes = '0'+mes;
+        }else{
+            this.mes = mes;
+        }
+        this.sendFecha = this.dia+"-"+this.mes+"-"+this.year;
+    }
 }

@@ -5,7 +5,7 @@
     <span class="sayoe-spacer"></span>
 
     <button mat-button [matMenuTriggerFor]="menu"><span class="avatarNombre">{{alumno.nombre}} |</span>
-      <!--<img src='{{alumno.foto}}' class='avatarRedondo' />-->
+      <img src='{{alumno.foto}}' class='avatarRedondo' />
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
       <button mat-menu-item routerLink="mi-perfil"><i class="fas fa-user-circle size-icon-title-perfil-item"></i>Mi Perfil</button>

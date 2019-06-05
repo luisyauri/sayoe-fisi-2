@@ -15,6 +15,11 @@ import {AlumnoGuard} from './services/alumno.guard';
 import {InicioAlumnoComponent} from './views/alumno/inicio-alumno/inicio-alumno.component';
 import {RedireccionComponent} from './views/authentication/redireccion/redireccion/redireccion.component';
 import {AdministradorComponent} from './views/administrador/administrador.component';
+import {MiPerfilAlumnoComponent} from './views/alumno/mi-perfil-alumno/mi-perfil-alumno.component';
+import {EvalPsiPendAlumnoComponent} from './views/alumno/eval-psi-pend-alumno/eval-psi-pend-alumno.component';
+import {EvalPsiRealAlumnoComponent} from './views/alumno/eval-psi-real-alumno/eval-psi-real-alumno.component';
+import {PerfilPsiAlumnoComponent} from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
+import {CitasAlumnoComponent} from './views/alumno/citas-alumno/citas-alumno.component';
 
 const routes: Routes = [
     {path: '', component: LoginComponent,},
@@ -33,7 +38,12 @@ const routes: Routes = [
     {
         path: 'alumno', component: AlumnoComponent,
         children: [
-            {path: 'inicio', component: InicioAlumnoComponent,}
+            {path: 'inicio', component: InicioAlumnoComponent,},
+            {path: 'mi-perfil', component: MiPerfilAlumnoComponent,},
+            {path: 'evaluaciones-psicologicas-pendientes', component: EvalPsiPendAlumnoComponent,},
+            {path: 'evaluaciones-psicologicas-realizadas', component: EvalPsiRealAlumnoComponent,},
+            {path: 'perfiles-psicologicos', component: PerfilPsiAlumnoComponent,},
+            {path: 'citas', component: CitasAlumnoComponent,},
         ]
     },
     {

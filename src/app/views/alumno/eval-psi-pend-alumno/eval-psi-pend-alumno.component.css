@@ -1,0 +1,32 @@
+
+.size-icon-title{
+    padding: 10px 20px 10px 0px;
+    height: 20px;
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
+.title-card{
+    margin: 10px;
+    -webkit-box-shadow: none;
+    /*background-color: #3558A8;*/
+    /*border-color: #3558A8;*/
+    color: #152343;
+    font-weight: bold;
+    text-transform: uppercase;
+    /*background-image: url("~src/assets/titlecard/bgtitle.svg");*/
+}
+
+.body-card{
+    margin: 10px;
+    -webkit-box-shadow: none;
+}
+
+
+.select-g-a{
+    width: 100%;
+}

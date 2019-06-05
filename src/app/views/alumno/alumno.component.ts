@@ -15,13 +15,12 @@ export class AlumnoComponent implements OnInit {
     mobileQuery: MediaQueryList;
     itemSecciones = [
         {title: 'Dashboard', icon: 'fas fa-home', route: 'inicio'},
-        {title: 'Mi Perfil', icon: 'fas fa-user-circle', route: 'mi-perfil'},
-        {title: 'E.P Pendientes', icon: 'fas fa-file-alt', route: 'evaluaciones-psicologicas'},
-        {title: 'E.P Realizadas', icon: 'fas fa-file-alt', route: 'evaluaciones-psicologicas'},
-        {title: 'Perfil de Evaluaciones', icon: 'fas fa-users', route: 'alumnos'},
+        {title: 'E.P Pendientes', icon: 'fas fa-file-signature', route: 'evaluaciones-psicologicas-pendientes'},
+        {title: 'E.P Realizadas', icon: 'fas fa-file-contract', route: 'evaluaciones-psicologicas-realizadas'},
+        {title: 'Perfil Piscológico', icon: 'fas fa-id-badge', route: 'perfiles-psicologicos'},
         {title: 'Citas', icon: 'fas fa-calendar-alt', route: 'citas'},
     ];
-    alumno = {nombre: 'Luis', foto: ''};
+    alumno = {nombre: '', foto: ''};
 
     //Constructor
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
@@ -35,6 +34,7 @@ export class AlumnoComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getDatosGeneralesUnayoe();
     }
 
     //Métodos

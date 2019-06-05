@@ -48,6 +48,7 @@ import { EvalPsiPendAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/
 import { EvalPsiRealAlumnoComponent } from './views/alumno/eval-psi-real-alumno/eval-psi-real-alumno.component';
 import { PerfilPsiAlumnoComponent } from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
 import { CitasAlumnoComponent } from './views/alumno/citas-alumno/citas-alumno.component';
+import {MAT_DATE_LOCALE} from '@angular/material';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -105,7 +106,10 @@ export function tokenGetter() {
         ReactiveFormsModule,
         [SweetAlert2Module.forRoot()],
     ],
-    providers: [AuthService, UnayoeGuard, AlumnoGuard, EvalPsiUnayoeService, AdministradorService, UnayoeService, MiPerfilUnayoeService],
+    providers: [AuthService, UnayoeGuard, AlumnoGuard,
+        EvalPsiUnayoeService, AdministradorService,
+        UnayoeService, MiPerfilUnayoeService,
+        { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
     bootstrap: [AppComponent],
     entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent, MiPerfilDialogComponent, AgregarDialogComponent, AlumnosUnayoeComponent]
 })

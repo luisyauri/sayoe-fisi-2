@@ -12,7 +12,7 @@ export class EvalPsiUnayoeService {
   // Variables
   headers = new HttpHeaders();
   API_EVALUACIONES_PSICOLOGICAS = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluaciones';
-  API_DATOS_UN_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumnoShort/';
+  API_DATOS_UN_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumnoShortAsignar/';
   API_DATOS_UNA_EVALUACION_PSICOLOGICA = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion/';
   API_ASIGNAR_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/asignarAlumno';
 
