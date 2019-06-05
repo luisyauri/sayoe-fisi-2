@@ -1,7 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {EvalPsiUnayoeService} from '../../../../services/unayoe/eval-psi-unayoe.service';
 import {EvalPsicoUnayoe} from '../../../../models/unayoe/evaluaciones-psicologicas-unayoe/evalPsicoUnayoe.model';
+import {SwalComponent} from '@sweetalert2/ngx-sweetalert2';
 
 export interface DialogData {
   id: bigint;
@@ -20,7 +21,9 @@ export class EvalPsiUnayoeListComponent implements OnInit {
   id: any;
   banderaSpinner = false;
 
-  // Constructor
+
+
+    // Constructor
   constructor(public dialogConfig: MatDialogRef<EvalPsiUnayoeListComponent>,
               @Inject(MAT_DIALOG_DATA) public data: EvalPsicoUnayoe,
               private  evalPsiUnayoeService: EvalPsiUnayoeService) {

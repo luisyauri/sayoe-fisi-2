@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-12">
             <mat-form-field class="select-g-a">
-                <mat-chip-list #chipList aria-label="AlumnosAsignarAlumnoUnayoe selection">
+                <mat-chip-list #chipAlumno aria-label="AlumnosAsignarAlumnoUnayoe selection">
                     <div *ngIf="alumnos">
                         <mat-chip *ngFor="let alumno of alumnos" [selectable]="selectable"
                                   [removable]="removable" (removed)="remove(alumno)">
@@ -14,25 +14,28 @@
                             <i matChipRemove *ngIf="removable" class="fas fa-times-circle"></i>
                         </mat-chip>
                     </div>
-                    <input placeholder="Digite el código del alumno"
-                           [matChipInputFor]="chipList"
+                    <input class="text-style" required placeholder="Escriba el código del alumno"
+                           [matChipInputFor]="chipAlumno"
                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                            [matChipInputAddOnBlur]="addOnBlur"
                            (matChipInputTokenEnd)="add($event)">
                 </mat-chip-list>
             </mat-form-field>
+            <div *ngIf="datosUnAlumno">
+                <span class="style-datos">{{datosUnAlumno.codigo}}</span>
+                {{datosUnAlumno.nombre + datosUnAlumno.situacion + datosUnAlumno.escuela}}
+            </div>
         </div>
         <div class="col-sm-12">
             <mat-form-field class="select-g-a">
-                <input matInput [matDatepicker]="picker" placeholder="Seleccione la fecha" [(ngModel)]="selecionarFecha">
+                <input class="text-style" required matInput [matDatepicker]="picker" placeholder="Seleccione la fecha" [(ngModel)]="selecionarFecha">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            {{selecionarFecha}}
         </div>
         <div class="col-sm-12">
             <mat-form-field class="select-g-a">
-                <mat-chip-list #chipList aria-label="TestAsignarAlumnoUnayoe selection">
+                <mat-chip-list #chipTest aria-label="TestAsignarAlumnoUnayoe selection">
                     <div *ngIf="tests">
                         <mat-chip *ngFor="let test of tests" [selectable]="selectableTest"
                                   [removable]="removableTest" (removed)="removeTest(test)">
@@ -40,8 +43,8 @@
                             <i matChipRemove *ngIf="removableTest" class="fas fa-times-circle"></i>
                         </mat-chip>
                     </div>
-                    <input placeholder="Digite el código de la Evaluación Psicológica"
-                           [matChipInputFor]="chipList"
+                    <input class="text-style" required placeholder="Escriba el código de la Evaluación Psicológica"
+                           [matChipInputFor]="chipTest"
                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                            [matChipInputAddOnBlur]="addOnBlurTest"
                            (matChipInputTokenEnd)="addTest($event)">
@@ -49,9 +52,9 @@
             </mat-form-field>
         </div>
         <div class="col-sm-12">
-            <div class="row">
-                <button mat-flat-button color="primary">Cancelar</button>
-                <button mat-flat-button color="primary" (click)="sendAsignar()">Asignar</button>
+            <div class="row flex-button">
+                <button mat-flat-button class="close-button" (click)="close()">Cancelar</button>
+                <button mat-flat-button class="send-button" (click)="sendAsignar()">Asignar</button>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angula
 import {MiPerfilDialogComponent} from './mi-perfil-dialog/mi-perfil-dialog.component';
 import {MiPerfilUnayoeService} from '../../../services/unayoe/mi-perfil-unayoe.service';
 import {UnayoeService} from '../../../services/unayoe/unayoe.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-mi-perfil-unayoe',
@@ -67,17 +68,30 @@ export class MiPerfilUnayoeComponent implements OnInit {
             foto:this.datos.foto,
             auto_descripcion:this.datos.auto_descripcion
         },
-          width: "30%",
       });
       dialogRef.afterClosed().subscribe( (result:DatosActualizarUnayoe) => {
           if(result){
               this.dataActualizar = result;
               this.actualizarDatos(result);
               this.getPerfilUnayoe();
-          }else{
-              console.log("Cerrado")
+              Swal.fire({
+                  position: 'center',
+                  type: 'success',
+                  title: 'Actualizado correctamente.',
+                  showConfirmButton: false,
+                  timer: 1500
+              })
           }
 
+      },error => {
+          Swal.fire({
+              position: 'center',
+              type: 'error',
+              title: 'Error al actualizar.',
+              showConfirmButton: false,
+              timer: 1500
+          })
+          console.log(error);
       });
     }
 

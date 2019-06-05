@@ -19,7 +19,7 @@ export class EvalPsiUnayoeComponent implements OnInit {
     // Variables
     datos: EvalPsicoUnayoe;
     banderaSpinner = true;
-    displayedColumns: string[] = ['titulo', 'autor', 'preguntas', 'detalles'];
+    displayedColumns: string[] = ['Id','titulo', 'autor', 'preguntas', 'detalles'];
     selected = '';
 
 
@@ -46,14 +46,20 @@ export class EvalPsiUnayoeComponent implements OnInit {
     }
 
     openDialog() {
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = false;
-        dialogConfig.width = '50%';
-        dialogConfig.data ={
-            selected: this.selected,
-            dataEvalPsi : this.datos,
+
+        if(this.selected == '1'){
+
+        }else if(this.selected == '2'){
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.disableClose = false;
+            // dialogConfig.width = '50%';
+            dialogConfig.data ={
+                dataEvalPsi : this.datos,
+            }
+            this.dialog.open(EvalPsiUnayoeDialogComponent, dialogConfig);
+        }else{
+
         }
-        this.dialog.open(EvalPsiUnayoeDialogComponent, dialogConfig);
     }
 
     openDialogList(id) {

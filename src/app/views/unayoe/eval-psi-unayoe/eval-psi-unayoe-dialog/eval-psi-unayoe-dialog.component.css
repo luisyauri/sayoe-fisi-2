@@ -6,3 +6,31 @@
 .select-g-a{
     width: 100%;
 }
+.flex-button{
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+}
+.send-button{
+    background: #28a745;
+    color: #ffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.close-button{
+    background: #23272b;
+    color: #ffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.style-datos{
+    font-weight: bold;
+}
+.text-style{
+    color: #444445;
+    font-size: 13px;
+}
+

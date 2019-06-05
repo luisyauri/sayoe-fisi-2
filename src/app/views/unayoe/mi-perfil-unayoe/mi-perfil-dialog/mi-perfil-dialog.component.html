@@ -7,34 +7,38 @@
     <div class="row">
         <div class="col-sm-12">
             <mat-form-field class="expand-style">
-                <input class="text-style" type="email" matInput placeholder="Digite su correo alternativo" [(ngModel)]="data.correoAlternativo">
+                <input [formControl]="email" required class="text-style" type="email" matInput placeholder="Correo alternativo" [(ngModel)]="data.correoAlternativo">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <mat-form-field class="expand-style">
-                <input class="text-style" type="text" matInput placeholder="Digite la ruta de su Facebook" [(ngModel)]="data.facebook">
+                <input class="text-style" type="text" matInput placeholder="URL Facebook" [(ngModel)]="data.facebook">
             </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
             <mat-form-field class="expand-style">
-                <input class="text-style" type="number" matInput placeholder="Digite su numero de celular" [(ngModel)]="data.celular">
+                <input #cel maxlength="9" class="text-style" type="text" matInput placeholder="Celular" [(ngModel)]="data.celular">
+                <mat-hint align="end">{{cel.value?.length || 0}}/9</mat-hint>
             </mat-form-field>
         </div>
         <div class="col-sm-6">
             <mat-form-field class="expand-style">
-                <input class="text-style" type="number" matInput placeholder="Digite su numero de whatsapp" [(ngModel)]="data.wsp">
+                <input #wsp maxlength="9" class="text-style" type="text" matInput placeholder="Whatsapp" [(ngModel)]="data.wsp">
+                <mat-hint align="end">{{wsp.value?.length || 0}}/9</mat-hint>
             </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <mat-form-field class="expand-style">
-                <textarea class="text-style" matInput placeholder="Digite una autodescripcion"
+            <mat-form-field class="expand-style" hintLabel="Máximo 120 caracteres.">
+                <textarea #input maxlength="120" class="text-style" matInput placeholder="Autodescripcion"
                           [(ngModel)]="data.auto_descripcion"></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}/120</mat-hint>
             </mat-form-field>
         </div>
     </div>
