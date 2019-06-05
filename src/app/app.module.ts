@@ -43,7 +43,11 @@ import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CdkTableModule} from '@angular/cdk/table';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
-
+import { MiPerfilAlumnoComponent } from './views/alumno/mi-perfil-alumno/mi-perfil-alumno.component';
+import { EvalPsiPendAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/eval-psi-pend-alumno.component';
+import { EvalPsiRealAlumnoComponent } from './views/alumno/eval-psi-real-alumno/eval-psi-real-alumno.component';
+import { PerfilPsiAlumnoComponent } from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
+import { CitasAlumnoComponent } from './views/alumno/citas-alumno/citas-alumno.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -68,6 +72,11 @@ export function tokenGetter() {
         MiPerfilDialogComponent,
         AdministradorComponent,
         AgregarDialogComponent,
+        MiPerfilAlumnoComponent,
+        EvalPsiPendAlumnoComponent,
+        EvalPsiRealAlumnoComponent,
+        PerfilPsiAlumnoComponent,
+        CitasAlumnoComponent,
     ],
     imports: [
         BrowserModule,

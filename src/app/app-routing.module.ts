@@ -31,7 +31,7 @@ const routes: Routes = [
         ]
     },
     {
-        path: 'alumno', component: AlumnoComponent, canActivate: [AlumnoGuard],
+        path: 'alumno', component: AlumnoComponent,
         children: [
             {path: 'inicio', component: InicioAlumnoComponent,}
         ]
@@ -48,3 +48,11 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
+
+
+// {
+//     path: 'alumno', component: AlumnoComponent, canActivate: [AlumnoGuard],
+//     children: [
+//     {path: 'inicio', component: InicioAlumnoComponent,}
+// ]
+// },

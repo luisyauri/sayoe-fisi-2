@@ -4,13 +4,17 @@
     <h1 class="sayoe-app-name">SAYOE</h1>
     <span class="sayoe-spacer"></span>
 
-    <button mat-button [matMenuTriggerFor]="menu"><span class="avatarNombre">{{alumno.nombre}} |</span><img src='{{alumno.foto}}' class='avatarRedondo' /></button>
+    <button mat-button [matMenuTriggerFor]="menu"><span class="avatarNombre">{{alumno.nombre}} |</span>
+      <!--<img src='{{alumno.foto}}' class='avatarRedondo' />-->
+    </button>
     <mat-menu #menu="matMenu" xPosition="before">
       <button mat-menu-item routerLink="mi-perfil"><i class="fas fa-user-circle size-icon-title-perfil-item"></i>Mi Perfil</button>
       <button mat-menu-item (click)="logout()"><i class="fas fa-sign-out-alt size-icon-title-perfil-item"></i>Cerrar Sesión</button>
     </mat-menu>
   </mat-toolbar>
+
   <div class="barra-color"></div>
+
   <mat-sidenav-container class="sayoe-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
     <mat-sidenav class="barra-lateral-estilo" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
@@ -30,4 +34,5 @@
       <!--<p *ngFor="let content of fillerContent">{{content}}</p>-->
     </mat-sidenav-content>
   </mat-sidenav-container>
+
 </div>
