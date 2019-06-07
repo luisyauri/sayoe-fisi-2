@@ -1,6 +1,5 @@
 <div mat-dialog-title class="title-style">
-    <i class="fas fa-file-alt"></i>
-    Asignar Evaluación Psicológica
+   <span class="text-title-style">Asignar Evaluación Psicológica</span>
 </div>
 <div mat-dialog-conten>
     <div class="row">
@@ -8,10 +7,10 @@
             <mat-form-field class="select-g-a">
                 <mat-chip-list #chipAlumno aria-label="AlumnosAsignarAlumnoUnayoe selection">
                     <div *ngIf="alumnos">
-                        <mat-chip *ngFor="let alumno of alumnos" [selectable]="selectable"
+                        <mat-chip class="chips-style" *ngFor="let alumno of alumnos" [selectable]="selectable"
                                   [removable]="removable" (removed)="remove(alumno)">
                             {{alumno.codigo}}
-                            <i matChipRemove *ngIf="removable" class="fas fa-times-circle"></i>
+                            <i matChipRemove *ngIf="removable" class="fas fa-times-circle chips-style-x"></i>
                         </mat-chip>
                     </div>
                     <input class="text-style" required placeholder="Escriba el código del alumno"
@@ -21,41 +20,58 @@
                            (matChipInputTokenEnd)="add($event)">
                 </mat-chip-list>
             </mat-form-field>
-            <div *ngIf="datosUnAlumno">
-                <span class="style-datos">{{datosUnAlumno.codigo}}</span>
-                {{datosUnAlumno.nombre + datosUnAlumno.situacion + datosUnAlumno.escuela}}
+            <div *ngIf="banderaMostrar">
+                <div *ngIf="datosUnAlumno">
+                    <div class="bg-dato-alumno">
+                        <div class="row">
+                            <div class="col-sm-12 text-dato-alumno">
+                                <span class="title-dato-alumno">Código:</span> {{datosUnAlumno.codigo}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12  text-dato-alumno">
+                                <span class="title-dato-alumno">Apellidos y nombres:</span> {{datosUnAlumno.nombre}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12  text-dato-alumno">
+                                <span class="title-dato-alumno">Situación:</span>
+                                <mat-chip [ngClass]="{'chip-observado-alumno': colorSituacion,'chip-dato-alumno': !colorSituacion}">{{situacion}}
+                                </mat-chip>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12  text-dato-alumno">
+                                <span class="title-dato-alumno">Escuela Académica: </span>{{datosUnAlumno.escuela}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-sm-12">
             <mat-form-field class="select-g-a">
-                <input class="text-style" required matInput [matDatepicker]="picker" placeholder="Seleccione la fecha"
-                       [(ngModel)]="fecha" (ngModelChange)="actualizarFecha($event)"
-                >
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <input class="text-style date-style" matInput [matDatepicker]="dp3" placeholder="Asigne la fecha límite" disabled
+                       [(ngModel)]="fecha" (ngModelChange)="actualizarFecha($event)">
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
             </mat-form-field>
+        </div>
+        <div>
         </div>
         <div class="col-sm-12">
             <mat-form-field class="select-g-a">
-                <mat-chip-list #chipTest aria-label="TestAsignarAlumnoUnayoe selection">
-                    <div *ngIf="tests">
-                        <mat-chip *ngFor="let test of tests" [selectable]="selectableTest"
-                                  [removable]="removableTest" (removed)="removeTest(test)">
-                            {{test.id}}
-                            <i matChipRemove *ngIf="removableTest" class="fas fa-times-circle"></i>
-                        </mat-chip>
-                    </div>
-                    <input class="text-style" required placeholder="Escriba el código de la Evaluación Psicológica"
-                           [matChipInputFor]="chipTest"
-                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                           [matChipInputAddOnBlur]="addOnBlurTest"
-                           (matChipInputTokenEnd)="addTest($event)">
-                </mat-chip-list>
+                <mat-label>Asigne la evaluación piscológica</mat-label>
+                <mat-select class="text-style" [(value)]="arrayEPSelected" multiple>
+                    <mat-option class="text-style" *ngFor="let ep of allEP" [value]="ep.id" >
+                        {{ep.titulo+' '}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
         <div class="col-sm-12">
             <div class="row flex-button">
-                <button mat-flat-button class="close-button" (click)="close()">Cancelar</button>
+                <button mat-button class="close-button" (click)="close()">Cancelar</button>
                 <button mat-flat-button class="send-button" (click)="sendAsignar()">Asignar</button>
             </div>
         </div>

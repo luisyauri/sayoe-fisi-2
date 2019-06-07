@@ -26,17 +26,14 @@
       </div>
       <div class="row">
         <div class="col">
-          <div *ngIf="banderaSpinner; else tablaLlena" class="spinner-style">
-            <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+          <div *ngIf="banderaSpinner; else tablaLlena" >
+            <div class="mat-span-style">
+              <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+            </div>
           </div>
           <ng-template #tablaLlena>
             <div class="table-container">
               <table mat-table [dataSource]="datos" class="table-rwd mat-elevation-0">
-
-                <ng-container matColumnDef="Id" >
-                  <th class="table-th" mat-header-cell *matHeaderCellDef> Código </th>
-                  <td class="table-td" mat-cell *matCellDef="let element"> {{element.id}} </td>
-                </ng-container>
 
                 <ng-container matColumnDef="titulo" >
                   <th class="table-th" mat-header-cell *matHeaderCellDef> Título </th>
@@ -59,7 +56,6 @@
                     <button mat-flat-button class="table-detalles-icon" (click)="openDialogList(element.id)"><i class="fas fa-eye"></i></button>
                   </td>
                 </ng-container>
-
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
@@ -67,6 +63,18 @@
           </ng-template>
 
         </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="title-card">
+  <mat-card-content>
+    <div class="row flex-buton-perfiles">
+      <div class="col-sm-5">
+        <button mat-flat-button class="div-btn-psr">Perfiles Psicológicos pendientes</button>
+      </div>
+      <div class="col-sm-5">
+        <button mat-flat-button class="div-btn-psnr">Perfiles Psicológicos respondidos</button>
       </div>
     </div>
   </mat-card-content>

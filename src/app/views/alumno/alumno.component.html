@@ -7,9 +7,9 @@
     <button mat-button [matMenuTriggerFor]="menu"><span class="avatarNombre">{{alumno.nombre}} |</span>
       <img src='{{alumno.foto}}' class='avatarRedondo' />
     </button>
-    <mat-menu #menu="matMenu" xPosition="before">
-      <button mat-menu-item routerLink="mi-perfil"><i class="fas fa-user-circle size-icon-title-perfil-item"></i>Mi Perfil</button>
-      <button mat-menu-item (click)="logout()"><i class="fas fa-sign-out-alt size-icon-title-perfil-item"></i>Cerrar Sesión</button>
+    <mat-menu #menu="matMenu" xPosition="before" class="mat-elevation-z0 mat-style">
+      <button class="barra-lateral-texto-estilo" mat-menu-item routerLink="mi-perfil"><i class="fas fa-user-circle size-icon-title-perfil-item"></i>Mi Perfil</button>
+      <button class="barra-lateral-texto-estilo" mat-menu-item (click)="logout()"><i class="fas fa-sign-out-alt size-icon-title-perfil-item"></i>Cerrar Sesión</button>
     </mat-menu>
   </mat-toolbar>
 
@@ -20,7 +20,7 @@
     <mat-sidenav class="barra-lateral-estilo" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <a mat-list-item class="barra-lateral-texto-estilo" routerLink="{{item.route}}" *ngFor="let item of itemSecciones">
+        <a mat-list-item class="barra-lateral-texto-estilo" routerLink="{{item.route}}" *ngFor="let item of itemSecciones" routerLinkActive="active-list-item">
           <div><i class="{{item.icon}} size-icon-sidebar"></i>{{item.title}}</div>
         </a>
         <a mat-list-item class="barra-lateral-texto-estilo" (click)="logout()">

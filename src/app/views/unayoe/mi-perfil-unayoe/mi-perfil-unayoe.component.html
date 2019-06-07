@@ -13,9 +13,10 @@
                         <img class="image-size" src="{{datos.foto}}" alt="">
                     </div>
                     <div class="col-12 flex-items-style">
-                        <button mat-stroked-button class="m-2" (click)="sendFacebook()"><i
-                                class="fab fa-facebook-f"></i></button>
-                        <button mat-stroked-button class="m-2" (click)="sendWsp()"><i class="fab fa-whatsapp"></i>
+                        <button mat-flat-button class="m-2 facebook-btn" (click)="sendFacebook()">
+                            <i class="fab fa-facebook-f icon-facebook-btn"></i></button>
+                        <button mat-flat-button class="m-2 wsp-btn" (click)="sendWsp()">
+                            <i class="fab fa-whatsapp icon-wsp-btn"></i>
                         </button>
                     </div>
                 </mat-card-content>
@@ -25,7 +26,7 @@
             <mat-card class="body-card">
                 <mat-card-content>
                     <mat-card-header>
-                        <mat-card-title><i class="fas fa-user-secret size-icon-title"></i>DATOS GENERALES</mat-card-title>
+                        <mat-card-title><i class="far fa-smile size-icon-title style-title"></i>DATOS GENERALES</mat-card-title>
                     </mat-card-header>
                     <div class="col-12 ">
                         <div class="row">

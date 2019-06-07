@@ -1,0 +1,48 @@
+<div *ngIf="ep">
+    <mat-card class="title-card">
+        <mat-card-header>
+            <mat-card-title><i class="fas fa-file-alt size-icon-title"></i>{{ep.titulo}}
+            </mat-card-title>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="body-card">
+        <mat-card-content>
+            <mat-card-title>Preguntas
+            </mat-card-title>
+            <mat-tab-group>
+                <mat-tab *ngFor="let valor of arrayBloque" class="" label="{{valor}}">
+                    <div>
+                        <div class="general-pregunta-style" *ngFor="let pregunta of ep.preguntas">
+                            <div *ngIf="valor == pregunta.bloque">
+                                <div class="block-pregunta-style">
+                                    <div *ngIf="this.arrayAlternativasMarcadasConDeTexto[pregunta.id-1].id>-1; else NoListo">
+                                        <i class="far fa-grin-wink icon-pregunta-style-activate"></i>
+                                    </div>
+                                    <ng-template #NoListo>
+                                        <i class="far fa-angry icon-pregunta-style-desactivate"></i>
+                                    </ng-template>
+                                    <div class="border-pregunta-style"><div class="pregunta-style">{{pregunta.pregunta}}</div></div>
+                                </div>
+                                <div class="radio-style">
+                                    <mat-radio-group
+                                            aria-labelledby="example-radio-group-label"
+                                            class="example-radio-group"
+                                            [(ngModel)]="arrayAlternativasMarcadasConDeTexto[pregunta.id-1]">
+                                        <mat-radio-button class="item-radio-style "
+                                                          *ngFor="let alternativas of pregunta.alternativas"
+                                                          [value]="alternativas">
+                                            {{alternativas.descripcion}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+            <button mat-flat-button color="primary" (click)="enviarRespuestas()">ENVIAR</button>
+
+        </mat-card-content>
+
+    </mat-card>
+</div>

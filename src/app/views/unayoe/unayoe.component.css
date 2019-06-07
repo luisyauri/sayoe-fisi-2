@@ -44,6 +44,7 @@ h1.sayoe-app-name {
     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
     flex: 1;
+    background: #f2f3f8;
 }
 
 .sayoe-is-mobile .sayoe-sidenav-container {
@@ -72,21 +73,30 @@ h1.sayoe-app-name {
     margin-right: 10px;
     //text-transform: uppercase;
     font-weight: bold;
-    color: #444445;
+    color: #6c7293;
 }
 .barra-color{
     height: 2px;
-    background: #27ae60;
+    background: #0abb87;
 }
 .barra-lateral-estilo{
     background: #ffffff;
 }
 .barra-lateral-texto-estilo{
-    font-size: 14px;
-    color: #444445;
+    font-size: 1rem;
+    color: #a8aabb;
 }
 .barra-lateral-texto-estilo:hover{
-    border-left : 2.5pt ridge  #0460a5;
-    background: #ffffff;
-    color: #0460a5;
+    background: #f8f8fb;
+    color: #5d78ff;
+}
+.size-icon-sidebar:hover{
+    color: #5d78ff;
+}
+.active-list-item{
+    background: #f8f8fb;
+    color: #5d78ff !important;
+}
+.mat-style{
+    margin-top: 40px !important;
 }

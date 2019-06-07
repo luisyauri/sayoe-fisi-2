@@ -3,12 +3,14 @@ export interface AlumnosAsignarAlumnoUnayoe {
     codigo: string;
 }
 
-export interface TestAsignarAlumnoUnayoe {
+export interface EPAsignarAlumnoUnayoe {
     id: number;
 }
 
 export interface AsignarAlumnoUnayoe {
     alumnos: AlumnosAsignarAlumnoUnayoe[];
-    test: TestAsignarAlumnoUnayoe[];
-    fecha_limite: string;
+    test: EPAsignarAlumnoUnayoe[];
+    dia: string;
+    mes: string;
+    anho: string;
 }

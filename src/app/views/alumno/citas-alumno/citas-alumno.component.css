@@ -1,0 +1,8 @@
+.mat-tab-style{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.mat-tab-style-content{
+    width: 100%;
+}

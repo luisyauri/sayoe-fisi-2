@@ -1,27 +1,39 @@
 # SayoeFisi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+EP : Evaluación Psicológica
+PS . Perfil Psicológico
 
-## Development server
+## Botones Colores
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Primary (Todos los botones a primera vista)
+#5867dd
+Success (Todos los botones para enviar datos)
+#0abb87
+Warning (ATENCIÓN)
+#ffb822
+Danger (Todos los botones para cancelar)
+#fd397a
+Marca
+#5d78ff
+Dark
+#282a3c
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Titulos
+#464457
+Contenido
+#6c7293
+Hipervinculos
+#5d78ff;
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+FONDO
+#646c9a
 
-## Running unit tests
+NAME
+#6c7293
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Titulo 
+14px
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+https://fontawesome.com/icons/angry?style=regular

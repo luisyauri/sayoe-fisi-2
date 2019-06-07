@@ -3,7 +3,7 @@
     -webkit-box-shadow: none;
     /*background-color: #3558A8;*/
     /*border-color: #3558A8;*/
-    color: #152343;
+    color: #464457;
     font-weight: bold;
     text-transform: uppercase;
     /*background-image: url("~src/assets/titlecard/bgtitle.svg");*/
@@ -39,19 +39,19 @@
 }
 .text-title-content{
     font-size: 14px;
-    color: #444445;
+    color: #464457;
     margin: 5px;
     font-weight: bold;
 }
 .text-subtitle-content{
     font-size: 14px;
-    color: #444445;
+    color: #6c7293;
     margin: 5px;
     font-weight: normal;
 }
 .barrita{
-    border-left : 2.5pt ridge  #0460a5;
-    color: #0460a5;
+    border-left : 2.5pt ridge  #5d78ff;
+    color: #5d78ff;
     margin-top: 10px;
 }
 .flex-button{
@@ -60,7 +60,7 @@
     justify-content: right;
 }
 .button-style{
-    background: #0460a5;
+    background: #5867dd;
     color: #ffffff;
     font-weight: bold;
 }
@@ -72,11 +72,29 @@
     -webkit-box-shadow: none;
     /*background-color: #3558A8;*/
     /*border-color: #3558A8;*/
-    color: #152343;
+    color: #464457;
     font-weight: bold;
     text-transform: uppercase;
     /*background-image: url("~src/assets/titlecard/bgtitle.svg");*/
 }
 .text-type{
     text-transform: none;
+}
+.facebook-btn{
+    background: #5867dd;
+}
+.icon-facebook-btn{
+    color: #ffffff;
+}
+.wsp-btn{
+    background: #0abb87;
+}
+.icon-wsp-btn{
+    color: #ffffff;
+}
+.style-title{
+    color: #464457;
+}
+.style-text{
+    color: #6c7293;
 }

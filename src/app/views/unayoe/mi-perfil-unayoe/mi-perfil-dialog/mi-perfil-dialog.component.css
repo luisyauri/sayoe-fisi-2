@@ -11,13 +11,13 @@
     justify-content: end;
 }
 .send-button{
-    background: #28a745;
+    background: #0abb87;
     color: #ffff;
     text-transform: uppercase;
     font-weight: bold;
 }
 .close-button{
-    background: #23272b;
+    background: #282a3c;
     color: #ffff;
     text-transform: uppercase;
     font-weight: bold;

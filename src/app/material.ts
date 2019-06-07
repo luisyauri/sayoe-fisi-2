@@ -21,6 +21,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -29,13 +32,17 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         MatSelectModule, MatPaginatorModule, MatSortModule, MatTableModule,
         MatDialogModule, MatExpansionModule, MatRadioModule, MatProgressSpinnerModule,
         MatFormFieldModule, MatInputModule, MatChipsModule, MatDatepickerModule,
-        MatAutocompleteModule,MatSlideToggleModule,],
+        MatAutocompleteModule,MatSlideToggleModule,MatBadgeModule,MatStepperModule,
+        MatTabsModule,
+    ],
     exports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule,
         MatIconModule, MatMenuModule, MatCardModule, MatGridListModule,
         MatSelectModule, MatPaginatorModule, MatSortModule, MatTableModule,
         MatDialogModule, MatExpansionModule, MatRadioModule, MatProgressSpinnerModule,
         MatFormFieldModule, MatInputModule, MatChipsModule, MatDatepickerModule,
-        MatAutocompleteModule,MatSlideToggleModule,],
+        MatAutocompleteModule,MatSlideToggleModule,MatBadgeModule,MatStepperModule,
+        MatTabsModule,
+    ],
 })
 export class MaterialModule { }
 

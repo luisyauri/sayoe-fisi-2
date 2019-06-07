@@ -20,6 +20,7 @@ import {EvalPsiPendAlumnoComponent} from './views/alumno/eval-psi-pend-alumno/ev
 import {EvalPsiRealAlumnoComponent} from './views/alumno/eval-psi-real-alumno/eval-psi-real-alumno.component';
 import {PerfilPsiAlumnoComponent} from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
 import {CitasAlumnoComponent} from './views/alumno/citas-alumno/citas-alumno.component';
+import {EPPDAlumnoComponent} from './views/alumno/eval-psi-pend-alumno/e-p-p-d-alumno/e-p-p-d-alumno.component';
 
 const routes: Routes = [
     {path: '', component: LoginComponent,},
@@ -44,6 +45,7 @@ const routes: Routes = [
             {path: 'evaluaciones-psicologicas-realizadas', component: EvalPsiRealAlumnoComponent,},
             {path: 'perfiles-psicologicos', component: PerfilPsiAlumnoComponent,},
             {path: 'citas', component: CitasAlumnoComponent,},
+            {path: 'evaluacion-psicologica', component: EPPDAlumnoComponent}
         ]
     },
     {

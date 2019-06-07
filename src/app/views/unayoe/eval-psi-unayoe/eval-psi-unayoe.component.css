@@ -15,7 +15,7 @@ mat-grid-tile {
     -webkit-box-shadow: none;
     /*background-color: #3558A8;*/
     /*border-color: #3558A8;*/
-    color: #152343;
+    color: #464457;
     font-weight: bold;
     text-transform: uppercase;
     /*background-image: url("~src/assets/titlecard/bgtitle.svg");*/
@@ -33,7 +33,7 @@ mat-grid-tile {
 
 
 .div-btn-expa{
-    background-color: #35a876;
+    background-color: #5867dd;
     color: #ffffff;
     font-weight: bold;
     width: 100%;
@@ -60,8 +60,8 @@ mat-grid-tile {
     /*text-align: center;*/
 }
 .table-detalles-icon {
-    color: #8dc351;
-    /*background-color: #8dc351;*/
+    color: #ffffff;
+    background-color: #0abb87;
 }
 /* FIN TABLA*/
 .spinner-style{
@@ -74,4 +74,30 @@ mat-grid-tile {
 
 .spinner-style-item{
     padding: 5px;
+}
+.div-btn-psr{
+    background-color: #fd397a;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.div-btn-psnr{
+    background-color: #282a3c;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.flex-buton-perfiles{
+    display: flex;
+    justify-content: center;
+}
+.mat-span-style{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
