@@ -16,12 +16,5 @@ export class AlumnosUnayoeComponent implements OnInit {
 
     }
 
-    selected = ['pizza-1'];
-
-    foods =[
-        {value: 'steak-0', viewValue: 'Steak'},
-        {value: 'pizza-1', viewValue: 'Pizza'},
-        {value: 'tacos-2', viewValue: 'Tacos'}
-    ];
 
 }

@@ -21,6 +21,9 @@ import {EvalPsiRealAlumnoComponent} from './views/alumno/eval-psi-real-alumno/ev
 import {PerfilPsiAlumnoComponent} from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
 import {CitasAlumnoComponent} from './views/alumno/citas-alumno/citas-alumno.component';
 import {EPPDAlumnoComponent} from './views/alumno/eval-psi-pend-alumno/e-p-p-d-alumno/e-p-p-d-alumno.component';
+import {PerfiPsiPendUnayoeComponent} from './views/unayoe/perfi-psi-pend-unayoe/perfi-psi-pend-unayoe.component';
+import {PerfiPsiRealUnayoeComponent} from './views/unayoe/perfi-psi-real-unayoe/perfi-psi-real-unayoe.component';
+import {PerfiPsiNoCulmiUnayoeComponent} from './views/unayoe/perfi-psi-no-culmi-unayoe/perfi-psi-no-culmi-unayoe.component';
 
 const routes: Routes = [
     {path: '', component: LoginComponent,},
@@ -30,6 +33,9 @@ const routes: Routes = [
         children: [
             {path: 'inicio', component: InicioUnayoeComponent,},
             {path: 'mi-perfil', component: MiPerfilUnayoeComponent,},
+            {path: 'perfiles-psicologicos-pendientes',component: PerfiPsiPendUnayoeComponent,},
+            {path: 'perfiles-psicologicos-realizados',component: PerfiPsiRealUnayoeComponent,},
+            {path: 'perfiles-psicologicos-no-culminados',component: PerfiPsiNoCulmiUnayoeComponent,},
             {path: 'evaluaciones-psicologicas', component: EvalPsiUnayoeComponent,},
             {path: 'alumnos', component: AlumnosUnayoeComponent,},
             {path: 'citas', component: CitasUnayoeComponent,},

@@ -49,6 +49,10 @@ import { EvalPsiRealAlumnoComponent } from './views/alumno/eval-psi-real-alumno/
 import { PerfilPsiAlumnoComponent } from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
 import { CitasAlumnoComponent } from './views/alumno/citas-alumno/citas-alumno.component';
 import {MAT_DATE_LOCALE} from '@angular/material';import { EPPDAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/e-p-p-d-alumno/e-p-p-d-alumno.component';
+import { PerfiPsiPendUnayoeComponent } from './views/unayoe/perfi-psi-pend-unayoe/perfi-psi-pend-unayoe.component';
+import { PerfiPsiRealUnayoeComponent } from './views/unayoe/perfi-psi-real-unayoe/perfi-psi-real-unayoe.component';
+import { PerfiPsiNoCulmiUnayoeComponent } from './views/unayoe/perfi-psi-no-culmi-unayoe/perfi-psi-no-culmi-unayoe.component';
+
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -79,6 +83,9 @@ export function tokenGetter() {
         PerfilPsiAlumnoComponent,
         CitasAlumnoComponent,
         EPPDAlumnoComponent,
+        PerfiPsiPendUnayoeComponent,
+        PerfiPsiRealUnayoeComponent,
+        PerfiPsiNoCulmiUnayoeComponent,
     ],
     imports: [
         BrowserModule,
