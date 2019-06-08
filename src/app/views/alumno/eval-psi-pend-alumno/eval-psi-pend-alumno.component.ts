@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AlumnoService} from '../../../services/alumno/alumno.service';
-import {EnviarMesAnhoModel} from '../../../models/alumno/e-p-pendientes-alumno/enviarMesAnho.model';
+import {EnviarMesAnhoPendienteModel} from '../../../models/alumno/e-p-pendientes-alumno/enviarMesAnhoPendiente.model';
 import {EPPendienteAlumnoService} from '../../../services/alumno/e-p-pendiente-alumno.service';
 import {getEPPendientesModel,
 } from '../../../models/alumno/e-p-pendientes-alumno/getEPPendientes.model';
-import {MatDialog, MatDialogConfig} from '@angular/material';
-import {EvalPsiPendDialogAlumnoComponent} from './eval-psi-pend-dialog-alumno/eval-psi-pend-dialog-alumno.component';
 import {EppEpService} from '../../../services/intercambio/epp-ep.service';
 import {Router} from '@angular/router';
+import {parse} from 'ts-node';
 
 @Component({
     selector: 'app-eval-psi-pend-alumno',
@@ -17,10 +16,13 @@ import {Router} from '@angular/router';
 export class EvalPsiPendAlumnoComponent implements OnInit {
 
     //Variables
-    enviarMesAnho: EnviarMesAnhoModel = {codigo: '', anho: '', mes: ''};
+    enviarMesAnho: EnviarMesAnhoPendienteModel = {codigo: '', anho: '', mes: ''};
     date = new Date();
     arrayGetEPPendientes:  getEPPendientesModel[];
     displayedColumns: string[] = ['titulo','preguntas','acciones'];
+    banderaContenido= true;
+    //dateRecibido: Date;
+    dateMostrarFormat: string;
 
     //Constructor
     constructor(private alumnoService: AlumnoService,
@@ -44,16 +46,42 @@ export class EvalPsiPendAlumnoComponent implements OnInit {
         this.epPendienteAlumnoService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
             (res: getEPPendientesModel) => {
                 this.arrayGetEPPendientes = res['data'];
+                this.getDateFormat()
+                console.log(this.arrayGetEPPendientes);
+                if(this.arrayGetEPPendientes.length<1){
+                    this.banderaContenido = false;
+                }else{
+                    this.banderaContenido = true;
+                }
             },
             error1 => {
                 console.log("Error al extraer la lista de evaluaciones psicológicas.")
             });
     }
+    abrirEP(idCuestEval: number, idPerfilPsicologico: number,idEstadoPerfil:number){
 
-    abrirEP(id: number, idPerfilPsicologicos: number){
-        this.eppEpService.setId_cuest_eval(id);
-        this.eppEpService.setId_perfil_psico(idPerfilPsicologicos);
+        console.log(idCuestEval);
+        console.log(idPerfilPsicologico);
+        console.log(idEstadoPerfil);
+        this.eppEpService.setId_cuest_eval(idCuestEval);
+        this.eppEpService.setId_perfil_psico(idPerfilPsicologico);
+        this.eppEpService.setId_estado_perfil(idEstadoPerfil);
         this.router.navigate(['alumno/evaluacion-psicologica']);
+    }
+    getDateFormat(){
+        // for(let i=0;i<this.arrayGetEPPendientes.length;i++){
+        //     const dateRecibido = new Date(this.arrayGetEPPendientes[i].fecha_vencimiento);
+        //     console.log(dateRecibido);
+        //     console.log(dateRecibido);
+        //     this.dateMostrarFormat = dateRecibido.getDate().toString()+'-'+(dateRecibido.getMonth()+1).toString()+'-'+dateRecibido.getFullYear().toString();
+        //     console.log(this.dateMostrarFormat);
+        //     this.arrayGetEPPendientes[i].fecha_vencimiento = this.dateMostrarFormat;
+        //     console.log(this.arrayGetEPPendientes[i].fecha_vencimiento);
+        // }
+        // for(let epPendiente of this.arrayGetEPPendientes){
+        //     const array = epPendiente.fecha_vencimiento.split('-');
+        // }
+
     }
 
 }
@@ -64,7 +92,7 @@ export class EvalPsiPendAlumnoComponent implements OnInit {
 export class EvalPsiPendAlumnoComponent implements OnInit {
 
     //Variables
-    enviarMesAnho: EnviarMesAnhoModel = {codigo: '', anho: '', mes: ''};
+    enviarMesAnho: EnviarMesAnhoPendienteModel = {codigo: '', anho: '', mes: ''};
     date = new Date();
     arrayGetEPPendientes:  getEPPendientesModel[];
     displayedColumns: string[] = ['titulo','preguntas','acciones'];

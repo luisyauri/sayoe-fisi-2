@@ -25,7 +25,6 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
 
-
 @NgModule({
     imports: [MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule,
         MatIconModule, MatMenuModule, MatCardModule, MatGridListModule,

@@ -6,7 +6,7 @@ export interface AlternativasEnviarRespuestaEPModel {
 
 export interface DataEnviarRespuestaEPModel {
     id_perfil_psico: number;
-    id_cuest_eval: number,
+    id_estado_perfil: number,
     alternativa: AlternativasEnviarRespuestaEPModel[];
 }
 

@@ -6,27 +6,31 @@ import {
     AlternativasEnviarRespuestaEPModel, EnviarRespuestaEPModel,
 } from '../../../../models/alumno/e-p-pendientes-alumno/enviarRespuesaEP.model';
 import {Router} from '@angular/router';
-
+import Swal from 'sweetalert2';
+import {ViewEncapsulation} from '@angular/core';
+import {RecibirRespuestaEPModel} from '../../../../models/alumno/e-p-pendientes-alumno/recibirRespuestaEP.model';
 
 @Component({
     selector: 'app-e-p-p-d-alumno',
     templateUrl: './e-p-p-d-alumno.component.html',
-    styleUrls: ['./e-p-p-d-alumno.component.css']
+    styleUrls: ['./e-p-p-d-alumno.component.css'],
+    // encapsulation: ViewEncapsulation.None
 })
 export class EPPDAlumnoComponent implements OnInit {
 
     //Variables
     id_perfil_psico: number;
     id_cuest_eval: number;
+    id_estado_perfil: number;
     ep: GetUnaEPModel;
-    arrayBloque =[] ;
+    arrayBloque = [];
 
     //Alternativass
     arrayAlternativasMarcadasConDeTexto: AlternativasGetUnaEPModel[] = [];
     arrayAlternativasEnviar: AlternativasEnviarRespuestaEPModel[] = [];
 
     //Enviar respuesta
-    enviarRespuestaEP: EnviarRespuestaEPModel = {data: {id_perfil_psico: 0, id_cuest_eval: 0, alternativa: []}};
+    enviarRespuestaEP: EnviarRespuestaEPModel = {data: {id_perfil_psico: 0, id_estado_perfil: 0, alternativa: []}};
 
     //Constructor
     constructor(private eppEpService: EppEpService,
@@ -37,7 +41,7 @@ export class EPPDAlumnoComponent implements OnInit {
 
     ngOnInit() {
         // this.id_cuest_eval = 1;
-        this.getIdPerfilYEvaluacion();
+        this.getIdPerfilEvaluacionEstadoPerfil();
         this.getUnEP(this.id_cuest_eval);
         if (!this.id_cuest_eval) {
             this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
@@ -53,22 +57,26 @@ export class EPPDAlumnoComponent implements OnInit {
                 if (this.ep) {
                     this.getCrearVariablesAlternativas(this.ep.nro_preguntas);
                     this.getArrayBloques();
-                    console.log(this.arrayBloque);
+                    console.log(this.arrayAlternativasMarcadasConDeTexto);
                 }
-                console.log(this.arrayAlternativasMarcadasConDeTexto);
+                //console.log(this.arrayAlternativasMarcadasConDeTexto);
             },
             error1 => {
                 console.log('Error al extraer una evaluación psicológica.');
             });
     }
 
-    getIdPerfilYEvaluacion() {
+    getIdPerfilEvaluacionEstadoPerfil() {
         this.eppEpService.currendId_perfil_psico.subscribe(value => {
             this.id_perfil_psico = value;
         });
         this.eppEpService.currentId_cuest_eval.subscribe(value => {
             this.id_cuest_eval = value;
+
         });
+        this.eppEpService.currentId_estado_perfil.subscribe(value => {
+            this.id_estado_perfil = value;
+        })
     }
 
     getCrearVariablesAlternativas(numeroAlternativas) {
@@ -90,36 +98,25 @@ export class EPPDAlumnoComponent implements OnInit {
     getArrayEnvio() {
         this.getAlternativasEnviar(this.arrayAlternativasMarcadasConDeTexto);
         this.enviarRespuestaEP.data.id_perfil_psico = this.id_perfil_psico;
-        this.enviarRespuestaEP.data.id_cuest_eval = this.id_cuest_eval;
+        this.enviarRespuestaEP.data.id_estado_perfil = this.id_estado_perfil;
         this.enviarRespuestaEP.data.alternativa = this.arrayAlternativasEnviar;
     }
 
-    enviarRespuestas() {
-        this.getArrayEnvio();
-        console.log(this.enviarRespuestaEP);
-        this.epPendienteAlumnoService.postEnviarRespuesta(this.enviarRespuestaEP).subscribe(
-            value => {
-                console.log(value);
-            },
-            error => {
-                console.log(error);
-            });
-    }
-
     //ObtenerArreglo
-    getArrayBloques(){
-        for(let pregunta of this.ep.preguntas){
-            if(!this.existe(pregunta.bloque)){
+    getArrayBloques() {
+        for (let pregunta of this.ep.preguntas) {
+            if (!this.existe(pregunta.bloque)) {
                 this.arrayBloque.push(pregunta.bloque);
             }
         }
     }
-    existe(bloque){
-        if(this.arrayBloque==null){
+
+    existe(bloque) {
+        if (this.arrayBloque == null) {
             return false;
-        }else{
-            for(let value of this.arrayBloque){
-                if(value == bloque){
+        } else {
+            for (let value of this.arrayBloque) {
+                if (value == bloque) {
                     return true;
                 }
             }
@@ -128,5 +125,87 @@ export class EPPDAlumnoComponent implements OnInit {
 
     }
 
+    buscarRespondido() {
+        for (let alternativa of this.arrayAlternativasEnviar) {
+            if (alternativa.id < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    resetearData() {
+        this.enviarRespuestaEP = {data: {id_perfil_psico: 0, id_estado_perfil: 0, alternativa: []}};
+        this.arrayAlternativasEnviar = [];
+    }
+
+    enviarRespuestas() {
+        this.getArrayEnvio();
+        console.log(this.enviarRespuestaEP);
+        if (this.buscarRespondido()) {
+            this.epPendienteAlumnoService.postEnviarRespuesta(this.enviarRespuestaEP).subscribe(
+                (res: RecibirRespuestaEPModel) => {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'success',
+                        title: 'Respuestas enviadas correctamente.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    Swal.fire({
+                        position: 'center',
+                        type: 'success',
+                        title: '¡Resultado Instantáneo!',
+                        html:'Usted '+res.descripcion+".",
+                        animation: false,
+                        confirmButtonText: 'Cerrar',
+                    })
+
+                    console.log(res);
+                    this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
+
+                },
+                error => {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'error',
+                        title: 'Error enviar respuestas.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
+                    console.log(error);
+                });
+        } else {
+            Swal.fire({
+                position: 'center',
+                type: 'warning',
+                title: 'Marque todas las preguntas.',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        this.resetearData();
+        console.log(this.enviarRespuestaEP);
+    }
+
+    salir(){
+        Swal.fire({
+            title: '¿Estás seguro de salir?',
+            text: "Todo tu avance será borrado!",
+            type: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: '#5867dd',
+            cancelButtonColor: '#fd397a',
+            confirmButtonText: 'Sí, salir!',
+            cancelButtonText:'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+                this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
+            }
+        })
+
+    }
 
 }

@@ -27,17 +27,17 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
     readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
     // Variables
-    asignarAlumno: AsignarAlumnoUnayoe = {alumnos: [], test: [], dia:'', mes:'', anho:''};
+    asignarAlumno: AsignarAlumnoUnayoe = {alumnos: [], test: [], dia: '', mes: '', anho: ''};
 
     // Banderas
     banderaCodigoRepetido = false;
-    banderaMostrar=false;
+    banderaMostrar = false;
 
     //Fecha
     fecha: Date;
-    dia='';
-    mes='';
-    anho='';
+    dia = '';
+    mes = '';
+    anho = '';
 
     //Alumnos
     visible = true;
@@ -49,11 +49,11 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
 
     //Situación
     situacion = '';
-    colorSituacion= false;
+    colorSituacion = false;
 
     //Evaluaciones Psicológicoas
     allEP: EvalPsicoUnayoe;
-    arrayEPSelected=[];
+    arrayEPSelected = [];
     eps: EPAsignarAlumnoUnayoe[] = [];
 
     //Constructor
@@ -71,20 +71,7 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
     getCargarTest() {
         this.allEP = this.dataMain.dataEvalPsi;
     }
-    getInsertArrayToEPS(arrayEPSelected: string[]){
-        for(let valorId of arrayEPSelected){
-            this.eps.push({id: Number(valorId)});
-        }
-    }
-    getObjectAsignarAlumno(alumnos: AlumnosAsignarAlumnoUnayoe[],eps: EPAsignarAlumnoUnayoe[],dia:string,mes:string,anho:string){
-        this.asignarAlumno.alumnos = alumnos;
-        this.asignarAlumno.test = eps;
-        this.asignarAlumno.dia = dia;
-        this.asignarAlumno.mes = mes;
-        this.asignarAlumno.anho = anho;
-    }
 
-    //Chips Alumnos
     add(event: MatChipInputEvent): void {
         const input = event.input;
         const value = event.value;
@@ -112,12 +99,13 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
                         this.banderaCodigoRepetido = false;
                     } else {
                         this.alumnos.push({codigo: this.datosUnAlumno.codigo});
-                        this.banderaMostrar=true;
+                        this.banderaMostrar = true;
+                        console.log(this.alumnos);
                     }
 
                 },
                 error => {
-                    console.log("NO FUNCIONO");
+                    console.log('NO FUNCIONO');
                     Swal.fire({
                         position: 'center',
                         type: 'error',
@@ -134,6 +122,7 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
             input.value = '';
         }
     }
+
     remove(alumno: AlumnosAsignarAlumnoUnayoe): void {
         const index = this.alumnos.indexOf(alumno);
         this.datosUnAlumno = {nombre: '', codigo: '', escuela: '', situacion: ''};
@@ -141,15 +130,40 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
             this.alumnos.splice(index, 1);
         }
         this.situacion = '';
-        this.banderaMostrar=false;
+        this.banderaMostrar = false;
+    }
+
+    //Fecha
+    actualizarFecha(newDate) {
+        this.fecha = newDate;
+        this.dia = this.fecha.getDate().toString();
+        this.mes = (this.fecha.getMonth() + 1).toString();
+        this.anho = this.fecha.getFullYear().toString();
+    }
+
+    getInsertArrayToEPS(arrayEPSelected: string[]) {
+        for (let valorId of arrayEPSelected) {
+            this.eps.push({id: Number(valorId)});
+        }
+    }
+
+    getObjectAsignarAlumno(alumnos: AlumnosAsignarAlumnoUnayoe[], eps: EPAsignarAlumnoUnayoe[], dia: string, mes: string, anho: string) {
+        this.asignarAlumno.alumnos = alumnos;
+        this.asignarAlumno.test = eps;
+        this.asignarAlumno.dia = dia;
+        this.asignarAlumno.mes = mes;
+        this.asignarAlumno.anho = anho;
     }
 
     //Asignar
     sendAsignar() {
-        this.getInsertArrayToEPS(this.arrayEPSelected);
-        this.getObjectAsignarAlumno(this.alumnos,this.eps,this.dia,this.mes,this.anho);
+        // console.log(this.asignarAlumno);
         // Validamos para que se envie solo cuando los 3 campos tengan por lo menos una letra.
-        if(this.anho.length==4 && this.arrayEPSelected.length>0 && this.alumnos.length>0){
+        // console.log(this.asignarAlumno);
+        if (this.anho.length == 4 && this.arrayEPSelected.length > 0 && this.alumnos.length > 0) {
+            this.getInsertArrayToEPS(this.arrayEPSelected);
+            this.getObjectAsignarAlumno(this.alumnos, this.eps, this.dia, this.mes, this.anho);
+            // console.log(this.asignarAlumno);
             this.evalPsiUnayoeService.getAsignar(this.asignarAlumno).subscribe(
                 value => {
                     Swal.fire({
@@ -157,8 +171,13 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
                         type: 'success',
                         title: 'Registrado correctamente.',
                         showConfirmButton: false,
+                        confirmButtonColor: '#5867dd',
                         timer: 1500
                     });
+                    console.log("Esto envio")
+                    console.log(this.asignarAlumno);
+                    console.log("Esto recibo")
+                    console.log(value);
                 },
                 error => {
                     Swal.fire({
@@ -170,8 +189,9 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
                     });
                     console.log(<any> error);
                 });
+            this.restearVariable();
             this.dialogConfig.close();
-        }else{
+        } else {
             Swal.fire({
                 position: 'center',
                 type: 'warning',
@@ -183,24 +203,49 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
     }
 
     close() {
-        this.dialogConfig.close();
-    }
-    //Fecha
-    actualizarFecha(newDate) {
-        this.fecha = newDate;
-        this.dia = this.fecha.getDate().toString();
-        this.mes = (this.fecha.getMonth()+1).toString();
-        this.anho = this.fecha.getFullYear().toString();
+        Swal.fire({
+            title: '¿Estás seguro de salir?',
+            text: 'Todo tu avance será borrado!',
+            type: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: '#5867dd',
+            cancelButtonColor: '#fd397a',
+            confirmButtonText: 'Sí, salir!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+                this.dialogConfig.close();
+            }
+        });
     }
 
-    calculateSituacion(situacion: any){
+    restearVariable() {
+        this.arrayEPSelected = [];
+        this.eps = [];
+    }
+
+    calculateSituacion(situacion: any) {
         if (situacion == 'O') {
             this.situacion = 'Observado';
             this.colorSituacion = true;
-        }
-        else{
+        } else {
             this.situacion = '';
             this.colorSituacion = false;
         }
+    }
+
+    mostrarAlumno(alumno: DatosUnAlumnoUnayoe) {
+
+        this.evalPsiUnayoeService.getDatosUnEstudiante(alumno.codigo).subscribe(
+            (res: DatosUnAlumnoUnayoe) => {
+                this.datosUnAlumno = res['data'];
+                this.calculateSituacion(this.datosUnAlumno.situacion);
+                this.banderaMostrar = true;
+            },
+            error1 => {
+
+            });
+
     }
 }

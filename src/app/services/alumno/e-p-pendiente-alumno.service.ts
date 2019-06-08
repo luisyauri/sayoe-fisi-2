@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AlumnoService} from './alumno.service';
 import {Observable} from 'rxjs';
-import {EnviarMesAnhoModel} from '../../models/alumno/e-p-pendientes-alumno/enviarMesAnho.model';
+import {EnviarMesAnhoPendienteModel} from '../../models/alumno/e-p-pendientes-alumno/enviarMesAnhoPendiente.model';
 import {EnviarRespuestaEPModel} from '../../models/alumno/e-p-pendientes-alumno/enviarRespuesaEP.model';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class EPPendienteAlumnoService {
   headers = new HttpHeaders();
 
   // URL
-  API_LISTA_E_P_PENDIENTES = 'https://sayoe-v2.herokuapp.com/api/v1/evaluaciones_asignadas';
+  API_LISTA_E_P_PENDIENTES = 'https://sayoe-v2.herokuapp.com/api/v1/evaluaciones_asignadas/pendientes';
   AP_UNA_EP = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion/';
   API_ENVIAR_RESPUESTA_E_P = 'https://sayoe-v2.herokuapp.com/api/v1/inventario-estudio';
 
@@ -29,7 +29,7 @@ export class EPPendienteAlumnoService {
 
   }
 
-  getEnviarMesAnho(enviarMesAnho: EnviarMesAnhoModel){
+  getEnviarMesAnho(enviarMesAnho: EnviarMesAnhoPendienteModel){
     return this.http.post(this.API_LISTA_E_P_PENDIENTES, enviarMesAnho, {
       headers: new HttpHeaders()
           .append('Content-Type', 'application/json')
@@ -45,8 +45,8 @@ export class EPPendienteAlumnoService {
     });
   }
 
-  // getEnviarMesAnho(enviarMesAnho: EnviarMesAnhoModel): Observable<EnviarMesAnhoModel>{
-  //   return this.http.post<EnviarMesAnhoModel>(this.API_LISTA_E_P_PENDIENTES, enviarMesAnho, {
+  // getEnviarMesAnho(enviarMesAnho: EnviarMesAnhoPendienteModel): Observable<EnviarMesAnhoPendienteModel>{
+  //   return this.http.post<EnviarMesAnhoPendienteModel>(this.API_LISTA_E_P_PENDIENTES, enviarMesAnho, {
   //     headers: new HttpHeaders()
   //         .append('Content-Type', 'application/json')
   //         .append('Authorization', 'Bearer ' + localStorage.getItem('access_token'))

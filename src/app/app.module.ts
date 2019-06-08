@@ -48,9 +48,7 @@ import { EvalPsiPendAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/
 import { EvalPsiRealAlumnoComponent } from './views/alumno/eval-psi-real-alumno/eval-psi-real-alumno.component';
 import { PerfilPsiAlumnoComponent } from './views/alumno/perfil-psi-alumno/perfil-psi-alumno.component';
 import { CitasAlumnoComponent } from './views/alumno/citas-alumno/citas-alumno.component';
-import {MAT_DATE_LOCALE} from '@angular/material';
-import { EvalPsiPendDialogAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/eval-psi-pend-dialog-alumno/eval-psi-pend-dialog-alumno.component';
-import { EPPDAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/e-p-p-d-alumno/e-p-p-d-alumno.component';
+import {MAT_DATE_LOCALE} from '@angular/material';import { EPPDAlumnoComponent } from './views/alumno/eval-psi-pend-alumno/e-p-p-d-alumno/e-p-p-d-alumno.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -80,7 +78,6 @@ export function tokenGetter() {
         EvalPsiRealAlumnoComponent,
         PerfilPsiAlumnoComponent,
         CitasAlumnoComponent,
-        EvalPsiPendDialogAlumnoComponent,
         EPPDAlumnoComponent,
     ],
     imports: [
@@ -117,7 +114,6 @@ export function tokenGetter() {
     bootstrap: [AppComponent],
     entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent,
         MiPerfilDialogComponent, AgregarDialogComponent, AlumnosUnayoeComponent,
-        EvalPsiPendDialogAlumnoComponent,
     ]
 })
 export class AppModule {

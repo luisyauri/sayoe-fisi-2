@@ -15,8 +15,8 @@ export class AlumnoComponent implements OnInit {
     mobileQuery: MediaQueryList;
     itemSecciones = [
         {title: 'Dashboard', icon: 'fas fa-home', route: 'inicio'},
-        {title: 'E.P Pendientes', icon: 'fas fa-file-signature', route: 'evaluaciones-psicologicas-pendientes'},
-        {title: 'E.P Realizadas', icon: 'fas fa-file-contract', route: 'evaluaciones-psicologicas-realizadas'},
+        {title: 'Evaluaciones Pendientes', icon: 'fas fa-file-signature', route: 'evaluaciones-psicologicas-pendientes'},
+        {title: 'Evaluaciones Realizadas', icon: 'fas fa-file-contract', route: 'evaluaciones-psicologicas-realizadas'},
         {title: 'Perfil Piscológico', icon: 'fas fa-id-badge', route: 'perfiles-psicologicos'},
         {title: 'Citas', icon: 'fas fa-calendar-alt', route: 'citas'},
     ];

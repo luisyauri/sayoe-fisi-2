@@ -1,48 +1,170 @@
 <div *ngIf="ep">
     <mat-card class="title-card">
-        <mat-card-header>
-            <mat-card-title><i class="fas fa-file-alt size-icon-title"></i>{{ep.titulo}}
+        <mat-card-header class="width-full">
+            <mat-card-title class="width-full">
+                <i class="fas fa-file-alt size-icon-title"></i>{{ep.titulo_secundario}}
             </mat-card-title>
         </mat-card-header>
     </mat-card>
     <mat-card class="body-card">
         <mat-card-content>
-            <mat-card-title>Preguntas
-            </mat-card-title>
-            <mat-tab-group>
-                <mat-tab *ngFor="let valor of arrayBloque" class="" label="{{valor}}">
+            <div class="bg-instrucciones-ep">
+                <div class="row">
+                    <div class="col-sm-12 title-box-ep">
+                        <div class="box-text-ep">
+                            <i class="fas fa-exclamation-triangle icon-excla-ep"></i>
+                            <span class="title-text-instrucciones-ep">Recomendaciones</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 box-ep">
+                        <div class="box-text-ep">
+                            <i class="far fa-hand-point-right"></i>
+                            <span class="text-instrucciones-ep">
+                                Este cuestionario consta de <span class="number-ep">{{ep.nro_preguntas}}</span>
+                                preguntas, divididas en <span class="number-ep">{{arrayBloque.length}}</span> grupos.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 box-ep">
+                        <div class="box-text-ep">
+                            <i class="far fa-hand-point-right"></i>
+                            <span class="text-instrucciones-ep">
+                                Por favor, lea cada pregunta cuidadosamente.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 box-ep">
+                        <div class="box-text-ep">
+                            <i class="far fa-hand-point-right"></i>
+                            <span class="text-instrucciones-ep">
+                                Conteste con la mayor sinceridad posible, sus respuestas no se registrarán.</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 box-ep">
+                        <div class="box-text-ep">
+                            <i class="far fa-hand-point-right"></i>
+                            <span class="text-instrucciones-ep">
+                                Al final recibirá su resultado de manera instantánea.</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 box-ep">
+                        <div class="box-text-ep">
+                            <i class="far fa-hand-point-right"></i>
+                            <span class="text-instrucciones-ep">
+                                ¡Comience la evaluación! :)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<mat-tab-group>-->
+                <!--<mat-tab *ngFor="let valor of arrayBloque" class="">-->
+                    <!--<ng-template mat-tab-label>-->
+                        <!--Grupo {{valor}}-->
+                    <!--</ng-template>-->
+                    <!--<div>-->
+                        <!--<div class="general-pregunta-style" *ngFor="let pregunta of ep.preguntas; let i = index"-->
+                             <!--[attr.data-index]="i">-->
+                            <!--<div *ngIf="valor == pregunta.bloque">-->
+                                <!--<div class="preguntas-combo-style">-->
+                                    <!--<div class="block-pregunta-style">-->
+                                        <!--<div *ngIf="this.arrayAlternativasMarcadasConDeTexto[i].id>-1;   else NoListo">-->
+                                            <!--<i class="far fa-grin-wink icon-pregunta-style-activate"></i>-->
+                                        <!--</div>-->
+                                        <!--<ng-template #NoListo>-->
+                                            <!--<i class="far fa-grin icon-pregunta-style-desactivate"></i>-->
+                                        <!--</ng-template>-->
+                                        <!--<div class="border-pregunta-style">-->
+                                            <!--<div class="pregunta-style">{{pregunta.pregunta}}</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="radio-style">-->
+                                        <!--<mat-radio-group-->
+                                                <!--aria-labelledby="example-radio-group-label"-->
+                                                <!--class=""-->
+                                                <!--[(ngModel)]="arrayAlternativasMarcadasConDeTexto[i]">-->
+                                            <!--<mat-radio-button class="item-radio-style "-->
+                                                              <!--*ngFor="let alternativas of pregunta.alternativas"-->
+                                                              <!--[value]="alternativas">-->
+                                                <!--{{alternativas.descripcion}}-->
+                                            <!--</mat-radio-button>-->
+                                        <!--</mat-radio-group>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</mat-tab>-->
+            <!--</mat-tab-group>-->
+            <mat-horizontal-stepper [linear]="false" #stepper>
+                <mat-step [completed]="false" *ngFor="let valor of arrayBloque" class="" label="Grupo" state="check">
                     <div>
-                        <div class="general-pregunta-style" *ngFor="let pregunta of ep.preguntas">
+                        <div class="general-pregunta-style" *ngFor="let pregunta of ep.preguntas; let i = index"
+                             [attr.data-index]="i">
                             <div *ngIf="valor == pregunta.bloque">
-                                <div class="block-pregunta-style">
-                                    <div *ngIf="this.arrayAlternativasMarcadasConDeTexto[pregunta.id-1].id>-1; else NoListo">
-                                        <i class="far fa-grin-wink icon-pregunta-style-activate"></i>
+                                <div class="preguntas-combo-style">
+                                    <div class="block-pregunta-style">
+                                        <div *ngIf="this.arrayAlternativasMarcadasConDeTexto[i].id>-1;   else NoListo">
+                                            <i class="far fa-grin-wink icon-pregunta-style-activate"></i>
+                                        </div>
+                                        <ng-template #NoListo>
+                                            <i class="far fa-grin icon-pregunta-style-desactivate"></i>
+                                        </ng-template>
+                                        <div class="border-pregunta-style">
+                                            <div class="pregunta-style">{{pregunta.pregunta}}</div>
+                                        </div>
                                     </div>
-                                    <ng-template #NoListo>
-                                        <i class="far fa-angry icon-pregunta-style-desactivate"></i>
-                                    </ng-template>
-                                    <div class="border-pregunta-style"><div class="pregunta-style">{{pregunta.pregunta}}</div></div>
-                                </div>
-                                <div class="radio-style">
-                                    <mat-radio-group
-                                            aria-labelledby="example-radio-group-label"
-                                            class="example-radio-group"
-                                            [(ngModel)]="arrayAlternativasMarcadasConDeTexto[pregunta.id-1]">
-                                        <mat-radio-button class="item-radio-style "
-                                                          *ngFor="let alternativas of pregunta.alternativas"
-                                                          [value]="alternativas">
-                                            {{alternativas.descripcion}}
-                                        </mat-radio-button>
-                                    </mat-radio-group>
+                                    <div class="radio-style">
+                                        <mat-radio-group
+                                                aria-labelledby="example-radio-group-label"
+                                                class=""
+                                                [(ngModel)]="arrayAlternativasMarcadasConDeTexto[i]">
+                                            <mat-radio-button class="item-radio-style "
+                                                              *ngFor="let alternativas of pregunta.alternativas"
+                                                              [value]="alternativas">
+                                                {{alternativas.descripcion}}
+                                            </mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </mat-tab>
-            </mat-tab-group>
-            <button mat-flat-button color="primary" (click)="enviarRespuestas()">ENVIAR</button>
-
+                    <div *ngIf="valor==1">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button mat-flat-button class="div-btn-expa" matStepperNext>SIGUIENTE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="valor>1 && valor<arrayBloque.length">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button mat-flat-button class="atras-div-btn-expa" matStepperPrevious>ATRÁS</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button mat-flat-button class="div-btn-expa" matStepperNext>SIGUIENTE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="valor==arrayBloque.length">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button mat-flat-button class="enviar-div-btn-expa" (click)="enviarRespuestas()">ENVIAR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button mat-button class="div-btn-salir" (click)="salir()">SALIR</button>
+                        </div>
+                    </div>
+                </mat-step>
+                <ng-template matStepperIcon="check">
+                    <i class="fas fa-check"></i>
+                </ng-template>
+            </mat-horizontal-stepper>
         </mat-card-content>
-
     </mat-card>
 </div>

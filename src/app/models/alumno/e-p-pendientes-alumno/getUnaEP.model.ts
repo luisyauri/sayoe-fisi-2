@@ -15,6 +15,7 @@ export interface PreguntasGetUnaEPModel {
 export interface GetUnaEPModel {
     id: string;
     titulo: string;
+    titulo_secundario: string
     autor: string;
     nro_preguntas: number;
     preguntas: PreguntasGetUnaEPModel[];
