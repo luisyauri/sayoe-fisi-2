@@ -42,7 +42,7 @@ Seleccionará grupo o alumno para asignar tantas evaluaciones psicológicas que 
 * Función Listar Perfiles Psicológicos respondidos por el estudiante.
 ```
 * Se tendrá una tabla con las sigueintes columnas.
-* Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada, Accion(Responder)
+* Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada, Accion(Recomendar)
 ```
 * Función ver y recomendar un perfil psicológico.
 ```
@@ -62,8 +62,29 @@ Seleccionará grupo o alumno para asignar tantas evaluaciones psicológicas que 
 Se le enviará a una vista con la lista de los perfiles psicológicos aun no culminados por el alumno.
 ```    
 #### PEFILES PSICOLÓGICOS NO CULMINADOS
+* Función Listar Perfiles Psicológicos No culminados
 ```
-SDS
+* Se tendrá una tabla con las siguientes columnas.
+* Código, Apellidos y nombres, Escuela, Situación, Acciones(Ver Perfil Psicológico, Enviar Recordatorio, Finalizar Perfil Psicológico)
+```
+* Función Ver Perfil psicológico
+```
+* Se podrá solo ver el perfil psicológico del alumno seleccionado, más no modificar.
+* Ver solo hasta las evaluaciones que ha realizado.
+```
+* Función Enviar Recordatorio
+```
+Se enviará un recordatorio al correo del alumno indicando la Fecha Límite. (Recomendación usar un servicio de la nube).
+```
+* Función Finalizar Perfil Psicológico
+```
+* Finalizar un perfil psicológico de la siguiente manera.
+* Si existe 2 evaluaciones y si solo ha respondido 1, debe mostrar los resultados de la evaluación resulta y de la no resuleta indicar "NO REALIZÓ".
+* De la misma manera si no realiza ninguna indicar "NO REALIZÓ".
+```
+
+```
+
 ```
        
 MENÚ ALUMNO
