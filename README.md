@@ -16,15 +16,19 @@ PS . Perfil Psicológico
 
 ## EVALUACIONES PSICOLÓGICAS
 * Listar evaluaciones psicológicas.
-    * Titulo
-    * Autor
+    * Titulo [x]
+    * Autor [ X ]
     * Preguntas
     * Detalles (Ver)
         * Ver todas las preguntas de una evaluación psicológica
-* Asignar 
-
-
-
+* Seleccionar un grupo/alumno
+* Botón ASIGNAR
+    * Alumno
+        * Código
+        * Fecha Límite
+        * Asignar Evaluaciones Psicológicas Lista[]
+        * Enviar/Cancelar
+       
 MENÚ ALUMNO
 
 
