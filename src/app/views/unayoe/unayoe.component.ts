@@ -16,8 +16,10 @@ export class UnayoeComponent implements OnDestroy, OnInit {
     mobileQuery: MediaQueryList;
     itemSecciones = [
         {title: 'Dashboard', icon: 'fas fa-home', route: 'inicio'},
-        {title: 'Perfiles Psicológicos Pendientes', icon: 'fas fa-file-signature', route: 'perfiles-psicologicos-pendientes'},
-        {title: 'Perfiles Psicológicos Respondidos', icon: 'fas fa-file-contract', route: 'perfiles-psicologicos-realizados'},{title: 'Evaluaciones Psicológicas', icon: 'fas fa-file-alt', route: 'evaluaciones-psicologicas'},
+
+        {title: 'Evaluaciones Psicológicas', icon: 'fas fa-file-alt', route: 'evaluaciones-psicologicas'},
+        {title: 'Perfiles Psicológicos', icon: 'fas fa-file-signature', route: 'perfiles-psicologicos-pendientes'},
+        {title: 'Recomendaciones', icon: 'fas fa-file-contract', route: 'perfiles-psicologicos-realizados'},
         {title: 'Alumnos', icon: 'fas fa-users', route: 'alumnos'},
         {title: 'Citas', icon: 'fas fa-calendar-alt', route: 'citas'},
         {title: 'Estadisticas', icon: 'fas fa-chart-bar', route: 'estadisticas'},
