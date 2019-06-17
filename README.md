@@ -81,7 +81,12 @@ Se enviará un recordatorio al correo del alumno indicando la Fecha Límite. (Re
 * Finalizar un perfil psicológico de la siguiente manera.
 * Si existe 2 evaluaciones y si solo ha respondido 1, debe mostrar los resultados de la evaluación resulta y de la no resuleta indicar "NO REALIZÓ".
 * De la misma manera si no realiza ninguna indicar "NO REALIZÓ".
+* Si mostrar el bloque EVALUACIONES PSICOLÓGICOS aunque no haya realizado ninguna evaluación.
+* Registrar la fecha al campo fecha realizada al escoger esta opción.
+* No registrar una recomendación al perfil psicológico y esconder el bloque RECOMENDACIÓN de la vista de perfil psicológico.
+* Sacar de la lista de perfiles psicológicos no culminados e ingresarlas a la lista de recomendados.
 ```
+
 
 ```
 
