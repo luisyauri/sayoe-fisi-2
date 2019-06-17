@@ -3,6 +3,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {AuthService} from '../../services/auth.service';
 import {AlumnoService} from '../../services/alumno/alumno.service';
 import {Router} from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
     selector: 'app-alumno',
@@ -17,7 +18,7 @@ export class AlumnoComponent implements OnInit {
         {title: 'Dashboard', icon: 'fas fa-home', route: 'inicio'},
         {title: 'Evaluaciones Pendientes', icon: 'fas fa-file-signature', route: 'evaluaciones-psicologicas-pendientes'},
         {title: 'Evaluaciones Realizadas', icon: 'fas fa-file-contract', route: 'evaluaciones-psicologicas-realizadas'},
-        {title: 'Perfil Piscológico', icon: 'fas fa-id-badge', route: 'perfiles-psicologicos'},
+        {title: 'Perfil Piscológico', icon: 'fas fa-id-badge', route: 'perfil-psicologico'},
         {title: 'Citas', icon: 'fas fa-calendar-alt', route: 'citas'},
     ];
     alumno = {nombre: '', foto: ''};
@@ -44,8 +45,21 @@ export class AlumnoComponent implements OnInit {
         this.mobileQuery.removeListener(this._mobileQueryListener);
     }
     logout() {
-        this.authService.logout();
-        this.router.navigate(['']);
+        Swal.fire({
+            title: '¿Estás seguro de salir?',
+            type: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: '#5867dd',
+            cancelButtonColor: '#fd397a',
+            confirmButtonText: 'Sí, salir!',
+            cancelButtonText:'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+                this.authService.logout();
+                this.router.navigate(['']);
+            }
+        })
     }
     getDatosGeneralesUnayoe() {
         this.alumnoService.getDatosGenerales().subscribe(

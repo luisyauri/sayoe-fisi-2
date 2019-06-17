@@ -1,0 +1,127 @@
+<mat-card class="title-card">
+  <mat-card-header>
+    <mat-card-title><i class="fas fa-users size-icon-title"></i>Perfil del Alumno</mat-card-title>
+  </mat-card-header>
+</mat-card>
+<div *ngIf="datos">
+  <div class="row">
+    <div class="col-sm-7 col-lg-4">
+      <mat-card class="body-card">
+        <mat-card-content>
+          <div class="col-12 flex-avatar-style">
+            <img class="image-size" src="{{datos.foto}}" alt="">
+          </div>
+          <div class="col-12 flex-items-style">
+            <button mat-flat-button class="m-2 facebook-btn" (click)="sendFacebook()">
+              <i class="fab fa-facebook-f icon-facebook-btn"></i></button>
+            <button mat-flat-button class="m-2 wsp-btn" (click)="sendWsp()">
+              <i class="fab fa-whatsapp icon-wsp-btn"></i>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-sm-5 col-lg-8">
+      <mat-card class="body-card">
+        <mat-card-content>
+          <mat-card-header>
+            <mat-card-title><i class="far fa-smile size-icon-title style-title"></i>DATOS GENERALES</mat-card-title>
+          </mat-card-header>
+          <div class="col-12 ">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Nombres y Apellidos:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ datos.nombre + " " + datos.apellido_paterno + " " + datos.apellido_materno }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Profesión:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ datos.profesion }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Facultad:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ datos.facultad }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Cargo:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ datos.rol }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Correo Principal:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ datos.correoPrincipal }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Correo Alternativo:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ datos.correoAlternativo }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="barrita">
+              <div class="col-sm-12">
+                <span class="text-title-content">Celular:</span>
+              </div>
+              <div class="col-sm-12">
+                <span class="text-subtitle-content">{{ datos.celular }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 flex-button">
+            <button mat-flat-button (click)="openDialog()" class="button-style"><i class="icon-style fas fa-edit"></i>ACTUALIZAR</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <mat-card class="sobre-mi-card">
+    <mat-card-header>
+      <mat-card-title><i class="fas fa-hashtag size-icon-title"></i>Sobre mí</mat-card-title>
+    </mat-card-header>
+    <div class="row">
+      <div class="col-12">
+        <div class="barrita">
+          <div class="col-sm-12">
+            <span class="text-subtitle-content text-type">{{ datos.auto_descripcion}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,204 @@
+<div *ngIf="perfilPsicologico; else cargando">
+    <div mat-dialog-title class="title-style">
+        <span class="text-title-style">Perfil Psicológico Semestre {{perfilPsicologico.anho}}
+            -{{perfilPsicologico.semestre}}</span>
+    </div>
+    <div mat-dialog-content>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ps-bar-title">
+                    <div class="ps-date-title">
+                        <div class="ps-date-subtitle">Datos Generales</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dato-alumno">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="blockText">
+                        <div class="blockText__text">Nombres:  {{perfilPsicologico.alumno.nombre}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="blockText">
+                        <div class="blockText__text">Edad: {{perfilPsicologico.alumno.edad}} años</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="blockText">
+                        <div class="blockText__text">Sexo: {{devolverSexo(perfilPsicologico.alumno.sexo)}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="blockText">
+                        <div class="blockText__text">Código: {{perfilPsicologico.alumno.codigo}}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="blockText">
+                        <div class="blockText__text">Ciclo : {{perfilPsicologico.alumno.ciclo}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="blockText">
+                        <div class="blockText__text">Escuela: {{perfilPsicologico.alumno.escuela}}</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="blockText">
+                        <div class="blockText__text">Situación: {{devolverSituacion(perfilPsicologico.alumno.situacion)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ps-bar-title">
+                    <div class="ps-date-title">
+                        <div class="ps-date-subtitle">Evaluaciones Psicológicas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dato-alumno">
+            <div *ngIf="banderaIHE">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="blockText">
+                            <div class="blockText__text">Inventario de Hábitos de Estudio</div>
+                        </div>
+                        <div class="ihe">
+                            <div>
+                                <div class="">
+                                    <span class="ihe--title">Resultado</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="ihe--content">
+                                    <div class="">
+                                        <div class="block__chart">
+                                            <google-chart
+                                                    [title]="titleIHE"
+                                                    [type]="typeIHE"
+                                                    [data]="dataIHE"
+                                                    [columnNames]="columnNamesIHE"
+                                                    [options]="optionsIHE"
+                                                    [width]="widthIHE"
+                                                    [height]="heightIHE">
+                                            </google-chart>
+                                        </div>
+                                    </div>
+                                    <div *ngFor="let resultado of this.evaluacionIHE.descripcion; let i = index">
+                                        <div class="block__resultihe">
+                                            <div class="block__resultihe--title">
+                                                <div *ngIf="i+1==this.evaluacionIHE.descripcion.length; else otro">
+                                                    Total
+                                                    <div>
+                                                        <span class="block__resultihe--subtitle">{{devolverTitulo(resultado.descripcion)}}</span> -
+                                                        <span class="block__resultihe--subtitle"> Su valor es: {{resultado.valor}}</span>
+                                                    </div>
+                                                </div>
+                                                <ng-template #otro>
+                                                    Area {{romanize(i + 1)}} - {{obtenerTituloArea(i + 1)}}
+                                                    <div>
+                                                        <span class="block__resultihe--subtitle">{{devolverTitulo(resultado.descripcion)}}</span> -
+                                                        <span class="block__resultihe--subtitle"> Su valor es: {{resultado.valor}}</span>
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                            <div class="block__resultihe--content">
+                                                <div *ngIf="i+1==this.evaluacionIHE.descripcion.length; else otroa">
+                                                    <span class="block__resultihe--content--bold">{{devolverContenido(resultado.descripcion)}}</span>
+                                                </div>
+                                                <ng-template #otroa>
+                                                    {{devolverContenido(resultado.descripcion)}}
+                                                </ng-template>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="banderaBeck">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="blockText">
+                            <div class="blockText__text">Inventario de Depresion de Beck</div>
+                        </div>
+                        <div class="beck">
+                            <div>
+                                <div class="">
+                                    <span class="beck--title">Resultado</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="">
+                                    <span class="beck--content">{{evaluacionBeck.descripcion.descripcion}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="row">-->
+            <!--<div class="col-sm-12">-->
+                <!--<div class="ps-bar-title">-->
+                    <!--<div class="ps-date-title">-->
+                        <!--<div class="ps-date-subtitle">ACADÉMICO</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ps-bar-title">
+                    <div class="ps-date-title">
+                        <div class="ps-date-subtitle">RECOMENDACIÓN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div *ngIf="data.bandera ==  0">
+                <mat-form-field class="extend">
+                        <textarea class="text-area" [(ngModel)]="perfilPsicologico.recomendacion" matInput placeholder="Ingrese su recomendación"></textarea>
+                </mat-form-field>
+                </div>
+                <div *ngIf="data.bandera ==  1">
+                    <div>
+                        {{perfilPsicologico.recomendacion}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row flex-button">
+                    <button mat-flat-button class="close-button" (click)="close()">Cancelar</button>
+                    <div *ngIf="data.bandera ==  0">
+                        <button mat-flat-button class="send-button" (click)="enviarRecomendacion(perfilPsicologico.id_perfil_psico)">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #cargando>
+    <div class="mat-span-style">
+        <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+    </div>
+</ng-template>

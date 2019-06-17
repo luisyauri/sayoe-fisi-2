@@ -4,6 +4,7 @@ export interface EvaluacionesRealizadasModel {
     id_cuest_eval: number;
     titulo_secundario: number;
     nro_preguntas: number;
+    descripcion: string;
 }
 
 export interface getEPRealizadasModel {

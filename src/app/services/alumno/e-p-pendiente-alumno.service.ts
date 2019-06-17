@@ -15,7 +15,7 @@ export class EPPendienteAlumnoService {
   // URL
   API_LISTA_E_P_PENDIENTES = 'https://sayoe-v2.herokuapp.com/api/v1/evaluaciones_asignadas/pendientes';
   AP_UNA_EP = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion/';
-  API_ENVIAR_RESPUESTA_E_P = 'https://sayoe-v2.herokuapp.com/api/v1/inventario-estudio';
+  API_ENVIAR_RESPUESTA_E_P = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion';
 
   constructor(private http: HttpClient, private alumnoService: AlumnoService) {
   }
@@ -26,7 +26,6 @@ export class EPPendienteAlumnoService {
               .append('Content-Type', 'application/json')
               .append('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
     });
-
   }
 
   getEnviarMesAnho(enviarMesAnho: EnviarMesAnhoPendienteModel){

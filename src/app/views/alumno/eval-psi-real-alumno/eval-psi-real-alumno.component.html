@@ -1,6 +1,6 @@
 <mat-card class="title-card">
   <mat-card-header>
-    <mat-card-title><i class="fas fa-file-alt size-icon-title"></i>Evaluaciones Psicológicas Realizadas
+    <mat-card-title><i class="fas fa-file-contract size-icon-title"></i>Evaluaciones Psicológicas Realizadas
     </mat-card-title>
   </mat-card-header>
 </mat-card>
@@ -55,7 +55,7 @@
                     Acción
                   </th>
                   <td class="table-td table-th-td-accion-style" mat-cell *matCellDef="let element">
-                    <button mat-flat-button class="table-detalles-icon" (click)="respuestaEPR()">
+                    <button mat-flat-button class="table-detalles-icon" (click)="respuestaEPR(element.id_estado_perfil, element.id_cuest_eval)">
                       <i class="fas fa-eye"></i></button>
                   </td>
                 </ng-container>

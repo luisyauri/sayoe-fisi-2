@@ -1,72 +1,125 @@
-<div class="top-bar">
-    <div class="top-bar-text">Versión Beta</div>
-</div>
-<div class="container-background">
-    <mat-card>
-        <mat-card-content>
-            <div class="row">
-                <div class="col-sm-12">
-                    <img class="mat-header-image" src="http://i64.tinypic.com/2zjgjkg.png" alt="">
-                </div>
-            </div>
-            <form (ngSubmit)="submit()">
+
+<div class="row block">
+    <div class="col-sm-12 block__center">
+        <mat-card>
+            <mat-card-content>
+                <img class="mat-header-image" src="http://i64.tinypic.com/2zjgjkg.png" alt="">
                 <div class="row">
                     <div class="col-sm-12">
-                        <mat-form-field class="mat-form-field-input">
-                            <input name="correo" [(ngModel)]="correo" type="email" matInput
-                                   placeholder="Ingrese su correo institucional">
+                        <mat-form-field class="input--extendfull mat-form-field-input">
+                            <input matInput type="email" placeholder="Ingrese su correo electrónico"
+                                   [(ngModel)]="correo">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <mat-form-field class="mat-form-field-input">
-                            <input name="contrasenha" [(ngModel)]="contrasenha" type="password" matInput
-                                   placeholder="Ingrese su contraseña">
+                        <mat-form-field class="input--extendfull mat-form-field-input">
+                            <input matInput type="password" placeholder="Ingrese su contraseña"
+                                   [(ngModel)]="contrasenha">
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="mat-button-style">
-                            <button class="mat-button-login" mat-flat-button>Ingresar</button>
-                        </div>
+                        <button class="mat-button-login" mat-flat-button (click)="submit()">Ingresar</button>
                     </div>
                 </div>
-            </form>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="mat-button-style">
+                <div class="row">
+                    <div class="col-sm-12">
                         <button class="mat-button-registrar" mat-flat-button>Registrar</button>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="mat-span-style">
-                        <span class="span-style">Olvidaste tu contraseña?</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div *ngIf="banderaLogin == -1">
-                    </div>
-                    <div *ngIf="banderaLogin==0">
-                        <div *ngIf="error == ''">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div *ngIf="banderaLogin == -1">
+                        </div>
+                        <div *ngIf="banderaLogin==0">
+                            <div *ngIf="error == ''">
+                                <div class="mat-span-style">
+                                    <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+                                </div>
+                            </div>
                             <div class="mat-span-style">
-                                <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+                                <span class="span-error-style">{{error}}</span>
                             </div>
                         </div>
-                        <div class="mat-span-style">
-                            <span class="span-error-style">{{error}}</span>
-                        </div>
                     </div>
                 </div>
-            </div>
-        </mat-card-content>
-    </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
+
+<!--<div class="top-bar">-->
+<!--<div class="top-bar-text">Versión Beta</div>-->
+<!--</div>-->
+<!--<div class="container-background">-->
+<!--<mat-card>-->
+<!--<mat-card-content>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<img class="mat-header-image" src="http://i64.tinypic.com/2zjgjkg.png" alt="">-->
+<!--</div>-->
+<!--</div>-->
+<!--<form (ngSubmit)="submit()">-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<mat-form-field class="mat-form-field-input">-->
+<!--<input name="correo" [(ngModel)]="correo" type="email" matInput-->
+<!--placeholder="Ingrese su correo institucional">-->
+<!--</mat-form-field>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<mat-form-field class="mat-form-field-input">-->
+<!--<input name="contrasenha" [(ngModel)]="contrasenha" type="password" matInput-->
+<!--placeholder="Ingrese su contraseña">-->
+<!--</mat-form-field>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<div class="mat-button-style">-->
+<!--<button class="mat-button-login" mat-flat-button>Ingresar</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</form>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<div class="mat-button-style">-->
+<!--<button class="mat-button-registrar" mat-flat-button>Registrar</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<div class="mat-span-style">-->
+<!--<span class="span-style">Olvidaste tu contraseña?</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<div *ngIf="banderaLogin == -1">-->
+<!--</div>-->
+<!--<div *ngIf="banderaLogin==0">-->
+<!--<div *ngIf="error == ''">-->
+<!--<div class="mat-span-style">-->
+<!--<mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="mat-span-style">-->
+<!--<span class="span-error-style">{{error}}</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</mat-card-content>-->
+<!--</mat-card>-->
+<!--</div>-->
 
 
 <!--<div id="contenedor-login" class="contenedor-login">-->

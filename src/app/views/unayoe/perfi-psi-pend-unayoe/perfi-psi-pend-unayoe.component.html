@@ -1,3 +1,158 @@
-<p>
-  perfi-psi-pend-unayoe works!
-</p>
+<mat-card class="title-card">
+    <mat-card-header>
+        <mat-card-title><i class="fas fa-file-signature size-icon-title"></i>Perfiles Psicológicos Pendientes
+        </mat-card-title>
+    </mat-card-header>
+</mat-card>
+<div *ngIf="banderaContenido; else vacio">
+    <mat-card class="body-card">
+        <mat-card-content>
+            <div *ngIf="getListPPUnayoe; else vacio">
+                <div *ngIf="banderaContenido; else contenidoVacio">
+                    <div class="bg-instrucciones-ep">
+                        <div class="row">
+                            <div class="col-sm-12 box-ep">
+                                <div class="box-text-ep">
+                                    <i class="fas fa-exclamation-triangle icon-excla-ep"></i>
+                                    <span class="text-instrucciones-ep">Presione el botón </span>
+                                    <button mat-flat-button class="icon-instrucciones-ep">
+                                        <i class="fas fa-rocket"></i>
+                                    </button>
+                                    <span class="text-instrucciones-ep">, para responder un perfil psicológico.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="ps-bar-title">
+                                <div class="ps-date-title">
+                                    <div class="ps-date-subtitle">Semestre {{getListPPUnayoe.anho}}-{{getListPPUnayoe.semestre}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="search__input">
+                                <mat-form-field class="width-full">
+                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 tabla-style">
+                            <div *ngIf="getArrayPerfilesUnayoe; else Loading">
+                                <div class="table-container">
+                                    <table mat-table [dataSource]="dataSource"
+                                           class="table-rwd mat-elevation-0">
+                                        <ng-container matColumnDef="codigo">
+                                            <th class="table-th" mat-header-cell *matHeaderCellDef>Código</th>
+                                            <td class="table-td" mat-cell
+                                                *matCellDef="let element"> {{element.codigo}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="apellidosNombres">
+                                            <th class="table-th table-th-td-preguntas-style" mat-header-cell *matHeaderCellDef>
+                                                Apellidos y Nombres
+                                            </th>
+                                            <td class="table-td table-th-td-preguntas-style" mat-cell
+                                                *matCellDef="let element">{{element.nombre}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="escuela">
+                                            <th class="table-th table-th-td-preguntas-style" mat-header-cell *matHeaderCellDef>
+                                                Escuela
+                                            </th>
+                                            <td class="table-td table-th-td-preguntas-style" mat-cell
+                                                *matCellDef="let element">{{element.escuela}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="situacion">
+                                            <th class="table-th table-th-td-preguntas-style" mat-header-cell *matHeaderCellDef>
+                                                Situación
+                                            </th>
+                                            <td class="table-td table-th-td-preguntas-style" mat-cell
+                                                *matCellDef="let element">
+                                                <div *ngIf="element.situacion == 'O'">
+                                                    <div class="observado">Observado</div>
+                                                </div>
+                                                <div *ngIf="element.situacion == 'R'">
+                                                    <div class="regular">Regular</div>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="fecharealizada">
+                                            <th class="table-th table-th-td-preguntas-style" mat-header-cell *matHeaderCellDef>
+                                                Fecha Realizada
+                                            </th>
+                                            <td class="table-td table-th-td-preguntas-style" mat-cell
+                                                *matCellDef="let element">{{element.fecha_resuelto}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="acciones">
+                                            <th class="table-th table-th-td-accion-style" mat-header-cell *matHeaderCellDef>
+                                                Acción
+                                            </th>
+                                            <td class="table-td table-th-td-accion-style" mat-cell *matCellDef="let element">
+                                                <button mat-flat-button class="table-detalles-icon" (click)="openDialogPerfil(element.id_perfil_psico)">
+                                                    <i class="fas fa-rocket"></i></button>
+                                            </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    </table>
+                                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                                </div>
+                            </div>
+                            <ng-template #Loading>
+                                <div class="mat-span-style">
+                                    <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #contenidoVacio>
+                    <div class="bg-instrucciones-ep">
+                        <div class="row">
+                            <div class="col-sm-12 box-ep">
+                                <div class="biv classep">
+                                    <i class="far fa-thumbs-up icon-excla-ep"></i>
+                                    <span class="text-no-ep">No tiene perfiles psicológicas pendientes.</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+            <ng-template #vacio>
+                <div class="mat-span-style">
+                    <mat-spinner class="spinner-style-item" diameter="40"></mat-spinner>
+                </div>
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="title-card">
+        <mat-card-content>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button mat-flat-button class="icon-no-culminados-ep width-full" (click)="openPerfilNoCulminados()">
+                        Perfiles Psicológicos No culminados
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<ng-template #vacio>
+    <mat-card class="body-card">
+       <mat-card-content>
+           <div class="bg-instrucciones-ep">
+               <div class="row">
+                   <div class="col-sm-12 box-ep">
+                       <div class="box-text-ep">
+                           <i class="far fa-thumbs-up icon-excla-ep"></i>
+                           <span class="text-no-ep">No tiene perfiles psicológicas pendientes.</span>
+                       </div>
+
+                   </div>
+               </div>
+           </div>
+       </mat-card-content>
+    </mat-card>
+</ng-template>

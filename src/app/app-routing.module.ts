@@ -24,6 +24,8 @@ import {EPPDAlumnoComponent} from './views/alumno/eval-psi-pend-alumno/e-p-p-d-a
 import {PerfiPsiPendUnayoeComponent} from './views/unayoe/perfi-psi-pend-unayoe/perfi-psi-pend-unayoe.component';
 import {PerfiPsiRealUnayoeComponent} from './views/unayoe/perfi-psi-real-unayoe/perfi-psi-real-unayoe.component';
 import {PerfiPsiNoCulmiUnayoeComponent} from './views/unayoe/perfi-psi-no-culmi-unayoe/perfi-psi-no-culmi-unayoe.component';
+import {TestComponent} from './views/test/test.component';
+import {PerfilAlumnoUnayoeComponent} from './views/unayoe/alumnos-unayoe/perfil-alumno-unayoe/perfil-alumno-unayoe.component';
 
 const routes: Routes = [
     {path: '', component: LoginComponent,},
@@ -39,7 +41,8 @@ const routes: Routes = [
             {path: 'evaluaciones-psicologicas', component: EvalPsiUnayoeComponent,},
             {path: 'alumnos', component: AlumnosUnayoeComponent,},
             {path: 'citas', component: CitasUnayoeComponent,},
-            {path: 'estadisticas', component: EstadisticasUnayoeComponent,}
+            {path: 'estadisticas', component: EstadisticasUnayoeComponent,},
+            {path: 'perfil-alumno',component:PerfilAlumnoUnayoeComponent,}
         ]
     },
     {
@@ -49,7 +52,7 @@ const routes: Routes = [
             {path: 'mi-perfil', component: MiPerfilAlumnoComponent,},
             {path: 'evaluaciones-psicologicas-pendientes', component: EvalPsiPendAlumnoComponent,},
             {path: 'evaluaciones-psicologicas-realizadas', component: EvalPsiRealAlumnoComponent,},
-            {path: 'perfiles-psicologicos', component: PerfilPsiAlumnoComponent,},
+            {path: 'perfil-psicologico', component: PerfilPsiAlumnoComponent,},
             {path: 'citas', component: CitasAlumnoComponent,},
             {path: 'evaluacion-psicologica', component: EPPDAlumnoComponent}
         ]
@@ -57,6 +60,7 @@ const routes: Routes = [
     {
         path: 'administrador', component: AdministradorComponent ,
     },
+    {path:'test', component: TestComponent},
     {path: '**', redirectTo: ''}
 ];
 

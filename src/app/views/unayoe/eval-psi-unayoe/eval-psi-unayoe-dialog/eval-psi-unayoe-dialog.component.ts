@@ -229,7 +229,10 @@ export class EvalPsiUnayoeDialogComponent implements OnInit {
         if (situacion == 'O') {
             this.situacion = 'Observado';
             this.colorSituacion = true;
-        } else {
+        } else if(situacion == 'R'){
+            this.situacion = 'Regular'
+            this.colorSituacion = true;
+        } else{
             this.situacion = '';
             this.colorSituacion = false;
         }

@@ -92,4 +92,16 @@ export class AdministradorComponent implements OnInit {
         );
     }
 
+    estadoEnviar(estado: number, id: number){
+        console.log(estado);
+        if(estado == 1){
+            this.administradorService.getEstadoDesactivar(id.toString()).subscribe();
+            this.getUnayoePerfiles();
+        }else if(estado == 0){
+            this.administradorService.getEstadoActivar(id.toString()).subscribe();
+            this.getUnayoePerfiles();
+        }else{
+        }
+        this.getUnayoePerfiles();
+    }
 }

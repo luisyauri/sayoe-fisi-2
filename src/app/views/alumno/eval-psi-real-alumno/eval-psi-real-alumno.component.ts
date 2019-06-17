@@ -5,7 +5,13 @@ import {EnviarMesAnhoRealizadoModel} from '../../../models/alumno/e-p-realizadas
 import {getEPRealizadasModel} from '../../../models/alumno/e-p-realizadas-alumno/getEPRealizadasmodel';
 import {EPRealizadaAlumnoService} from '../../../services/alumno/e-p-realizada-alumno.service';
 import {getEPPendientesModel} from '../../../models/alumno/e-p-pendientes-alumno/getEPPendientes.model';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
+import {
+    EncuestaBeckModel,
+    EncuestaIHEModel,
+    IdCuestionarioModel
+} from '../../../models/alumno/e-p-pendientes-alumno/recibirRespuesta.model';
+import {ResultadoBeckRealizadas, ResultadoIHERealizadas} from '../../../models/alumno/e-p-realizadas-alumno/recibirRespuesta.model';
 
 @Component({
     selector: 'app-eval-psi-real-alumno',
@@ -20,6 +26,10 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
     arrayGetEPRealizadas: getEPRealizadasModel[];
     displayedColumns: string[] = ['titulo', 'preguntas', 'acciones'];
     banderaContenido = true;
+
+    //Evaluaciones
+    EVALUACION_BECK: ResultadoBeckRealizadas;
+    EVALUACION_IHE: ResultadoIHERealizadas;
 
     //Constructor
     constructor(private alumnoService: AlumnoService,
@@ -40,11 +50,10 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
     }
 
     getEPRealizadas() {
-        //Holass
         this.epRealizadaAlumnoService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
             (res: getEPRealizadasModel) => {
                 this.arrayGetEPRealizadas = res['data'];
-                // this.getDateFormat()
+                this.getDateFormat();
                 console.log(this.arrayGetEPRealizadas);
                 if (this.arrayGetEPRealizadas.length < 1) {
                     this.banderaContenido = false;
@@ -57,15 +66,53 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
             });
     }
 
-    respuestaEPR() {
-        console.log("entro");
-        Swal.fire({
-            position: 'center',
-            type: 'success',
-            title: '¡Resultado Instantáneo!',
-            html:'Usted esta loco causa',
-            animation: false,
-            confirmButtonText: 'Cerrar',
-        })
+    respuestaEPR(id_estado_perfil: number, id_cuest_eval:number) {
+        if(id_cuest_eval == 1){
+            this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
+                (res) => {
+                        this.EVALUACION_IHE = res['data'];
+                        Swal.fire({
+                            position: 'center',
+                            type: 'success',
+                            title: '¡Resultado Instantáneo!',
+                            html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.descripcion.titulo+"</strong>.<br/>"+
+                                "Es decir: "+this.EVALUACION_IHE.descripcion.contenido,
+                            animation: false,
+                            confirmButtonText: 'Cerrar',
+                        });
+                },
+                error => {
+                    console.log(error)
+                });
+        }
+        else if(id_cuest_eval == 2){
+            this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
+                (res) => {
+                    console.log(res);
+                    this.EVALUACION_BECK = res['data'];
+                    console.log(this.EVALUACION_BECK);
+                    Swal.fire({
+                        position: 'center',
+                        type: 'success',
+                        title: '¡Resultado Instantáneo!',
+                        html:'Usted '+this.EVALUACION_BECK.descripcion+".",
+                        animation: false,
+                        confirmButtonText: 'Cerrar',
+                    });
+                },
+                error => {
+                    console.log(error)
+                });
+        }else{
+
+        }
+    }
+
+    getDateFormat() {
+        for (let i = 0; i < this.arrayGetEPRealizadas.length; i++) {
+            const fechaVenci = this.arrayGetEPRealizadas[i].fecha_vencimiento;
+            const dateMostrarFormat = fechaVenci.slice(8, 10) + '-' + fechaVenci.slice(5, 7) + '-' + fechaVenci.slice(0, 4);
+            this.arrayGetEPRealizadas[i].fecha_vencimiento = dateMostrarFormat;
+        }
     }
 }

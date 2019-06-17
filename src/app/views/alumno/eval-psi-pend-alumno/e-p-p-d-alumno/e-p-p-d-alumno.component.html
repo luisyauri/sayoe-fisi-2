@@ -56,45 +56,6 @@
                     </div>
                 </div>
             </div>
-            <!--<mat-tab-group>-->
-                <!--<mat-tab *ngFor="let valor of arrayBloque" class="">-->
-                    <!--<ng-template mat-tab-label>-->
-                        <!--Grupo {{valor}}-->
-                    <!--</ng-template>-->
-                    <!--<div>-->
-                        <!--<div class="general-pregunta-style" *ngFor="let pregunta of ep.preguntas; let i = index"-->
-                             <!--[attr.data-index]="i">-->
-                            <!--<div *ngIf="valor == pregunta.bloque">-->
-                                <!--<div class="preguntas-combo-style">-->
-                                    <!--<div class="block-pregunta-style">-->
-                                        <!--<div *ngIf="this.arrayAlternativasMarcadasConDeTexto[i].id>-1;   else NoListo">-->
-                                            <!--<i class="far fa-grin-wink icon-pregunta-style-activate"></i>-->
-                                        <!--</div>-->
-                                        <!--<ng-template #NoListo>-->
-                                            <!--<i class="far fa-grin icon-pregunta-style-desactivate"></i>-->
-                                        <!--</ng-template>-->
-                                        <!--<div class="border-pregunta-style">-->
-                                            <!--<div class="pregunta-style">{{pregunta.pregunta}}</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--<div class="radio-style">-->
-                                        <!--<mat-radio-group-->
-                                                <!--aria-labelledby="example-radio-group-label"-->
-                                                <!--class=""-->
-                                                <!--[(ngModel)]="arrayAlternativasMarcadasConDeTexto[i]">-->
-                                            <!--<mat-radio-button class="item-radio-style "-->
-                                                              <!--*ngFor="let alternativas of pregunta.alternativas"-->
-                                                              <!--[value]="alternativas">-->
-                                                <!--{{alternativas.descripcion}}-->
-                                            <!--</mat-radio-button>-->
-                                        <!--</mat-radio-group>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</mat-tab>-->
-            <!--</mat-tab-group>-->
             <mat-horizontal-stepper [linear]="false" #stepper>
                 <mat-step [completed]="false" *ngFor="let valor of arrayBloque" class="" label="Grupo" state="check">
                     <div>

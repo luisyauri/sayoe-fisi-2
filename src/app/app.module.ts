@@ -52,7 +52,13 @@ import {MAT_DATE_LOCALE} from '@angular/material';import { EPPDAlumnoComponent }
 import { PerfiPsiPendUnayoeComponent } from './views/unayoe/perfi-psi-pend-unayoe/perfi-psi-pend-unayoe.component';
 import { PerfiPsiRealUnayoeComponent } from './views/unayoe/perfi-psi-real-unayoe/perfi-psi-real-unayoe.component';
 import { PerfiPsiNoCulmiUnayoeComponent } from './views/unayoe/perfi-psi-no-culmi-unayoe/perfi-psi-no-culmi-unayoe.component';
+import { PerfiPsiPendUnayoeDialogComponent } from './views/unayoe/perfi-psi-pend-unayoe/perfi-psi-pend-unayoe-dialog/perfi-psi-pend-unayoe-dialog.component';
 
+import { GoogleChartsModule } from 'angular-google-charts';
+import { TestComponent } from './views/test/test.component';
+import { AgregarAlumnoUnayoeComponent } from './views/unayoe/alumnos-unayoe/agregar-alumno-unayoe/agregar-alumno-unayoe.component';
+import { PerfiPsiRealUnayoeDialogComponent } from './views/unayoe/perfi-psi-real-unayoe/perfi-psi-real-unayoe-dialog/perfi-psi-real-unayoe-dialog.component';
+import { PerfilAlumnoUnayoeComponent } from './views/unayoe/alumnos-unayoe/perfil-alumno-unayoe/perfil-alumno-unayoe.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -86,6 +92,11 @@ export function tokenGetter() {
         PerfiPsiPendUnayoeComponent,
         PerfiPsiRealUnayoeComponent,
         PerfiPsiNoCulmiUnayoeComponent,
+        PerfiPsiPendUnayoeDialogComponent,
+        TestComponent,
+        AgregarAlumnoUnayoeComponent,
+        PerfiPsiRealUnayoeDialogComponent,
+        PerfilAlumnoUnayoeComponent,
     ],
     imports: [
         BrowserModule,
@@ -113,6 +124,7 @@ export function tokenGetter() {
         MatNativeDateModule,
         ReactiveFormsModule,
         [SweetAlert2Module.forRoot()],
+        GoogleChartsModule.forRoot(),
     ],
     providers: [AuthService, UnayoeGuard, AlumnoGuard,
         EvalPsiUnayoeService, AdministradorService,
@@ -121,6 +133,8 @@ export function tokenGetter() {
     bootstrap: [AppComponent],
     entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent,
         MiPerfilDialogComponent, AgregarDialogComponent, AlumnosUnayoeComponent,
+        PerfiPsiPendUnayoeDialogComponent,AgregarAlumnoUnayoeComponent,
+        AgregarAlumnoUnayoeComponent,
     ]
 })
 export class AppModule {

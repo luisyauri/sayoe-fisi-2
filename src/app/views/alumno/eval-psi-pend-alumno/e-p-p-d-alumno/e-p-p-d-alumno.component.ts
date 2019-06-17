@@ -9,6 +9,12 @@ import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {ViewEncapsulation} from '@angular/core';
 import {RecibirRespuestaEPModel} from '../../../../models/alumno/e-p-pendientes-alumno/recibirRespuestaEP.model';
+import {
+    EncuestaBeckModel, EncuestaIHEModel,
+    IdCuestionarioModel,
+    ResultadoBeck,
+    ResultadoIHE
+} from '../../../../models/alumno/e-p-pendientes-alumno/recibirRespuesta.model';
 
 @Component({
     selector: 'app-e-p-p-d-alumno',
@@ -24,13 +30,19 @@ export class EPPDAlumnoComponent implements OnInit {
     id_estado_perfil: number;
     ep: GetUnaEPModel;
     arrayBloque = [];
+    arrayBloquePregunta = [];
+
+    //Evaluaciones
+    idCuestionario: IdCuestionarioModel;
+    EVALUACION_BECK: EncuestaBeckModel;
+    EVALUACION_IHE: EncuestaIHEModel;
 
     //Alternativass
     arrayAlternativasMarcadasConDeTexto: AlternativasGetUnaEPModel[] = [];
     arrayAlternativasEnviar: AlternativasEnviarRespuestaEPModel[] = [];
 
     //Enviar respuesta
-    enviarRespuestaEP: EnviarRespuestaEPModel = {data: {id_perfil_psico: 0, id_estado_perfil: 0, alternativa: []}};
+    enviarRespuestaEP: EnviarRespuestaEPModel = {data: {id_perfil_psico: 0, id_estado_perfil: 0, id_cuest_eval: 0, alternativa: []}};
 
     //Constructor
     constructor(private eppEpService: EppEpService,
@@ -57,9 +69,8 @@ export class EPPDAlumnoComponent implements OnInit {
                 if (this.ep) {
                     this.getCrearVariablesAlternativas(this.ep.nro_preguntas);
                     this.getArrayBloques();
-                    console.log(this.arrayAlternativasMarcadasConDeTexto);
+                    this.getListPreguntasBloques(this.ep.preguntas);
                 }
-                //console.log(this.arrayAlternativasMarcadasConDeTexto);
             },
             error1 => {
                 console.log('Error al extraer una evaluación psicológica.');
@@ -72,11 +83,10 @@ export class EPPDAlumnoComponent implements OnInit {
         });
         this.eppEpService.currentId_cuest_eval.subscribe(value => {
             this.id_cuest_eval = value;
-
         });
         this.eppEpService.currentId_estado_perfil.subscribe(value => {
             this.id_estado_perfil = value;
-        })
+        });
     }
 
     getCrearVariablesAlternativas(numeroAlternativas) {
@@ -90,15 +100,34 @@ export class EPPDAlumnoComponent implements OnInit {
             this.arrayAlternativasEnviar.push({
                 id: alternativa.id,
                 id_pregunta: alternativa.id_pregunta,
-                puntuacion: alternativa.puntuacion
+                puntuacion: alternativa.puntuacion,
+                bloque: Number(alternativa.descripcion),
             });
         }
     }
 
+    // getAlternativasEnviar(marcadasTexto: AlternativasGetUnaEPModel[]) {
+    //     for(let i=0;i<marcadasTexto.length){
+    //         if(i==0 )
+    //     }
+    //
+    //     for (let alternativa of marcadasTexto) {
+    //         this.arrayAlternativasEnviar.push({
+    //             id: alternativa.id,
+    //             id_pregunta: alternativa.id_pregunta,
+    //             puntuacion: alternativa.puntuacion,
+    //             bloque: 10,
+    //         });
+    //     }
+    // }
+
+
     getArrayEnvio() {
+        this.arregloFake();
         this.getAlternativasEnviar(this.arrayAlternativasMarcadasConDeTexto);
         this.enviarRespuestaEP.data.id_perfil_psico = this.id_perfil_psico;
         this.enviarRespuestaEP.data.id_estado_perfil = this.id_estado_perfil;
+        this.enviarRespuestaEP.data.id_cuest_eval = this.id_cuest_eval;
         this.enviarRespuestaEP.data.alternativa = this.arrayAlternativasEnviar;
     }
 
@@ -135,33 +164,41 @@ export class EPPDAlumnoComponent implements OnInit {
     }
 
     resetearData() {
-        this.enviarRespuestaEP = {data: {id_perfil_psico: 0, id_estado_perfil: 0, alternativa: []}};
+        this.enviarRespuestaEP = {data: {id_perfil_psico: 0, id_estado_perfil: 0, id_cuest_eval: 0, alternativa: []}};
         this.arrayAlternativasEnviar = [];
     }
 
     enviarRespuestas() {
         this.getArrayEnvio();
-        console.log(this.enviarRespuestaEP);
         if (this.buscarRespondido()) {
             this.epPendienteAlumnoService.postEnviarRespuesta(this.enviarRespuestaEP).subscribe(
-                (res: RecibirRespuestaEPModel) => {
-                    Swal.fire({
-                        position: 'center',
-                        type: 'success',
-                        title: 'Respuestas enviadas correctamente.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    Swal.fire({
-                        position: 'center',
-                        type: 'success',
-                        title: '¡Resultado Instantáneo!',
-                        html:'Usted '+res.descripcion+".",
-                        animation: false,
-                        confirmButtonText: 'Cerrar',
-                    })
-
-                    console.log(res);
+                (res: IdCuestionarioModel) => {
+                    this.idCuestionario = res['data'];
+                    console.log(this.idCuestionario);
+                    if (this.idCuestionario.id_cuest_eval == 1) {
+                        this.EVALUACION_IHE = res['data'];
+                        console.log(this.EVALUACION_IHE);
+                        Swal.fire({
+                            position: 'center',
+                            type: 'success',
+                            title: '¡Resultado Instantáneo!',
+                            html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.resultado.descripcion.titulo+"</strong>.<br/>"+
+                                "Es decir: "+this.EVALUACION_IHE.resultado.descripcion.contenido,
+                            animation: false,
+                            confirmButtonText: 'Cerrar',
+                        });
+                    } else if (this.idCuestionario.id_cuest_eval == 2) {
+                        this.EVALUACION_BECK = res['data'];
+                        console.log(this.EVALUACION_BECK);
+                        Swal.fire({
+                            position: 'center',
+                            type: 'success',
+                            title: '¡Resultado Instantáneo!',
+                            html:'Usted '+this.EVALUACION_BECK.resultado.descripcion+".",
+                            animation: false,
+                            confirmButtonText: 'Cerrar',
+                        });
+                    }
                     this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
 
                 },
@@ -186,26 +223,39 @@ export class EPPDAlumnoComponent implements OnInit {
             });
         }
         this.resetearData();
-        console.log(this.enviarRespuestaEP);
     }
 
-    salir(){
+    salir() {
         Swal.fire({
             title: '¿Estás seguro de salir?',
-            text: "Todo tu avance será borrado!",
+            text: 'Todo tu avance será borrado!',
             type: 'warning',
             showCancelButton: true,
             showConfirmButton: true,
             confirmButtonColor: '#5867dd',
             cancelButtonColor: '#fd397a',
             confirmButtonText: 'Sí, salir!',
-            cancelButtonText:'Cancelar',
+            cancelButtonText: 'Cancelar',
         }).then((result) => {
             if (result.value) {
                 this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
             }
-        })
+        });
 
     }
 
+    getListPreguntasBloques(preguntas) {
+        for (let pregunta of preguntas) {
+            this.arrayBloquePregunta.push(pregunta.bloque);
+        }
+    }
+
+    arregloFake() {
+        let i = 0;
+        while (i < this.arrayBloquePregunta.length) {
+            this.arrayAlternativasMarcadasConDeTexto[i].descripcion = this.arrayBloquePregunta[i];
+            console.log(this.arrayAlternativasMarcadasConDeTexto[i].descripcion);
+            i++;
+        }
+    }
 }

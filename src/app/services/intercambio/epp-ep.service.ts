@@ -19,8 +19,8 @@ export class EppEpService {
   setId_perfil_psico(id_perfil_psico:number){
     this.id_perfil_psico.next(id_perfil_psico);
   }
-  setId_estado_perfil(id_cuest_eval:number){
-    this.id_estado_perfil.next(id_cuest_eval);
+  setId_estado_perfil(id_estado_perfi:number){
+    this.id_estado_perfil.next(id_estado_perfi);
   }
 
   constructor() { }

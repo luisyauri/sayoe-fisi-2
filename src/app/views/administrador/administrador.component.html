@@ -117,12 +117,12 @@
                                 <div class="estado-center-content">
                                     <div *ngIf="element.estado == 0">
                                         <mat-chip-list>
-                                            <mat-chip class="mat-chip-list-desac-style">Desactivado</mat-chip>
+                                            <mat-chip class="mat-chip-list-desac-style" (click)="estadoEnviar(element.estado, element.id)">Desactivado</mat-chip>
                                         </mat-chip-list>
                                     </div>
                                     <div *ngIf="element.estado == 1">
                                         <mat-chip-list>
-                                            <mat-chip class="mat-chip-list-ac-style">Activado</mat-chip>
+                                            <mat-chip class="mat-chip-list-ac-style" (click)="estadoEnviar(element.estado, element.id)" i>Activado</mat-chip>
                                         </mat-chip-list>
                                     </div>
                                 </div>
