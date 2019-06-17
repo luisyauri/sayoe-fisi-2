@@ -81,13 +81,51 @@ Se enviará un recordatorio al correo del alumno indicando la Fecha Límite. (Re
 * Finalizar un perfil psicológico de la siguiente manera.
 * Si existe 2 evaluaciones y si solo ha respondido 1, debe mostrar los resultados de la evaluación resulta y de la no resuleta indicar "NO REALIZÓ".
 * De la misma manera si no realiza ninguna indicar "NO REALIZÓ".
-* Si mostrar el bloque EVALUACIONES PSICOLÓGICOS aunque no haya realizado ninguna evaluación.
-* Registrar la fecha al campo fecha realizada al escoger esta opción.
+* Si mostrar el bloque EVALUACIONES PSICOLÓGICOS en la vista, aunque no haya realizado ninguna evaluación.
+* Registrar la fecha actual al campo fecha realizada al escoger esta opción.
 * No registrar una recomendación al perfil psicológico y esconder el bloque RECOMENDACIÓN de la vista de perfil psicológico.
 * Sacar de la lista de perfiles psicológicos no culminados e ingresarlas a la lista de recomendados.
 ```
+### RECOMENDACIONES
+* Función Listar Perfiles Psicológicos
+```
+* Se listará los perfiles psicológicos que han sido marcados como culminados, con o sin recomendación.
+* Con los siguientes datos:
+    * Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada, Acción (Ver perfil psicológico)
+```
+* Función Ver perfil psicológico culmminado
+```
+* Se mostrará el perfil psicológico de un alumno más no podrá editar.
+```
+### ALUMNOS
+* Función Seleccionar Excel o Individual
+```
+Seleccionaremos la opción excel o individual para agregar alumno en el sistema.
+```
+* Función agregar
+```
+
+```
+* Función Listar Alumnos
+```
+* Se listará todos los alumnos con situación de permanencia activa 
+* Con los siguientes datos:
+    * Código, Apellidos y nombres, Escuela, Situación, Sexo, Edad, Accion(Ver)
+```
+* Función Ver Perfil de un alumno
+```
+Se seleccionará un botón de ver de un alumno y nos dirigirá a una ventana
+donde mostrará el perfil de un alumno.
+```
 
 
+
+```
+
+```
+```
+
+```
 ```
 
 ```
