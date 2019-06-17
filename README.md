@@ -12,22 +12,32 @@ PS . Perfil Psicológico
 * Citas: Citas
 * Estadísticas : Estadísticas
 
-## DASHBOARD
+### DASHBOARD
 
-## EVALUACIONES PSICOLÓGICAS
-* Listar evaluaciones psicológicas.
-    * Titulo [x]
-    * Autor [ X ]
-    * Preguntas
-    * Detalles (Ver)
-        * Ver todas las preguntas de una evaluación psicológica
-* Seleccionar un grupo/alumno
-* Botón ASIGNAR
-    * Alumno
-        * Código
-        * Fecha Límite
-        * Asignar Evaluaciones Psicológicas Lista[]
-        * Enviar/Cancelar
+### EVALUACIONES PSICOLÓGICAS
+* Función Listar evaluaciones psicológicas. 
+```
+Título , Autor, Preguntas, Detalles
+```
+* Función Ver Evaluación Piscológica
+```
+Ver todas las preguntas de una evaluación psicológica
+```
+* Función Seleccionar un grupo/alumno
+```
+Seleccionará grupo o alumno para asignar tantas evaluaciones psicológicas que desee.
+```
+* Función Asignar
+    * Sí se selecciona Grupo
+    ```
+    Se ingresará Excel.
+    ```
+    * Si se selecciona Alumno
+    ```
+    * Se ingresará lo siguiente:
+    * Código, Fecha límite, Lista de Evaluaciones Psicológicas
+    * Se porcederá a enviar o cancelar.
+    ```    
        
 MENÚ ALUMNO
 
