@@ -3,6 +3,32 @@
 EP : Evaluación Psicológica
 PS . Perfil Psicológico
 
+## MENÚ UNAYOE 📌
+* Dashboard : Dashboard
+* Evaluaciones Psicológicas : Evaluaciones Psicológicas
+* Perfiles Psicológicos : Perfiles Psicológicos Pendientes
+* Recomendaciones : Pefiles Psicológicos Realizados
+* Alumnos : Alumnos
+* Citas: Citas
+* Estadísticas : Estadísticas
+
+## DASHBOARD
+
+## EVALUACIONES PSICOLÓGICAS
+* Listar evaluaciones psicológicas.
+    * Titulo
+    * Autor
+    * Preguntas
+    * Detalles (Ver)
+        * Ver todas las preguntas de una evaluación psicológica
+* Asignar 
+
+
+
+MENÚ ALUMNO
+
+
+
 ## Botones Colores
 
 Primary (Todos los botones a primera vista)
