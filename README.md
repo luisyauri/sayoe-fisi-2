@@ -152,7 +152,7 @@ donde mostrará el perfil de un alumno.
 ```
 * Se visualizará el perfil psicológico seleccionado.
 ```
-## CITAS
+### CITAS
 * Función Agregar cita
 ```
 * Agrega una cita a un alumno ingresando los siguientes datos:
@@ -180,16 +180,39 @@ donde mostrará el perfil de un alumno.
 ```
 
 ## MENÚ ALUMNO 📌
+* Dashboard 
+* Evaluaciones Pendientes
+* Evaluaciones Realizadas
+* Perfil Psicológico
+* Citas
 
+### EVALUACIONES PENDIENTES
+* Listo
+### EVALUACIONES REALIZADAS
+* Listo
+### PERFIL PSICOLÓGICO
+* Función Listar perfil psicológico.
 ```
-* 
+* Se listará los perfiles psicológicos realizados solo ese semestre en una tabla
+* Con los siguientes datos:
+    * Fecha Emisión Hora Emisión Accion(Ver)
 ``` 
+*Función Ver Perfil Psicológico
 ```
-* 
+* Podrá ver sus resultados de su evaluación psicológica de una forma más personalizada y disitinta que unayoe.
 ``` 
+### Citas
+* Función Listar citas
 ```
-* 
+* Se mostrarán en una lista todas las citas con difenrtes estados.
+* Con los siguientes datos en la tabla:
+    * Asunto Fech Hora Acción (Ver)
 ```       
+* Función ver Detalle Cita
+```
+* Se mostrará una ventará emergente con los siugientes datos de la cita
+    * Asunto descripción, fecha hora.
+``` 
 
 
 
