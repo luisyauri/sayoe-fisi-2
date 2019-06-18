@@ -4,10 +4,10 @@ EP : Evaluación Psicológica
 PS . Perfil Psicológico
 
 ## MENÚ UNAYOE 📌
-* Dashboard : Dashboard
+* Dashboard :  Dashboard
 * Evaluaciones Psicológicas : Evaluaciones Psicológicas
-* Perfiles Psicológicos : Perfiles Psicológicos Pendientes
-* Recomendaciones : Pefiles Psicológicos Realizados
+* Perfiles Psicológicos : Antes (Perfiles Psicológicos Pendientes)
+* Recomendaciones : Antes (Pefiles Psicológicos Realizados)
 * Alumnos : Alumnos
 * Citas: Citas
 * Estadísticas : Estadísticas
