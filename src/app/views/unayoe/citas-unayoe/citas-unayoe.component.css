@@ -195,3 +195,19 @@ mat-grid-tile {
     display: flex;
     align-items: stretch;
 }
+
+.estado-esperando{
+    background: #5d78ff;
+    color: white;
+    margin: 5px ;
+}
+.estado-asistio{
+    background: #0abb87;
+    color: white;
+    margin: 5px ;
+}
+.estado-no-asistio{
+    background: #fd397a;
+    color: white;
+    margin: 5px ;
+}

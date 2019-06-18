@@ -59,6 +59,11 @@ import { TestComponent } from './views/test/test.component';
 import { AgregarAlumnoUnayoeComponent } from './views/unayoe/alumnos-unayoe/agregar-alumno-unayoe/agregar-alumno-unayoe.component';
 import { PerfiPsiRealUnayoeDialogComponent } from './views/unayoe/perfi-psi-real-unayoe/perfi-psi-real-unayoe-dialog/perfi-psi-real-unayoe-dialog.component';
 import { PerfilAlumnoUnayoeComponent } from './views/unayoe/alumnos-unayoe/perfil-alumno-unayoe/perfil-alumno-unayoe.component';
+import { CitasUnayoeDialogComponent } from './views/unayoe/citas-unayoe/citas-unayoe-dialog/citas-unayoe-dialog.component';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import { EstadoUnayoeDialogComponent } from './views/unayoe/citas-unayoe/estado-unayoe-dialog/estado-unayoe-dialog.component';
+import { VerUnayoeDialogComponent } from './views/unayoe/citas-unayoe/ver-unayoe-dialog/ver-unayoe-dialog.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -97,6 +102,9 @@ export function tokenGetter() {
         AgregarAlumnoUnayoeComponent,
         PerfiPsiRealUnayoeDialogComponent,
         PerfilAlumnoUnayoeComponent,
+        CitasUnayoeDialogComponent,
+        EstadoUnayoeDialogComponent,
+        VerUnayoeDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -125,6 +133,8 @@ export function tokenGetter() {
         ReactiveFormsModule,
         [SweetAlert2Module.forRoot()],
         GoogleChartsModule.forRoot(),
+        OwlDateTimeModule ,
+        OwlNativeDateTimeModule ,
     ],
     providers: [AuthService, UnayoeGuard, AlumnoGuard,
         EvalPsiUnayoeService, AdministradorService,
@@ -134,7 +144,9 @@ export function tokenGetter() {
     entryComponents: [EvalPsiUnayoeDialogComponent, EvalPsiUnayoeListComponent,
         MiPerfilDialogComponent, AgregarDialogComponent, AlumnosUnayoeComponent,
         PerfiPsiPendUnayoeDialogComponent,AgregarAlumnoUnayoeComponent,
-        AgregarAlumnoUnayoeComponent,
+        AgregarAlumnoUnayoeComponent,CitasUnayoeDialogComponent,EstadoUnayoeDialogComponent,
+        VerUnayoeDialogComponent
+
     ]
 })
 export class AppModule {
