@@ -104,7 +104,22 @@ Seleccionaremos la opción excel o individual para agregar alumno en el sistema.
 ```
 * Función agregar
 ```
-
+* Si agrega Individual se insertará los siguientes campos:
+    * Código
+    * DNI
+    * Correo
+    * Contraseña
+    * Apellido paterno
+    * Apellido materno
+    * Nombres
+    * Sexo
+    * Fecha Nacimiento
+    * Situación
+    * Año de ingreso
+    * Estado de permanencia
+    * Escuela Profesional
+* Si agrega un excel se insertará los siguientes campos:
+    * Por definir.
 ```
 * Función Listar Alumnos
 ```
@@ -117,19 +132,41 @@ Seleccionaremos la opción excel o individual para agregar alumno en el sistema.
 Se seleccionará un botón de ver de un alumno y nos dirigirá a una ventana
 donde mostrará el perfil de un alumno.
 ```
-
-
-
+### PERFIL DE UN ALUMNO
+* Función mostrar data de un alumno
 ```
-
+* Se mostrará la siguiente información.
+    * Nombres, edad, sexo, codigo, ciclo, escuela, situación, correo, wsp y más que tenga.    
 ```
+* Función modificar modificar datos
 ```
-
+* Podrá modificar todos sus datos del alumno.
 ```
+* Función Listar perfiles psicológicos culminados
 ```
-
+* Se listará los perfiles psicológicos culminados en una tabla
+* Con lo siguiente:
+    * año, semestre, fecha realizada, hora realizada, Acción (Ver)
 ```
+* Función Ver Perfil psicológico
+```
+* Se viaulizará el perfil psicológico seleccionado.
+```
+## CITAS
+      
        
+```
+* 
+```
+```
+* 
+```
+```
+* 
+```
+```
+* 
+```       
 MENÚ ALUMNO
 
 
