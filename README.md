@@ -15,36 +15,36 @@ PS . Perfil Psicológico
 ### DASHBOARD
 
 ### EVALUACIONES PSICOLÓGICAS
-* Función Listar evaluaciones psicológicas. 
+* Función Listar evaluaciones psicológicas. [x]
 ```
 Título , Autor, Preguntas, Acción (Ver)
 ```
-* Función Ver Evaluación Piscológica
+* Función Ver Evaluación Piscológica [x]
 ```
 Ver todas las preguntas de una evaluación psicológica
 ```
-* Función Seleccionar un grupo/alumno
+* Función Seleccionar un grupo/alumno [x]
 ```
 Seleccionará grupo o alumno para asignar tantas evaluaciones psicológicas que desee.
 ```
 * Función Asignar
     * Sí se selecciona Grupo
     ```
-    Se ingresará Excel.
+    Se ingresará secciones de grupos. [En Proceso]
     ```
-    * Si se selecciona Alumno
+    * Si se selecciona Alumno [x]
     ```
     * Se ingresará lo siguiente:
     * Código, Fecha límite, Lista de Evaluaciones Psicológicas
     * Se porcederá a enviar o cancelar.
     ```    
 ### PERFILES PSICOLÓGICOS (Antes Perfiles Psicológicos Pendientes)
-* Función Listar Perfiles Psicológicos respondidos por el estudiante.
+* Función Listar Perfiles Psicológicos respondidos por el estudiante. [x]
 ```
 * Se tendrá una tabla con las sigueintes columnas.
-* Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada, Accion(Recomendar)
+* Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada [Pendiente], Accion(Recomendar) 
 ```
-* Función ver y recomendar un perfil psicológico.
+* Función ver y recomendar un perfil psicológico. [x]
 ```
 * Permitrá ver un Perfil Psicológico y a la vez escribir una recomendación.
 * Lo siguiente será mostrada en el perfil psicológico seleccionado:
@@ -79,7 +79,7 @@ Se enviará un recordatorio al correo del alumno indicando la Fecha Límite. (Re
 * Función Finalizar Perfil Psicológico
 ```
 * Finalizar un perfil psicológico de la siguiente manera.
-* Si existe 2 evaluaciones y si solo ha respondido 1, debe mostrar los resultados de la evaluación resulta y de la no resuleta indicar "NO REALIZÓ".
+* Si existe 2 evaluaciones y si solo ha respondido 1, debe mostrar los resultados de la evaluación resuelta y de la no resuelta indicar "NO REALIZÓ".
 * De la misma manera si no realiza ninguna indicar "NO REALIZÓ".
 * Si mostrar el bloque EVALUACIONES PSICOLÓGICOS en la vista, aunque no haya realizado ninguna evaluación.
 * Registrar la fecha actual al campo fecha realizada al escoger esta opción.
@@ -87,13 +87,13 @@ Se enviará un recordatorio al correo del alumno indicando la Fecha Límite. (Re
 * Sacar de la lista de perfiles psicológicos no culminados e ingresarlas a la lista de recomendados.
 ```
 ### RECOMENDACIONES
-* Función Listar Perfiles Psicológicos
+* Función Listar Perfiles Psicológicos [x]
 ```
 * Se listará los perfiles psicológicos que han sido marcados como culminados, con o sin recomendación.
 * Con los siguientes datos:
-    * Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada, Acción (Ver perfil psicológico)
+    * Código, Apellidos y nombres, Escuela, Situación, Fecha Realizada, Hora Realizada [Pendiente], Acción (Ver perfil psicológico)
 ```
-* Función Ver perfil psicológico culmminado
+* Función Ver perfil psicológico culmminado [x]
 ```
 * Se mostrará el perfil psicológico de un alumno más no podrá editar.
 ```
@@ -171,7 +171,11 @@ donde mostrará el perfil de un alumno.
 ```
 * Función Cambiar estado
 ```
-*  Mostará una vista donde se escogerá la opción de "NO ASISTIÓ" "EN CITA" "ASISTIÓ".
+*  Mostará una vista donde se escogerá la opción de "NO ASISTIÓ" "ESPERANDO" "ASISTIÓ".
+
+1 ESPERANDO POR DEFECTO
+2 ASISTIÓ
+3 NO ASISTIÓ
 ``` 
 * Función Ver detalles de una cita
 ```
@@ -191,7 +195,7 @@ donde mostrará el perfil de un alumno.
 ### EVALUACIONES REALIZADAS
 * Listo
 ### PERFIL PSICOLÓGICO
-* Función Listar perfil psicológico.
+* Función Listar perfil psicológico. 
 ```
 * Se listará los perfiles psicológicos realizados solo ese semestre en una tabla
 * Con los siguientes datos:
