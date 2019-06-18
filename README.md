@@ -150,24 +150,47 @@ donde mostrará el perfil de un alumno.
 ```
 * Función Ver Perfil psicológico
 ```
-* Se viaulizará el perfil psicológico seleccionado.
+* Se visualizará el perfil psicológico seleccionado.
 ```
 ## CITAS
-      
-       
+* Función Agregar cita
+```
+* Agrega una cita a un alumno ingresando los siguientes datos:
+    * Código
+        * Apellidos nombres
+        * Situación
+        * Escuela 
+    * Asunto 
+    * Fecha y hora
+    * Descripción
+```
+* Función Listar citas           
+```
+* Se listará las citas y se mostrará en una tabla con los siguientes campos:
+    * Asunto, fecha, hora, Apellidos y nombres, estado, Accion (Ver)
+```
+* Función Cambiar estado
+```
+*  Mostará una vista donde se escogerá la opción de "NO ASISTIÓ" "EN CITA" "ASISTIÓ".
+``` 
+* Función Ver detalles de una cita
+```
+* Mostrará los detalles de una cita, con lo datos siguientes:
+    * Asunto, descripción, fecha, hora, estado, código, apellido y nombres, edad, sexo,
+```
+
+## MENÚ ALUMNO 📌
+
 ```
 * 
-```
-```
-* 
-```
+``` 
 ```
 * 
-```
+``` 
 ```
 * 
 ```       
-MENÚ ALUMNO
+
 
 
 
