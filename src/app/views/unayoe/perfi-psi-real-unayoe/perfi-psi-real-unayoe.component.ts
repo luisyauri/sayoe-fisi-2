@@ -23,7 +23,7 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
   date = new Date();
   arrayGetListPRUnayoe: GetListPRUnayoeModel[];
   getListPRUnayoe: GetListPRUnayoeModel;
-  getArrayPerfilesUnayoe:PerfilesListPPUnayoeModel[];
+  getArrayPerfilesUnayoe:PerfilesListPRUnayoeModel[];
   dataSource = new MatTableDataSource();
   situacion = '';
   colorSituacion = false;

@@ -10,7 +10,7 @@ export class PerfPendPsiUnayoeService {
   // Variables
   headers = new HttpHeaders();
   // URL
-  API_LIST_PERF_PEND_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/perfiles/pendientes';
+  API_LIST_PERF_PEND_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/perfiles-psicologicos';
   API_GET_DATA_DIALOG_PEND_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/perfil/';
   API_SEND_RECOMENDACION_DIALOG_PEND_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/recomendar';
 

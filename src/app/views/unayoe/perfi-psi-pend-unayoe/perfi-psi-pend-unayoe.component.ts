@@ -18,7 +18,7 @@ import {PsicologoNuevo} from '../../../models/psicologoNuevo';
 export class PerfiPsiPendUnayoeComponent implements OnInit {
 
     //Variables
-    displayedColumns: string[] = ['codigo', 'apellidosNombres', 'escuela', 'situacion', 'fecharealizada', 'acciones'];
+    displayedColumns: string[] = ['codigo', 'apellidosNombres', 'escuela', 'situacion', 'fecharesuelto', 'hora','acciones'];
     banderaContenido = false;
     enviarMesAnho: SendAnhoMesPPUnayoeModel = {anho: '', mes: ''};
     date = new Date();
@@ -56,13 +56,15 @@ export class PerfiPsiPendUnayoeComponent implements OnInit {
         this.enviarMesAnho.mes = (this.date.getMonth() + 1).toString();
     }
     getListPerfPendPsi() {
+        console.log(this.enviarMesAnho);
         this.perfPendPsiUnayoeService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
             (res: GetListPPUnayoeModel) => {
+                console.log(res);
                 this.arrayGetListPPUnayoe = res['data'];
                 this.getListPPUnayoe = this.arrayGetListPPUnayoe[0];
                 this.getArrayPerfilesUnayoe = this.getListPPUnayoe.perfiles;
                 this.dataSource = new MatTableDataSource(this.getArrayPerfilesUnayoe);
-                this.getDateFormat();
+                // this.getDateFormat();
                 if(this.getListPPUnayoe.perfiles.length==0){
                     this.banderaContenido= false;
                 }else{
@@ -71,6 +73,7 @@ export class PerfiPsiPendUnayoeComponent implements OnInit {
             },
             error => {
                 console.log("Error al extraer la lista de perfiles psicológicos.")
+                console.log(error)
             }
         );
     }
@@ -99,12 +102,24 @@ export class PerfiPsiPendUnayoeComponent implements OnInit {
         this.router.navigate(['unayoe/perfiles-psicologicos-no-culminados']);
     }
 
-    getDateFormat(){
-        for(let i=0;i<this.getArrayPerfilesUnayoe.length;i++){
-            const fechaVenci = this.getArrayPerfilesUnayoe[i].fecha_resuelto;
-            const dateMostrarFormat = fechaVenci.slice(8,10)+'-'+fechaVenci.slice(5,7)+'-'+fechaVenci.slice(0,4);
-            this.getArrayPerfilesUnayoe[i].fecha_resuelto = dateMostrarFormat;
+    convertirFecha(fecha: string) {
+        return fecha.slice(8, 10) + '-' + fecha.slice(5, 7) + '-' + fecha.slice(0, 4);
+    }
+    convertirSituacion(situacion: string) {
+        if (situacion == 'R') {
+            return 'REGULAR';
+        } else if (situacion == 'O') {
+            return 'OBSERVADO';
+        } else {
+            return 'ERROR';
         }
     }
+    // getDateFormat(){
+    //     for(let i=0;i<this.getArrayPerfilesUnayoe.length;i++){
+    //         const fechaVenci = this.getArrayPerfilesUnayoe[i].fecha_resuelto;
+    //         const dateMostrarFormat = fechaVenci.slice(8,10)+'-'+fechaVenci.slice(5,7)+'-'+fechaVenci.slice(0,4);
+    //         this.getArrayPerfilesUnayoe[i].fecha_resuelto = dateMostrarFormat;
+    //     }
+    // }
 }
 

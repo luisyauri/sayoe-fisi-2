@@ -98,7 +98,7 @@ export class CitasUnayoeComponent implements OnInit {
         if (situacion == 'R') {
             return 'REGULAR';
         } else if (situacion == 'O') {
-            return 'OBSERVADOR';
+            return 'OBSERVADO';
         } else {
             return 'ERROR';
         }
