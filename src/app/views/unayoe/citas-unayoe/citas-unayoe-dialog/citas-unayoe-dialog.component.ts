@@ -58,7 +58,6 @@ export class CitasUnayoeDialogComponent implements OnInit {
           console.log(error);
         }
     );
-    console.log(this.asignarCita);
   }
 
   close() {

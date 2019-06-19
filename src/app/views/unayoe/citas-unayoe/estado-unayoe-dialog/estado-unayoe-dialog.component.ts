@@ -44,7 +44,7 @@ export class EstadoUnayoeDialogComponent implements OnInit {
                 });
                 this.dialogConfig.close();
             }, error2 => {
-
+                console.log(error2);
             });
     }
 
