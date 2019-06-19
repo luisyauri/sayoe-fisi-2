@@ -141,9 +141,9 @@
                 <table [dataSource]="dataSource" class="table-rwd mat-elevation-0"
                        mat-table>
                   <ng-container matColumnDef="anho">
-                    <th *matHeaderCellDef class="table-th" mat-header-cell>Año</th>
+                    <th *matHeaderCellDef class="table-th" mat-header-cell>Ciclo</th>
                     <td *matCellDef="let element" class="table-td"
-                        mat-cell> {{element.anho + element.semestre}} </td>
+                        mat-cell> {{element.anho +'-'+element.semestre}} </td>
                   </ng-container>
                   <ng-container matColumnDef="fecharecomendacion">
                     <th *matHeaderCellDef class="table-th table-th-td-preguntas-style"
