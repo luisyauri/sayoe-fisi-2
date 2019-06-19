@@ -65,6 +65,7 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import { EstadoUnayoeDialogComponent } from './views/unayoe/citas-unayoe/estado-unayoe-dialog/estado-unayoe-dialog.component';
 import { VerUnayoeDialogComponent } from './views/unayoe/citas-unayoe/ver-unayoe-dialog/ver-unayoe-dialog.component';
 import { DetallePefiPsiUnayoeComponent } from './views/unayoe/detalle-pefi-psi-unayoe/detalle-pefi-psi-unayoe.component';
+import { CitasDialogAlumnoComponent } from './views/alumno/citas-alumno/citas-dialog-alumno/citas-dialog-alumno.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -107,6 +108,7 @@ export function tokenGetter() {
         EstadoUnayoeDialogComponent,
         VerUnayoeDialogComponent,
         DetallePefiPsiUnayoeComponent,
+        CitasDialogAlumnoComponent,
     ],
     imports: [
         BrowserModule,
@@ -147,7 +149,7 @@ export function tokenGetter() {
         MiPerfilDialogComponent, AgregarDialogComponent, AlumnosUnayoeComponent,
         PerfiPsiPendUnayoeDialogComponent,AgregarAlumnoUnayoeComponent,
         AgregarAlumnoUnayoeComponent,CitasUnayoeDialogComponent,EstadoUnayoeDialogComponent,
-        VerUnayoeDialogComponent,DetallePefiPsiUnayoeComponent
+        VerUnayoeDialogComponent,DetallePefiPsiUnayoeComponent,CitasDialogAlumnoComponent
 
     ]
 })

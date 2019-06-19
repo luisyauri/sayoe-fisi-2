@@ -41,6 +41,7 @@ export class CitasUnayoeDialogComponent implements OnInit {
 
   asigCitar(){
     this.formatAsignarCita();
+    console.log(this.asignarCita);
     this.citasUnayoeService.asignarCita(this.asignarCita).subscribe(
         res => {
           console.log(res);

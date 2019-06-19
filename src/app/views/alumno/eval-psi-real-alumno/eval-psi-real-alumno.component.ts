@@ -67,7 +67,7 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
     }
 
     respuestaEPR(id_cuest_eval: number, descripcion: any) {
-
+        console.log(descripcion);
         if (id_cuest_eval == 1) {
             if (descripcion == 'NO REALIZÓ') {
                 Swal.fire({

@@ -73,17 +73,7 @@ export class CitasUnayoeComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    convertirEstado(estado: number) {
-        if (estado == 1) {
-            return 'ESPERANDO';
-        } else if (estado == 2) {
-            return 'ASISTIÓ';
-        } else if (estado == 3) {
-            return 'NO ASISTIÓ';
-        } else {
-            return 'ERROR';
-        }
-    }
+
 
     convertirSexo(sexo: string) {
         if (sexo == 'M') {
