@@ -11,7 +11,7 @@ export class DetallerAlumnoUnayoeService {
   headers = new HttpHeaders();
 
   // URL
-  API_DETALLE_DATA_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumno/{codigo}';
+  API_DETALLE_DATA_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumno/';
   API_LIST_PERFILES_PSICOLOGICOS = 'https://sayoe-v2.herokuapp.com/api/v1/perfiles/alumno/';
 
   // Constructor

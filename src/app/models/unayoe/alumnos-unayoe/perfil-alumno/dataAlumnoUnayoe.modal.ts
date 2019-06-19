@@ -27,6 +27,6 @@ export interface DataDataAlumnoUnayoeModal {
 
 export interface DataAlumnoUnayoeModal {
     datos_personales: DataDataAlumnoUnayoeModal;
-    datos_académicos: AcadémicosDataAlumnoUnayoeModal;
+    datos_academicos: AcadémicosDataAlumnoUnayoeModal;
     usuario: string;
 }

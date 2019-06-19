@@ -3,18 +3,18 @@
     <mat-card-title><i class="fas fa-users size-icon-title"></i>Perfil del Alumno</mat-card-title>
   </mat-card-header>
 </mat-card>
-<div *ngIf="datos">
+<div *ngIf="alumno">
   <div class="row">
     <div class="col-sm-7 col-lg-4">
       <mat-card class="body-card">
         <mat-card-content>
           <div class="col-12 flex-avatar-style">
-            <img class="image-size" src="{{datos.foto}}" alt="">
+            <img class="image-size" src="https://randomuser.me/api/portraits/men/44.jpg" alt="">
           </div>
           <div class="col-12 flex-items-style">
-            <button mat-flat-button class="m-2 facebook-btn" (click)="sendFacebook()">
+            <button mat-flat-button class="m-2 facebook-btn">
               <i class="fab fa-facebook-f icon-facebook-btn"></i></button>
-            <button mat-flat-button class="m-2 wsp-btn" (click)="sendWsp()">
+            <button mat-flat-button class="m-2 wsp-btn">
               <i class="fab fa-whatsapp icon-wsp-btn"></i>
             </button>
           </div>
@@ -35,17 +35,17 @@
                     <span class="text-title-content">Nombres y Apellidos:</span>
                   </div>
                   <div class="col-sm-12">
-                    <span class="text-subtitle-content">{{ datos.nombre + " " + datos.apellido_paterno + " " + datos.apellido_materno }}</span>
+                    <span class="text-subtitle-content">{{ alumno.datos_personales.nombre + " " + alumno.datos_personales.apellido_paterno + " " + alumno.datos_personales.apellido_materno }}</span>
                   </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
                 <div class="barrita">
                   <div class="col-sm-12">
-                    <span class="text-title-content">Profesión:</span>
+                    <span class="text-title-content">Escuela:</span>
                   </div>
                   <div class="col-sm-12">
-                    <span class="text-subtitle-content">{{ datos.profesion }}</span>
+                    <span class="text-subtitle-content">{{ alumno.datos_academicos.escuela_profesional }}</span>
                   </div>
                 </div>
               </div>
@@ -57,17 +57,17 @@
                     <span class="text-title-content">Facultad:</span>
                   </div>
                   <div class="col-sm-12">
-                    <span class="text-subtitle-content">{{ datos.facultad }}</span>
+                    <span class="text-subtitle-content">{{ alumno.datos_academicos.facultad }}</span>
                   </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
                 <div class="barrita">
                   <div class="col-sm-12">
-                    <span class="text-title-content">Cargo:</span>
+                    <span class="text-title-content">Ciclo:</span>
                   </div>
                   <div class="col-sm-12">
-                    <span class="text-subtitle-content">{{ datos.rol }}</span>
+                    <span class="text-subtitle-content">{{ alumno.datos_academicos.ciclo }}</span>
                   </div>
                 </div>
               </div>
@@ -79,7 +79,7 @@
                     <span class="text-title-content">Correo Principal:</span>
                   </div>
                   <div class="col-sm-12">
-                    <span class="text-subtitle-content">{{ datos.correoPrincipal }}</span>
+                    <span class="text-subtitle-content">{{ alumno.usuario }}</span>
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@
                     <span class="text-title-content">Correo Alternativo:</span>
                   </div>
                   <div class="col-sm-12">
-                    <span class="text-subtitle-content">{{ datos.correoAlternativo }}</span>
+                    <span class="text-subtitle-content">{{ alumno.datos_personales.correo_personal }}</span>
                   </div>
                 </div>
               </div>
@@ -99,29 +99,12 @@
                 <span class="text-title-content">Celular:</span>
               </div>
               <div class="col-sm-12">
-                <span class="text-subtitle-content">{{ datos.celular }}</span>
+                <span class="text-subtitle-content">{{ alumno.datos_personales.celcular }}</span>
               </div>
             </div>
-          </div>
-          <div class="col-12 flex-button">
-            <button mat-flat-button (click)="openDialog()" class="button-style"><i class="icon-style fas fa-edit"></i>ACTUALIZAR</button>
           </div>
         </mat-card-content>
       </mat-card>
     </div>
   </div>
-  <mat-card class="sobre-mi-card">
-    <mat-card-header>
-      <mat-card-title><i class="fas fa-hashtag size-icon-title"></i>Sobre mí</mat-card-title>
-    </mat-card-header>
-    <div class="row">
-      <div class="col-12">
-        <div class="barrita">
-          <div class="col-sm-12">
-            <span class="text-subtitle-content text-type">{{ datos.auto_descripcion}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-card>
 </div>
