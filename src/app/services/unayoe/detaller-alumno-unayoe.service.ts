@@ -32,5 +32,4 @@ export class DetallerAlumnoUnayoeService {
           .append('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
     });
   }
-
 }

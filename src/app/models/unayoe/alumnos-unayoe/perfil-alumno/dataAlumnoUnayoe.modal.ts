@@ -20,13 +20,16 @@ export interface DataDataAlumnoUnayoeModal {
     edad: number;
     foto: string;
     telefono: string;
-    celcular: string;
+    celular: string;
     direccion: string;
     correo_personal;
+}
+export interface Correo {
+    correo_principal: string;
 }
 
 export interface DataAlumnoUnayoeModal {
     datos_personales: DataDataAlumnoUnayoeModal;
     datos_academicos: AcadémicosDataAlumnoUnayoeModal;
-    usuario: string;
+    usuario: Correo;
 }
