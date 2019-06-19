@@ -24,7 +24,7 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
     enviarMesAnho: EnviarMesAnhoRealizadoModel = {codigo: '', anho: '', mes: ''};
     date = new Date();
     arrayGetEPRealizadas: getEPRealizadasModel[];
-    displayedColumns: string[] = ['titulo', 'preguntas', 'acciones'];
+    displayedColumns: string[] = ['titulo', 'preguntas', 'fecharesuelta', 'horaresuelta', 'acciones'];
     banderaContenido = true;
 
     //Evaluaciones
@@ -66,47 +66,137 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
             });
     }
 
-    respuestaEPR(id_estado_perfil: number, id_cuest_eval:number) {
-        if(id_cuest_eval == 1){
-            this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
-                (res) => {
-                        this.EVALUACION_IHE = res['data'];
-                        Swal.fire({
-                            position: 'center',
-                            type: 'success',
-                            title: '¡Resultado Instantáneo!',
-                            html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.descripcion.titulo+"</strong>.<br/>"+
-                                "Es decir: "+this.EVALUACION_IHE.descripcion.contenido,
-                            animation: false,
-                            confirmButtonText: 'Cerrar',
-                        });
-                },
-                error => {
-                    console.log(error)
-                });
-        }
-        else if(id_cuest_eval == 2){
-            this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
-                (res) => {
-                    console.log(res);
-                    this.EVALUACION_BECK = res['data'];
-                    console.log(this.EVALUACION_BECK);
-                    Swal.fire({
-                        position: 'center',
-                        type: 'success',
-                        title: '¡Resultado Instantáneo!',
-                        html:'Usted '+this.EVALUACION_BECK.descripcion+".",
-                        animation: false,
-                        confirmButtonText: 'Cerrar',
-                    });
-                },
-                error => {
-                    console.log(error)
-                });
-        }else{
+    respuestaEPR(id_cuest_eval: number, descripcion: any) {
 
+        if (id_cuest_eval == 1) {
+            if (descripcion == 'NO REALIZÓ') {
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: '¡Resultado Instantáneo!',
+                    html: descripcion,
+                    animation: false,
+                    confirmButtonText: 'Cerrar',
+                });
+            } else {
+                // console.log(descripcion);
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: '¡Resultado Instantáneo!',
+                    html: 'Usted en sus Hábitos de Estudio tiene una categoría: <strong>' + descripcion.descripcion.titulo + '</strong>.<br/>' +
+                        'Por lo tanto: ' + descripcion.descripcion.contenido,
+                    animation: false,
+                    confirmButtonText: 'Cerrar',
+                });
+            }
+        } else if (id_cuest_eval == 2) {
+            // console.log(descripcion);
+            if (descripcion == 'NO REALIZÓ') {
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: '¡Resultado Instantáneo!',
+                    html: descripcion,
+                    animation: false,
+                    confirmButtonText: 'Cerrar',
+                });
+            } else {
+                // console.log(descripcion);
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: '¡Resultado Instantáneo!',
+                    html: descripcion.descripcion,
+                    animation: false,
+                    confirmButtonText: 'Cerrar',
+                });
+            }
         }
+
+        // if(id_cuest_eval == 1){
+        //     this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
+        //         (res) => {
+        //             this.EVALUACION_IHE = res['data'];
+        //             console.log(this.EVALUACION_IHE);
+        //             Swal.fire({
+        //                 position: 'center',
+        //                 type: 'success',
+        //                 title: '¡Resultado Instantáneo!',
+        //                 html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.descripcion.titulo+"</strong>.<br/>"+
+        //                     "Es decir: "+this.EVALUACION_IHE.descripcion.contenido,
+        //                 animation: false,
+        //                 confirmButtonText: 'Cerrar',
+        //             });
+        //         },
+        //         error => {
+        //             console.log(error)
+        //         });
+        // }
+        // else if(id_cuest_eval == 2){
+        //     this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
+        //         (res) => {
+        //             // console.log(res);
+        //             this.EVALUACION_BECK = res['data'];
+        //             // console.log(this.EVALUACION_BECK);
+        //             Swal.fire({
+        //                 position: 'center',
+        //                 type: 'success',
+        //                 title: '¡Resultado Instantáneo!',
+        //                 html:'Usted '+this.EVALUACION_BECK.descripcion+".",
+        //                 animation: false,
+        //                 confirmButtonText: 'Cerrar',
+        //             });
+        //         },
+        //         error => {
+        //             console.log(error)
+        //         });
+        // }else{
+        // }
     }
+
+    // respuestaEPR(id_estado_perfil: number, id_cuest_eval:number) {
+    //     if(id_cuest_eval == 1){
+    //         this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
+    //             (res) => {
+    //                     this.EVALUACION_IHE = res['data'];
+    //                     console.log(this.EVALUACION_IHE);
+    //                     Swal.fire({
+    //                         position: 'center',
+    //                         type: 'success',
+    //                         title: '¡Resultado Instantáneo!',
+    //                         html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.descripcion.titulo+"</strong>.<br/>"+
+    //                             "Es decir: "+this.EVALUACION_IHE.descripcion.contenido,
+    //                         animation: false,
+    //                         confirmButtonText: 'Cerrar',
+    //                     });
+    //             },
+    //             error => {
+    //                 console.log(error)
+    //             });
+    //     }
+    //     else if(id_cuest_eval == 2){
+    //         this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
+    //             (res) => {
+    //                 // console.log(res);
+    //                 this.EVALUACION_BECK = res['data'];
+    //                 // console.log(this.EVALUACION_BECK);
+    //                 Swal.fire({
+    //                     position: 'center',
+    //                     type: 'success',
+    //                     title: '¡Resultado Instantáneo!',
+    //                     html:'Usted '+this.EVALUACION_BECK.descripcion+".",
+    //                     animation: false,
+    //                     confirmButtonText: 'Cerrar',
+    //                 });
+    //             },
+    //             error => {
+    //                 console.log(error)
+    //             });
+    //     }else{
+    //
+    //     }
+    // }
 
     getDateFormat() {
         for (let i = 0; i < this.arrayGetEPRealizadas.length; i++) {

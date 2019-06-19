@@ -46,6 +46,7 @@ export class EvalPsiPendAlumnoComponent implements OnInit {
         this.epPendienteAlumnoService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
             (res: getEPPendientesModel) => {
                 this.arrayGetEPPendientes = res['data'];
+                console.log(this.arrayGetEPPendientes);
                 this.getDateFormat();
                 if(this.arrayGetEPPendientes.length<1){
                     this.banderaContenido = false;

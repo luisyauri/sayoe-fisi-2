@@ -50,12 +50,26 @@
                   <td class="table-td table-th-td-preguntas-style" mat-cell
                       *matCellDef="let element">{{element.nro_preguntas}}</td>
                 </ng-container>
+                <ng-container matColumnDef="fecharesuelta">
+                  <th class="table-th table-th-td-preguntas-style" mat-header-cell *matHeaderCellDef>
+                    Fecha Resuelta
+                  </th>
+                  <td class="table-td table-th-td-preguntas-style" mat-cell
+                      *matCellDef="let element">{{element.fecha_resuelto.fecha}}</td>
+                </ng-container>
+                <ng-container matColumnDef="horaresuelta">
+                  <th class="table-th table-th-td-preguntas-style" mat-header-cell *matHeaderCellDef>
+                    Hora Resuelta
+                  </th>
+                  <td class="table-td table-th-td-preguntas-style" mat-cell
+                      *matCellDef="let element">{{element.fecha_resuelto.hora}}</td>
+                </ng-container>
                 <ng-container matColumnDef="acciones">
                   <th class="table-th table-th-td-accion-style" mat-header-cell *matHeaderCellDef>
                     Acción
                   </th>
                   <td class="table-td table-th-td-accion-style" mat-cell *matCellDef="let element">
-                    <button mat-flat-button class="table-detalles-icon" (click)="respuestaEPR(element.id_estado_perfil, element.id_cuest_eval)">
+                    <button mat-flat-button class="table-detalles-icon" (click)="respuestaEPR(element.id_cuest_eval, element.descripcion)">
                       <i class="fas fa-eye"></i></button>
                   </td>
                 </ng-container>
