@@ -1,36 +1,43 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import Swal from 'sweetalert2';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {SendDatosDialogUnayoe} from '../../../../models/unayoe/evaluaciones-psicologicas-unayoe/evalPsicoUnayoe.model';
-import {PerfPendPsiUnayoeService} from '../../../../services/unayoe/perf-pend-psi-unayoe.service';
+import {SenDataDetallePPUnayoe} from '../../../models/unayoe/detalle-perf-psi-unayoe/senDataDetallePPUnayoe';
 import {
-    BECKEPPModel,
-    IHEDADEPPModel,
-    IHEDEPPModel,
-    IHEEPPModel,
-    PPModel
-} from '../../../../models/unayoe/perfi-psi-pend-unayoe/perfilPsicologico.model';
-import {fakeAsync} from '@angular/core/testing';
-import {SendRecomPPUnayoeModel} from '../../../../models/unayoe/perfi-psi-pend-unayoe/sendRecomPPUnayoe.model';
+    BECKDDPPUnayoeModel, DescriIHEDPPUnayoeModel, DesDescriIHEDPPUnayoeModel,
+    DetallePPUnayoeModel,
+    IHEDPPUnayoeModel
+} from '../../../models/unayoe/detalle-perf-psi-unayoe/detallePPUnayoe.model';
+import {DetallePerfPsiUnayoeService} from '../../../services/unayoe/detalle-perf-psi-unayoe.service';
+import Swal from "sweetalert2";
+import {SendRecomPPUnayoeModel} from '../../../models/unayoe/perfi-psi-pend-unayoe/sendRecomPPUnayoe.model';
+import {
+    DataSendRecomDetallePPUnayoeModel,
+    SendRecomDetallePPUnayoeModel
+} from '../../../models/unayoe/detalle-perf-psi-unayoe/sendRecomDetallePPUnayoe.model';
 
 @Component({
-    selector: 'app-perfi-psi-pend-unayoe-dialog',
-    templateUrl: './perfi-psi-pend-unayoe-dialog.component.html',
-    styleUrls: ['./perfi-psi-pend-unayoe-dialog.component.css']
+    selector: 'app-detalle-pefi-psi-unayoe',
+    templateUrl: './detalle-pefi-psi-unayoe.component.html',
+    styleUrls: ['./detalle-pefi-psi-unayoe.component.css']
 })
-export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
+export class DetallePefiPsiUnayoeComponent implements OnInit {
 
     //Variables
-    perfilPsicologico: PPModel;
-    evaluacionBeck: BECKEPPModel;
-    evaluacionIHE: IHEEPPModel;
-    //banderaCuestionarios
-    banderaIHE = false;
+    detallePerfilPsicologico: DetallePPUnayoeModel;
+    recomendacion= '';
+    dataRecomendacion: SendRecomDetallePPUnayoeModel = {data:{id_perfil_psico: -1,recomendacion:''}};
+    //Evaluaciones
+    evaluacionBeck: BECKDDPPUnayoeModel;
+    evaluacionIHE: IHEDPPUnayoeModel;
+    //BanderaVistaEvaluación
     banderaBeck = false;
+    banderaIHE = false;
 
-    // arrayTest = [3,2,4,5,1,0];
-    arrayIHE = [0, 2, 4, 6, 8, 10];
+    //BanderaDescripciónEvaluación
+    banderaDescripcionBanderaBeck = false;
+    banderaDescripcionBanderaIHE = false;
+
     //Variables Chart Inventario de Habitos de Estudio.
+    arrayIHE = [0, 2, 4, 6, 8, 10];
     titleIHE = 'Inventario de Habitos de Estudio';
     typeIHE = 'ComboChart';
     columnNamesIHE = ['Área', 'Puntaje', {type: 'string', role: 'tooltip'}, 'Total', {type: 'string', role: 'tooltip'}];
@@ -56,47 +63,59 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
 
     dataIHE = [];
     // Fin Chart Inventario de Habitos de Estudio
-    // recomendacion = '';
-    dataRecomendacion: SendRecomPPUnayoeModel = {data:{id_perfil_psico: -1,recomendacion:''}};
 
-
-    constructor(public dialogConfig: MatDialogRef<PerfiPsiPendUnayoeDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data,
-                private perfPendPsiUnayoeService: PerfPendPsiUnayoeService) {
+    constructor(public dialogConfig: MatDialogRef<DetallePefiPsiUnayoeComponent>,
+                @Inject(MAT_DIALOG_DATA) public data : SenDataDetallePPUnayoe,
+                private detallePerfPsiUnayoeService:DetallePerfPsiUnayoeService,
+    ) {
     }
 
     ngOnInit() {
-        this.getDataDialogPerPisco();
+        this.getDetalleDataPerfilPsicologico();
+        // console.log(this.data.id_perfil_psico);
     }
-
-    getDataDialogPerPisco() {
-        this.perfPendPsiUnayoeService.getDataDialogPendPisco(this.data.id_perfil_psico.toString()).subscribe(
-            (res: PPModel) => {
-                this.perfilPsicologico = res['data'];
-                console.log( this.perfilPsicologico);
+    getDetalleDataPerfilPsicologico(){
+        this.detallePerfPsiUnayoeService.getDetallePerfilPsicologico(this.data.id_perfil_psico).subscribe(
+            res => {
+                // console.log(res);
+                this.detallePerfilPsicologico = res['data'];
+                console.log(this.detallePerfilPsicologico);
                 this.obtenerDatosCadaEP();
-                // console.log(this.perfilPsicologico);
-            }, error1 => {
-                error1;
-            }
+            },
+            error => {
+                console.log(error);
+            },
         );
     }
-
-    obtenerDatosCadaEP() {
-        for (let evaluaciones of this.perfilPsicologico.evaluaciones) {
+    obtenerDatosCadaEP(){
+        for (let evaluaciones of this.detallePerfilPsicologico.evaluaciones) {
             if (evaluaciones.id_cuest_eval == 1) {
                 this.banderaIHE = true;
                 // @ts-ignore
                 this.evaluacionIHE = evaluaciones;
-                this.generateArrayAndGraficoIHE();
-                // console.log(this.evaluacionIHE.descripcion);
+                // @ts-ignore
+                if(this.evaluacionIHE.descripcion == 'NO REALIZÓ'){
+                    this.banderaDescripcionBanderaIHE = false;
+                }else{
+                    this.banderaDescripcionBanderaIHE = true;
+                    if(this.evaluacionIHE.estado == 1){
+                        this.generateArrayAndGraficoIHE();
+                    }
+                }
+
+                // this.generateArrayAndGraficoIHE();
+                // // console.log(this.evaluacionIHE.descripcion);
             }
             if (evaluaciones.id_cuest_eval == 2) {
                 this.banderaBeck = true;
-                // console.log(evaluaciones);
                 // @ts-ignore
                 this.evaluacionBeck = evaluaciones;
-
+                // @ts-ignore
+                if(this.evaluacionBeck.descripcion == 'NO REALIZÓ'){
+                    this.banderaDescripcionBanderaBeck = false;
+                }else{
+                    this.banderaDescripcionBanderaBeck = true;
+                }
             }
         }
     }
@@ -105,8 +124,6 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         let i = 1;
         console.log(this.evaluacionIHE.descripcion);
         for (let area of this.evaluacionIHE.descripcion) {
-            // console.log(area.valor);
-            // console.log(area.descripcion.id);
             for (let valueIHE of this.arrayIHE) {
                 if (area.descripcion.id == valueIHE / 2) {
                     if (i != this.evaluacionIHE.descripcion.length) {
@@ -121,23 +138,28 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         }
         i = 0;
     }
-
-    // startChartIHE(,){
-    //     let i = 1;
-    //     for(let valueTest of this.arrayTest){
-    //         for(let valueIHE of this.arrayIHE){
-    //             if(valueTest == valueIHE/2){
-    //                 if(i!=this.arrayTest.length){
-    //                     this.dataIHE.push(['Área '+ this.romanize(i), valueIHE,'10',valueIHE,'10'],);
-    //                 }else{
-    //                     this.dataIHE.push(['Total', valueIHE,'10',valueIHE,'10'],);
-    //                 }
-    //                 i++;
-    //             }
-    //         }
-    //     }
-    // }
-
+    devolverSexo(sexo: string) {
+        let sSexo;
+        if (sexo == 'M') {
+            sSexo = 'MASCULINO';
+        } else if (sexo == 'F') {
+            sSexo = 'FEMENINO';
+        } else {
+            sSexo = 'NO DEFINIDO';
+        }
+        return sSexo;
+    }
+    devolverSituacion(situacion: string) {
+        let sSituacion;
+        if (situacion == 'R') {
+            sSituacion = 'REGULAR';
+        } else if (situacion == 'O') {
+            sSituacion = 'OBSERVADO';
+        } else {
+            sSituacion = 'NO DEFINIDO';
+        }
+        return sSituacion;
+    }
     romanize(num) {
         if (isNaN(num)) {
             return NaN;
@@ -153,26 +175,7 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         }
         return Array(+digits.join('') + 1).join('M') + roman;
     }
-
-
-    close() {
-        Swal.fire({
-            title: '¿Estás seguro de salir?',
-            type: 'warning',
-            showCancelButton: true,
-            showConfirmButton: true,
-            confirmButtonColor: '#5867dd',
-            cancelButtonColor: '#fd397a',
-            confirmButtonText: 'Sí, salir!',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.value) {
-                this.dialogConfig.close();
-            }
-        });
-    }
-
-    devolverTitulo(descripcion: IHEDADEPPModel) {
+    devolverTitulo(descripcion: DesDescriIHEDPPUnayoeModel) {
         let titulo;
         if (descripcion.id == 0) {
             titulo = descripcion.titulo;
@@ -191,8 +194,7 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         }
         return titulo;
     }
-
-    devolverContenido(descripcion: IHEDADEPPModel) {
+    devolverContenido(descripcion: DesDescriIHEDPPUnayoeModel) {
         let content;
         if (descripcion.id == 0) {
             content = descripcion.contenido;
@@ -211,31 +213,6 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         }
         return content;
     }
-
-    devolverSexo(sexo: number) {
-        let sSexo;
-        if (sexo == 0) {
-            sSexo = 'Hombre';
-        } else if (sexo == 1) {
-            sSexo = 'Mujer';
-        } else {
-            sSexo = 'No definido';
-        }
-        return sSexo;
-    }
-
-    devolverSituacion(situacion: string) {
-        let sSituacion;
-        if (situacion == 'R') {
-            sSituacion = 'Regular';
-        } else if (situacion == 'O') {
-            sSituacion = 'Observador';
-        } else {
-            sSituacion = 'No definido';
-        }
-        return sSituacion;
-    }
-
     obtenerTituloArea(indice: number) {
         let nombreArea;
         if (indice == 1) {
@@ -254,9 +231,26 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         return nombreArea;
     }
 
+    close() {
+        Swal.fire({
+            title: '¿Estás seguro de salir?',
+            type: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: '#5867dd',
+            cancelButtonColor: '#fd397a',
+            confirmButtonText: 'Sí, salir!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+                this.dialogConfig.close();
+            }
+        });
+    }
+
     enviarRecomendacion(id_perfil_psico: number) {
-        if(this.data.bandera == 0){
-            if (this.perfilPsicologico.perfil.recomendacion.length != 0) {
+        if(this.data.bandera == 1){
+            if (this.recomendacion.length != 0) {
                 Swal.fire({
                     title: '¿Estás seguro de enviar la recomendación?',
                     type: 'warning',
@@ -268,10 +262,10 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
                     if (result.value) {
-                        this.dataRecomendacion.data.recomendacion = this.perfilPsicologico.perfil.recomendacion;
+                        this.dataRecomendacion.data.recomendacion = this.recomendacion;
                         this.dataRecomendacion.data.id_perfil_psico = id_perfil_psico;
                         console.log(this.dataRecomendacion);
-                        this.perfPendPsiUnayoeService.sendRecomendacionDialogPendPisco(this.dataRecomendacion).subscribe(
+                        this.detallePerfPsiUnayoeService.sendRecomendacionDialogPendPisco(this.dataRecomendacion).subscribe(
                             res => {
                                 Swal.fire({
                                     position: 'center',
@@ -307,5 +301,4 @@ export class PerfiPsiPendUnayoeDialogComponent implements OnInit {
         }
 
     }
-
 }

@@ -219,7 +219,9 @@ donde mostrará el perfil de un alumno.
 ``` 
 
 
-
+OBSERVAR BANDERA 0
+ESCRIBIR BANDERA 1
+RECOMENDACIÓN
 
 ## Botones Colores
 

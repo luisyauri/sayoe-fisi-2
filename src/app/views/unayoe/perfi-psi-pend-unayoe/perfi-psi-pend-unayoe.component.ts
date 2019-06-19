@@ -9,6 +9,7 @@ import {PerfPendPsiUnayoeService} from '../../../services/unayoe/perf-pend-psi-u
 import {SendAnhoMesPPUnayoeModel} from '../../../models/unayoe/perfi-psi-pend-unayoe/sendAnhoMesPPUnayoe.model';
 import {GetListPPUnayoeModel, PerfilesListPPUnayoeModel} from '../../../models/unayoe/perfi-psi-pend-unayoe/getListPPUnayoe.model';
 import {PsicologoNuevo} from '../../../models/psicologoNuevo';
+import {DetallePefiPsiUnayoeComponent} from '../detalle-pefi-psi-unayoe/detalle-pefi-psi-unayoe.component';
 
 @Component({
     selector: 'app-perfi-psi-pend-unayoe',
@@ -56,10 +57,9 @@ export class PerfiPsiPendUnayoeComponent implements OnInit {
         this.enviarMesAnho.mes = (this.date.getMonth() + 1).toString();
     }
     getListPerfPendPsi() {
-        console.log(this.enviarMesAnho);
+        // console.log(this.enviarMesAnho);
         this.perfPendPsiUnayoeService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
             (res: GetListPPUnayoeModel) => {
-                console.log(res);
                 this.arrayGetListPPUnayoe = res['data'];
                 this.getListPPUnayoe = this.arrayGetListPPUnayoe[0];
                 this.getArrayPerfilesUnayoe = this.getListPPUnayoe.perfiles;
@@ -80,14 +80,14 @@ export class PerfiPsiPendUnayoeComponent implements OnInit {
 
     openDialogPerfil(id_perfil_psico: number) {
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
+        dialogConfig.disableClose = false;
         // dialogConfig.width = '50%';
         dialogConfig.data = {
             id_perfil_psico: id_perfil_psico,
-            bandera: 0,
+            bandera: 1,
         };
         dialogConfig.maxHeight = '100%';
-        this.dialog.open(PerfiPsiPendUnayoeDialogComponent, dialogConfig);
+        this.dialog.open(DetallePefiPsiUnayoeComponent, dialogConfig);
         this.dialog.afterAllClosed.subscribe(value => {
             this.getListTotal();
         });

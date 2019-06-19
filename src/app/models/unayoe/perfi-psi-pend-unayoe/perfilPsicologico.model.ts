@@ -37,14 +37,17 @@ export interface AlumnoPPModel {
 export interface ESPPModel {
     id_cuest_eval: number;
 }
+export interface PerfilPPModel {
+    id_perfil_psico: number;
+    recomendacion: string;
+    semestre: number;
+    anho: number;
+}
 
 export interface PPModel {
     alumno: AlumnoPPModel;
     evaluaciones: ESPPModel[];
-    id_perfil_psico: string;
-    recomendacion: string;
-    semestre: string;
-    anho: string;
+    perfil: PerfilPPModel;
 }
 
 // EPP Evaluacion de Perfil Psicológico

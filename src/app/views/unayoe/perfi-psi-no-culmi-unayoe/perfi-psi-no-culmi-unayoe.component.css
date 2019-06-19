@@ -79,8 +79,7 @@ mat-grid-tile {
     /*text-align: center;*/
 }
 .table-detalles-icon {
-    color: #ffffff;
-    background-color: #0abb87;
+    margin: 5px;
 }
 .mat-span-style{
     margin-top: 5px;
@@ -149,6 +148,16 @@ mat-grid-tile {
 .icon-instrucciones-ep{
     color: #ffffff;
     background-color: #0abb87;
+    margin: 10px 5px;
+}
+.icon-mensajes-ep{
+     color: #ffffff;
+     background-color: #ffb822;
+     margin: 10px 5px;
+ }
+.icon-eliminar-ep{
+    color: #ffffff;
+    background-color: #fd397a;
     margin: 10px 5px;
 }
 .icon-no-culminados-ep{

@@ -10,7 +10,7 @@ export class PerfRealiPsiUnayoeService {
   // Variables
   headers = new HttpHeaders();
   // URL
-  API_LIST_PERF_REAL_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/perfiles/realizados';
+  API_LIST_PERF_REAL_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/recomendaciones';
 
   // Constructor
   constructor(private http: HttpClient){ }

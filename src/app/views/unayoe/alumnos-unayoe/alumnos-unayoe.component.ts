@@ -11,6 +11,7 @@ import {EvalPsiUnayoeDialogComponent} from '../eval-psi-unayoe/eval-psi-unayoe-d
 import Swal from "sweetalert2";
 import {AgregarAlumnoUnayoeComponent} from './agregar-alumno-unayoe/agregar-alumno-unayoe.component';
 import {Router} from '@angular/router';
+import {DataAlumnoService} from '../../../services/intercambio/data-alumno.service';
 
 @Component({
     selector: 'app-alumnos-unayoe',
@@ -37,6 +38,7 @@ export class AlumnosUnayoeComponent implements OnInit {
     constructor(public dialog: MatDialog,
                 private alumnosUnayoeService:AlumnosUnayoeService,
                 private router: Router,
+                private dataAlumnoService :DataAlumnoService,
     ) { }
 
     ngOnInit() {
@@ -62,7 +64,8 @@ export class AlumnosUnayoeComponent implements OnInit {
             }
         );
     }
-    openDialogPerfil(){
+    openDialogPerfil(codigo: string){
+        this.dataAlumnoService.setCodigo(codigo);
         this.router.navigate(['unayoe/perfil-alumno']);
     }
     applyFilter(filterValue: string) {
@@ -93,5 +96,10 @@ export class AlumnosUnayoeComponent implements OnInit {
                 timer: 1500
             });
         }
+    }
+
+    abrirDetalleAlumno(codigo: string) {
+            this.dataAlumnoService.setCodigo(codigo);
+            this.router.navigate(['unayoe/perfil-alumno']);
     }
 }

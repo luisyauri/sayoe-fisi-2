@@ -1,0 +1,131 @@
+.title-style{
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    background: #5d78ff;
+    height: 80px;
+    align-items: center;
+    text-transform: uppercase;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+}
+.text-title-style{
+    margin: 3px;
+    text-align: center;
+}
+.ps-bar-title{
+    color: #6c7293;
+    display: flex;
+    justify-content: space-between;
+    background: #f7f8fa;
+    height: 50px;
+    align-items: center;
+    text-transform: uppercase;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    margin-top: 5px;
+    border-left : 2.5pt solid  #e2e5ec;
+}
+.ps-date-title{
+    color: #282a3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*text-transform: uppercase;*/
+    margin-right: 10px;
+}
+.ps-date-subtitle{
+    margin: 15px;
+    color: #6c7293;
+    font-weight: bold;
+}
+.blockText{
+    border-left : 2.5pt solid  #5d78ff;
+    margin-top: 10px;
+}
+.blockText__text{
+    color: #6c7293;
+    margin-left: 10px;
+}
+.extend{
+    margin-top: 10px;
+    width: 100%;
+}
+.flex-button{
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+}
+.send-button{
+    background: #0abb87;
+    color: #ffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.close-button{
+    /*background: #23272b;*/
+    color: #282a3c;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.text-area {
+    font-size: 14px;
+}
+
+.mat-span-style{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.spinner-style-item{
+    padding: 5px;
+}
+.beck{
+    margin: 10px;
+}
+.beck--title{
+    font-weight: bold;
+    font-size: 14px;
+    color: #464457;
+}
+.beck--content{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    color: #6c7293;
+}
+.ihe{
+    margin: 10px;
+}
+.ihe--title{
+    font-weight: bold;
+    font-size: 14px;
+    color: #464457;
+}
+.ihe--content{
+    margin: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    color: #6c7293;
+}
+.block__resultihe--content{
+    text-transform: none;
+    font-weight: normal;
+    text-align: justify;
+    margin: 5px 15px 10px 15px;
+}
+.block__resultihe--content--bold{
+    color: #fd397a;
+}
+.block__chart{
+    display: flex;
+    justify-content: center;
+}

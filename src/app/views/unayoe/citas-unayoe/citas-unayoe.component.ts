@@ -48,7 +48,7 @@ export class CitasUnayoeComponent implements OnInit {
         this.citasUnayoeService.getListaCitas().subscribe(
             (res: ListCitasModel) => {
                 this.arrayListCitas = res['data'];
-                console.log(this.arrayListCitas);
+                // console.log(this.arrayListCitas);
                 this.dataSource = new MatTableDataSource(this.arrayListCitas);
                 if (this.arrayListCitas.length == 0) {
                     this.banderaContenido = false;

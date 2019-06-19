@@ -1,7 +1,7 @@
 <div *ngIf="perfilPsicologico; else cargando">
     <div mat-dialog-title class="title-style">
-        <span class="text-title-style">Perfil Psicológico Semestre {{perfilPsicologico.anho}}
-            -{{perfilPsicologico.semestre}}</span>
+        <span class="text-title-style">Perfil Psicológico Semestre {{perfilPsicologico.perfil.anho}}
+            -{{perfilPsicologico.perfil.semestre}}</span>
     </div>
     <div mat-dialog-content>
         <div class="row">
@@ -175,12 +175,12 @@
             <div class="col-sm-12">
                 <div *ngIf="data.bandera ==  0">
                 <mat-form-field class="extend">
-                        <textarea class="text-area" [(ngModel)]="perfilPsicologico.recomendacion" matInput placeholder="Ingrese su recomendación"></textarea>
+                        <textarea class="text-area" [(ngModel)]="perfilPsicologico.perfil.recomendacion" matInput placeholder="Ingrese su recomendación"></textarea>
                 </mat-form-field>
                 </div>
                 <div *ngIf="data.bandera ==  1">
                     <div>
-                        {{perfilPsicologico.recomendacion}}
+                        {{perfilPsicologico.perfil.recomendacion}}
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                 <div class="row flex-button">
                     <button mat-flat-button class="close-button" (click)="close()">Cancelar</button>
                     <div *ngIf="data.bandera ==  0">
-                        <button mat-flat-button class="send-button" (click)="enviarRecomendacion(perfilPsicologico.id_perfil_psico)">Enviar</button>
+                        <button mat-flat-button class="send-button" (click)="enviarRecomendacion(perfilPsicologico.perfil.id_perfil_psico)">Enviar</button>
                     </div>
                 </div>
             </div>

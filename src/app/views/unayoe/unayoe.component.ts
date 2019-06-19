@@ -22,7 +22,7 @@ export class UnayoeComponent implements OnDestroy, OnInit {
         {title: 'Recomendaciones', icon: 'fas fa-file-contract', route: 'perfiles-psicologicos-realizados'},
         {title: 'Alumnos', icon: 'fas fa-users', route: 'alumnos'},
         {title: 'Citas', icon: 'fas fa-calendar-alt', route: 'citas'},
-        {title: 'Estadisticas', icon: 'fas fa-chart-bar', route: 'estadisticas'},
+        // {title: 'Estadisticas', icon: 'fas fa-chart-bar', route: 'estadisticas'},
     ];
     unayoe = {nombre:'',foto:''};
 

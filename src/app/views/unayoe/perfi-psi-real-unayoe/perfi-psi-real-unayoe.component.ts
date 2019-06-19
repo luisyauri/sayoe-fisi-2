@@ -8,6 +8,7 @@ import {PerfPendPsiUnayoeService} from '../../../services/unayoe/perf-pend-psi-u
 import {SenAnhoMesPRUnayoeModel} from '../../../models/unayoe/peri-psi-real-unayoe/senAnhoMesPRUnayoe';
 import {GetListPRUnayoeModel, PerfilesListPRUnayoeModel} from '../../../models/unayoe/peri-psi-real-unayoe/getListPRUnayoe.model';
 import {PerfRealiPsiUnayoeService} from '../../../services/unayoe/perf-reali-psi-unayoe.service';
+import {DetallePefiPsiUnayoeComponent} from '../detalle-pefi-psi-unayoe/detalle-pefi-psi-unayoe.component';
 
 @Component({
   selector: 'app-perfi-psi-real-unayoe',
@@ -17,7 +18,7 @@ import {PerfRealiPsiUnayoeService} from '../../../services/unayoe/perf-reali-psi
 export class PerfiPsiRealUnayoeComponent implements OnInit {
 
   //Variables
-  displayedColumns: string[] = ['codigo', 'apellidosNombres', 'escuela', 'situacion', 'fecharealizada', 'acciones'];
+  displayedColumns: string[] = ['codigo', 'apellidosNombres', 'escuela', 'situacion', 'fechaRecomendada', 'hora','acciones'];
   banderaContenido = false;
   enviarMesAnho: SenAnhoMesPRUnayoeModel = {anho: '', mes: ''};
   date = new Date();
@@ -61,11 +62,11 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
     this.perfRealiPsiUnayoeService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
         (res: GetListPRUnayoeModel) => {
           this.arrayGetListPRUnayoe = res['data'];
-          console.log(res);
+          // console.log(res);
           this.getListPRUnayoe = this.arrayGetListPRUnayoe[0];
           this.getArrayPerfilesUnayoe = this.getListPRUnayoe.perfiles;
           this.dataSource = new MatTableDataSource(this.getArrayPerfilesUnayoe);
-          this.getDateFormat();
+          // this.getDateFormat();
           if(this.getListPRUnayoe.perfiles.length==0){
             this.banderaContenido= false;
           }else{
@@ -80,15 +81,17 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
 
   openDialogPerfil(id_perfil_psico: number) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     // dialogConfig.width = '50%';
     dialogConfig.data = {
       id_perfil_psico: id_perfil_psico,
-      bandera: 1,
+      bandera: 0,
     };
     dialogConfig.maxHeight = '100%';
-    this.dialog.open(PerfiPsiPendUnayoeDialogComponent, dialogConfig);
-    this.getListTotal();
+    this.dialog.open(DetallePefiPsiUnayoeComponent, dialogConfig);
+    this.dialog.afterAllClosed.subscribe(value => {
+      this.getListTotal();
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -96,12 +99,25 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
     console.log(this.dataSource.filter);
   }
 
-  getDateFormat(){
-    for(let i=0;i<this.getArrayPerfilesUnayoe.length;i++){
-      const fechaVenci = this.getArrayPerfilesUnayoe[i].fecha_resuelto;
-      const dateMostrarFormat = fechaVenci.slice(8,10)+'-'+fechaVenci.slice(5,7)+'-'+fechaVenci.slice(0,4);
-      this.getArrayPerfilesUnayoe[i].fecha_resuelto = dateMostrarFormat;
+  convertirFecha(fecha: string) {
+    return fecha.slice(8, 10) + '-' + fecha.slice(5, 7) + '-' + fecha.slice(0, 4);
+  }
+  convertirSituacion(situacion: string) {
+    if (situacion == 'R') {
+      return 'REGULAR';
+    } else if (situacion == 'O') {
+      return 'OBSERVADO';
+    } else {
+      return 'ERROR';
     }
   }
+
+  // getDateFormat(){
+  //   for(let i=0;i<this.getArrayPerfilesUnayoe.length;i++){
+  //     const fechaVenci = this.getArrayPerfilesUnayoe[i].fecha_resuelto;
+  //     const dateMostrarFormat = fechaVenci.slice(8,10)+'-'+fechaVenci.slice(5,7)+'-'+fechaVenci.slice(0,4);
+  //     this.getArrayPerfilesUnayoe[i].fecha_resuelto = dateMostrarFormat;
+  //   }
+  // }
 
 }
