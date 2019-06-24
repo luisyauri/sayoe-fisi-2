@@ -8,6 +8,8 @@ import {DataAlumnoService} from '../../../services/intercambio/data-alumno.servi
 import {Router} from '@angular/router';
 import {PerfilPsicoAlumnoService} from '../../../services/alumno/perfil-psico-alumno.service';
 import {AlumnoService} from '../../../services/alumno/alumno.service';
+import {PerfilAlumnoService} from '../../../services/alumno/perfil-alumno.service';
+import {DatosAlumnoModel} from '../../../models/alumno/perfil-alumno/datosAlumno.model';
 
 @Component({
   selector: 'app-mi-perfil-alumno',
@@ -17,41 +19,24 @@ import {AlumnoService} from '../../../services/alumno/alumno.service';
 export class MiPerfilAlumnoComponent implements OnInit {
 
   codigo = '';
-  getListPPAlumno: ListEPModel[];
-  displayedColumns: string[] = ['anho', 'fecharecomendacion', 'fecharesuelto','acciones'];
-  banderaContenido = false;
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-    this.paginator = mp;
-    this.dataSource.paginator = this.paginator;
-  }
+  alumno : DatosAlumnoModel;
 
   constructor(
-      public dialog: MatDialog,
-      private perfilPsicoAlumnoService: PerfilPsicoAlumnoService,
+      private perfilAlumnoService: PerfilAlumnoService,
       private alumnoService: AlumnoService,
       private router: Router,
   ) { }
 
   ngOnInit() {
     this.codigo = this.alumnoService.getIdAlumno();
-    this.getPerfilesAlumno(this.codigo);
+    this.getPerfilAlumno(this.codigo);
   }
 
-  getPerfilesAlumno(codigo: string) {
-    this.perfilPsicoAlumnoService.getListPerfilAlumno(codigo).subscribe(
+  getPerfilAlumno(codigo: string) {
+    this.perfilAlumnoService.getPerfilAlumno(codigo).subscribe(
         res => {
-          this.getListPPAlumno = res['data'];
-          this.dataSource = new MatTableDataSource(this.getListPPAlumno);
-          // this.getDateFormat();
-          if(this.getListPPAlumno.length==0){
-            this.banderaContenido= false;
-          }else{
-            this.banderaContenido= true;
-          }
+          this.alumno = res['data'];
+          console.log(this.alumno);
         },
         error => {
           console.log(error);

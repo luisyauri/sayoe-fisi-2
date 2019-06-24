@@ -3,3 +3,108 @@
     <mat-card-title><i class="fas fa-user-circle size-icon-title"></i>Mi Perfil</mat-card-title>
   </mat-card-header>
 </mat-card>
+<div *ngIf="alumno">
+  <div class="row">
+    <div class="col-sm-7 col-lg-4">
+      <mat-card class="body-card">
+        <mat-card-content>
+          <div class="col-12 flex-avatar-style">
+            <img class="image-size" src="https://randomuser.me/api/portraits/men/44.jpg" alt="">
+          </div>
+          <div class="col-12 flex-items-style">
+            <button mat-flat-button class="m-2 facebook-btn">
+              <i class="fab fa-facebook-f icon-facebook-btn"></i></button>
+            <button mat-flat-button class="m-2 wsp-btn">
+              <i class="fab fa-whatsapp icon-wsp-btn"></i>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-sm-5 col-lg-8">
+      <mat-card class="body-card">
+        <mat-card-content>
+          <mat-card-header>
+            <mat-card-title><i class="far fa-smile size-icon-title style-title"></i>DATOS GENERALES</mat-card-title>
+          </mat-card-header>
+          <div class="col-12 ">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Nombres y Apellidos:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ alumno.datos_personales.nombre + " " + alumno.datos_personales.apellido_paterno + " " + alumno.datos_personales.apellido_materno }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Escuela:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ alumno.datos_academicos.escuela_profesional }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Facultad:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ alumno.datos_academicos.facultad }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Ciclo:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ alumno.datos_academicos.ciclo }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Correo Principal:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ alumno.usuario.correo_principal }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="barrita">
+                  <div class="col-sm-12">
+                    <span class="text-title-content">Correo Alternativo:</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <span class="text-subtitle-content">{{ alumno.datos_personales.correo_personal }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="barrita">
+              <div class="col-sm-12">
+                <span class="text-title-content">Celular:</span>
+              </div>
+              <div class="col-sm-12">
+                <span class="text-subtitle-content">{{ alumno.datos_personales.celular }}</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

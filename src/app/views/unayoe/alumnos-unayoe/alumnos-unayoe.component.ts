@@ -26,7 +26,7 @@ export class AlumnosUnayoeComponent implements OnInit {
     banderaContenido= true;
     arrayListAlumnos: ListAlumnosUnayoeModel[];
     dataSource = new MatTableDataSource();
-    selected = '';
+    selected = '2';
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {

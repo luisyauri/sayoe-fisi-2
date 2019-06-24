@@ -21,7 +21,7 @@ export class EvalPsiUnayoeComponent implements OnInit {
     datos: EvalPsicoUnayoe;
     banderaSpinner = true;
     displayedColumns: string[] = ['titulo', 'autor', 'preguntas', 'detalles'];
-    selected = '';
+    selected = '2';
 
 
     // Constructor

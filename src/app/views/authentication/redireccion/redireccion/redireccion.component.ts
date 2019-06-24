@@ -24,7 +24,7 @@ export class RedireccionComponent implements OnInit {
             const decodToken = jwt_decode(localStorage.getItem('access_token'));
             const idRol = decodToken.rol.id;
             if (idRol === this.rolUnayoe) {
-                this.router.navigate(['unayoe/inicio']);
+                this.router.navigate(['unayoe/evaluaciones-psicologicas']);
                 Swal.fire({
                     position: 'center',
                     title: 'Bienvenido :) !',

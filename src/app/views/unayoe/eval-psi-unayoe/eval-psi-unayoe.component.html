@@ -7,18 +7,21 @@
   <mat-card-content>
     <div class="">
       <div class="row">
-        <div class="col-sm-8 col-lg-10">
-          <div>
-            <mat-form-field class="select-g-a">
-              <mat-label>Seleccione Grupo / Alumno</mat-label>
-              <mat-select [(value)]="selected">
-                <mat-option value="1">Grupo</mat-option>
-                <mat-option value="2">Alumno</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="col-sm-4 col-lg-2">
+       <div class="col-sm-12">
+         <div class="bg-instrucciones-ep">
+           <div class="row">
+             <div class="col-sm-12 box-ep">
+               <div class="box-text-ep">
+                 <i class="fas fa-exclamation-triangle icon-excla-ep"></i>
+                 <span class="text-instrucciones-ep">Presione el botón </span>
+                 <button mat-flat-button  class="div-btn-aaa" >Asignar</button>
+                 <span class="text-instrucciones-ep">, para asignar una o varias Evaluaciones Piscológicas a un alumno o varios.</span>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+        <div class="col-sm-12">
           <div>
             <button mat-flat-button  class="div-btn-expa" (click)="openDialog()">Asignar</button>
           </div>

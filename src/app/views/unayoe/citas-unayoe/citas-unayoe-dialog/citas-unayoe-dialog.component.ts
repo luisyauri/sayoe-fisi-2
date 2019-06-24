@@ -41,24 +41,36 @@ export class CitasUnayoeDialogComponent implements OnInit {
 
   asigCitar(){
     this.formatAsignarCita();
-    console.log(this.asignarCita);
-    this.citasUnayoeService.asignarCita(this.asignarCita).subscribe(
-        res => {
-          console.log(res);
-          Swal.fire({
-            position: 'center',
-            type: 'success',
-            title: 'Cita agregado correctamente.',
-            showConfirmButton: false,
-            confirmButtonColor: '#5867dd',
-            timer: 1500
-          });
-          this.dialogConfig.close();
-        },
-        error => {
-          console.log(error);
-        }
-    );
+    if(this.asignarCita.data.codigo.length>0 && this.asignarCita.data.asunto.length>0 &&
+       this.asignarCita.data.fecha_hora.length>0 && this.asignarCita.data.descripcion.length>0
+    ){
+      console.log(this.asignarCita);
+      this.citasUnayoeService.asignarCita(this.asignarCita).subscribe(
+          res => {
+            console.log(res);
+            Swal.fire({
+              position: 'center',
+              type: 'success',
+              title: 'Cita agregado correctamente.',
+              showConfirmButton: false,
+              confirmButtonColor: '#5867dd',
+              timer: 1500
+            });
+            this.dialogConfig.close();
+          },
+          error => {
+            console.log(error);
+          }
+      );
+    }else{
+      Swal.fire({
+        position: 'center',
+        type: 'warning',
+        title: 'Complete todos los campos.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   }
 
   close() {

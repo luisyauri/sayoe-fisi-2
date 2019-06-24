@@ -7,6 +7,20 @@
   <mat-card-content>
     <div class="row">
       <div class="col-sm-12">
+        <div class="bg-instrucciones-ep">
+          <div class="row">
+            <div class="col-sm-12 box-ep">
+              <div class="box-text-ep">
+                <i class="fas fa-exclamation-triangle icon-excla-ep"></i>
+                <span class="text-instrucciones-ep">Presione el botón </span>
+                <button mat-flat-button  class="div-btn-aaa" >Asignar</button>
+                <span class="text-instrucciones-ep">, para asignar una cita a un alumno.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
         <div class="flex-button">
           <button mat-flat-button  class="div-btn-expa" (click)="asignarCita()">Asignar</button>
         </div>
@@ -16,11 +30,11 @@
       <div *ngIf="banderaContenido; else contenidoVacio">
         <div class="row">
           <div class="col-sm-12">
-            <div class="search__input">
-              <mat-form-field class="width-full">
-                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-              </mat-form-field>
-            </div>
+<!--            <div class="search__input">-->
+<!--              <mat-form-field class="width-full">-->
+<!--                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
           </div>
           <div class="col-sm-12 tabla-style">
             <div class="table-container">

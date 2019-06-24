@@ -211,3 +211,9 @@ mat-grid-tile {
     color: white;
     margin: 5px ;
 }
+.div-btn-aaa{
+    background-color: #5867dd;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
