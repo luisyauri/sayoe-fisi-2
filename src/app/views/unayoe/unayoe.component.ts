@@ -15,11 +15,10 @@ export class UnayoeComponent implements OnDestroy, OnInit {
     //Variables
     mobileQuery: MediaQueryList;
     itemSecciones = [
-        {title: 'Dashboard', icon: 'fas fa-home', route: 'inicio'},
-
+        //{title: 'Dashboard', icon: 'fas fa-home', route: 'inicio'},
         {title: 'Evaluaciones Psicológicas', icon: 'fas fa-file-alt', route: 'evaluaciones-psicologicas'},
-        {title: 'Perfiles Psicológicos', icon: 'fas fa-file-signature', route: 'perfiles-psicologicos-pendientes'},
-        {title: 'Recomendaciones', icon: 'fas fa-file-contract', route: 'perfiles-psicologicos-realizados'},
+        {title: 'Perfiles Psicológicos', icon: 'fas fa-file-signature', route: 'perfiles-psicologicos'},
+        {title: 'Recomendaciones', icon: 'fas fa-file-contract', route: 'recomendaciones'},
         {title: 'Alumnos', icon: 'fas fa-users', route: 'alumnos'},
         {title: 'Citas', icon: 'fas fa-calendar-alt', route: 'citas'},
         // {title: 'Estadisticas', icon: 'fas fa-chart-bar', route: 'estadisticas'},

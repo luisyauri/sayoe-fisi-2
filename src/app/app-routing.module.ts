@@ -35,8 +35,8 @@ const routes: Routes = [
         children: [
             {path: 'inicio', component: InicioUnayoeComponent,},
             {path: 'mi-perfil', component: MiPerfilUnayoeComponent,},
-            {path: 'perfiles-psicologicos-pendientes',component: PerfiPsiPendUnayoeComponent,},
-            {path: 'perfiles-psicologicos-realizados',component: PerfiPsiRealUnayoeComponent,},
+            {path: 'perfiles-psicologicos',component: PerfiPsiPendUnayoeComponent,},
+            {path: 'recomendaciones',component: PerfiPsiRealUnayoeComponent,},
             {path: 'perfiles-psicologicos-no-culminados',component: PerfiPsiNoCulmiUnayoeComponent,},
             {path: 'evaluaciones-psicologicas', component: EvalPsiUnayoeComponent,},
             {path: 'alumnos', component: AlumnosUnayoeComponent,},

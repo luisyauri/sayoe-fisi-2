@@ -40,7 +40,7 @@ export class RedireccionComponent implements OnInit {
                     focusConfirm: true,
                 });
             } else if (idRol === this.rolAlumno) {
-                this.router.navigate(['alumno/inicio']);
+                this.router.navigate(['alumno/evaluaciones-psicologicas-pendientes']);
                 Swal.fire({
                     position: 'center',
                     title: 'Bienvenido :) !',

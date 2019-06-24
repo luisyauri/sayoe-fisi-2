@@ -48,7 +48,7 @@ export class CitasUnayoeComponent implements OnInit {
         this.citasUnayoeService.getListaCitas().subscribe(
             (res: ListCitasModel) => {
                 this.arrayListCitas = res['data'];
-                // console.log(this.arrayListCitas);
+                console.log(this.arrayListCitas);
                 this.dataSource = new MatTableDataSource(this.arrayListCitas);
                 if (this.arrayListCitas.length == 0) {
                     this.banderaContenido = false;
@@ -111,7 +111,7 @@ export class CitasUnayoeComponent implements OnInit {
         });
     }
 
-    cambiarEstado(estado: string, id: number) {
+    cambiarEstado(estado: number, id: number) {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = false;
         // dialogConfig.width = '50%';
@@ -123,6 +123,18 @@ export class CitasUnayoeComponent implements OnInit {
         this.dialog.afterAllClosed.subscribe(value => {
             this.getTotalLis();
         });
+    }
+
+    convertirEstado(estado: number) {
+        if (estado == 1) {
+            return 'ESPERANDO';
+        } else if (estado == 2) {
+            return 'ASISTIÓ';
+        } else if (estado == 3) {
+            return 'NO ASISTIÓ';
+        } else {
+            return 'ERROR';
+        }
     }
 
 }
