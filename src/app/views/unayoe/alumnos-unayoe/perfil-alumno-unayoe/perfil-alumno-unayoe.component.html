@@ -143,7 +143,14 @@
                   <ng-container matColumnDef="anho">
                     <th *matHeaderCellDef class="table-th" mat-header-cell>Ciclo</th>
                     <td *matCellDef="let element" class="table-td"
-                        mat-cell> {{element.anho +'-'+element.semestre}} </td>
+                        mat-cell>
+                      <div *ngIf="element.recomendacion=='--'; else rrealizo" class="no-realizo">
+                        {{element.anho +'-'+element.semestre}}
+                      </div>
+                      <ng-template #rrealizo class="realizo">
+                        {{element.anho +'-'+element.semestre}}
+                      </ng-template>
+                    </td>
                   </ng-container>
                   <ng-container matColumnDef="fecharecomendacion">
                     <th *matHeaderCellDef class="table-th table-th-td-preguntas-style"

@@ -28,7 +28,7 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
   dataSource = new MatTableDataSource();
   situacion = '';
   colorSituacion = false;
-
+  realizo = '';
 
   // dataSource = new MatTableDataSource(this.arrayGetPPP);
 
@@ -62,7 +62,7 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
     this.perfRealiPsiUnayoeService.getEnviarMesAnho(this.enviarMesAnho).subscribe(
         (res: GetListPRUnayoeModel) => {
           this.arrayGetListPRUnayoe = res['data'];
-          // console.log(res);
+          console.log(res);
           this.getListPRUnayoe = this.arrayGetListPRUnayoe[0];
           this.getArrayPerfilesUnayoe = this.getListPRUnayoe.perfiles;
           this.dataSource = new MatTableDataSource(this.getArrayPerfilesUnayoe);
@@ -118,6 +118,18 @@ export class PerfiPsiRealUnayoeComponent implements OnInit {
   //     const dateMostrarFormat = fechaVenci.slice(8,10)+'-'+fechaVenci.slice(5,7)+'-'+fechaVenci.slice(0,4);
   //     this.getArrayPerfilesUnayoe[i].fecha_resuelto = dateMostrarFormat;
   //   }
+  // }
+
+  // detectarNoRealizo(codigo: any, hora: any, hora2: any) {
+  //
+  //   // console.log(hora);
+  //   // console.log(hora2);
+  //   if(hora == hora2){
+  //     this.realizo = '0'
+  //   }else{
+  //     this.realizo = '1'
+  //   }
+  //   return codigo;
   // }
 
 }

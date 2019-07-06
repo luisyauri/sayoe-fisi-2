@@ -176,3 +176,9 @@ mat-grid-tile {
 .width-full{
     width: 100%;
 }
+.no-realizo{
+    color: #fd397a;
+}
+.realizo{
+    /*color: blue;*/
+}

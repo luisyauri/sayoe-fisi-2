@@ -7,20 +7,20 @@
   <mat-card-content>
     <div *ngIf="getListPPAlumno; else vacio">
       <div *ngIf="banderaContenido; else contenidoVacio">
-        <div class="bg-instrucciones-ep">
-          <div class="row">
-            <div class="col-sm-12 box-ep">
-              <div class="box-text-ep">
-                <i class="fas fa-exclamation-triangle icon-excla-ep"></i>
-                <span class="text-instrucciones-ep">Presione el botón </span>
-                <button class="icon-instrucciones-ep" mat-flat-button>
-                  <i class="fas fa-eye"></i>
-                </button>
-                <span class="text-instrucciones-ep">, para visualizar los detalles de un perfil psicológico.</span>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--        <div class="bg-instrucciones-ep">-->
+<!--          <div class="row">-->
+<!--            <div class="col-sm-12 box-ep">-->
+<!--              <div class="box-text-ep">-->
+<!--                <i class="fas fa-exclamation-triangle icon-excla-ep"></i>-->
+<!--                <span class="text-instrucciones-ep">Presione el botón </span>-->
+<!--                <button class="icon-instrucciones-ep" mat-flat-button>-->
+<!--                  <i class="fas fa-eye"></i>-->
+<!--                </button>-->
+<!--                <span class="text-instrucciones-ep">, para visualizar los detalles de un perfil psicológico.</span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
         <div class="row">
           <div class="col-sm-12">
 <!--            <div class="search__input">-->
@@ -37,7 +37,14 @@
                   <ng-container matColumnDef="anho">
                     <th *matHeaderCellDef class="table-th" mat-header-cell>Ciclo</th>
                     <td *matCellDef="let element" class="table-td"
-                        mat-cell> {{element.anho +'-'+ element.semestre}} </td>
+                        mat-cell>
+                      <div *ngIf="element.recomendacion=='--'; else rrealizo" class="no-realizo">
+                        {{element.anho +'-'+element.semestre}}
+                      </div>
+                      <ng-template #rrealizo class="realizo">
+                        {{element.anho +'-'+element.semestre}}
+                      </ng-template>
+                    </td>
                   </ng-container>
                   <ng-container matColumnDef="fecharecomendacion">
                     <th *matHeaderCellDef class="table-th table-th-td-preguntas-style"
@@ -55,17 +62,17 @@
                     <td *matCellDef="let element" class="table-td table-th-td-preguntas-style"
                         mat-cell>{{element.fecha_resuelto.fecha+' '+element.fecha_resuelto.hora}}</td>
                   </ng-container>
-                  <ng-container matColumnDef="acciones">
-                    <th *matHeaderCellDef class="table-th table-th-td-accion-style" mat-header-cell>
-                      Acción
-                    </th>
-                    <td *matCellDef="let element" class="table-td table-th-td-accion-style"
-                        mat-cell>
-                      <button (click)="openDialogPerfil(element.id_perfil_psico)"
-                              class="table-detalles-icon" mat-flat-button>
-                        <i class="fas fa-eye"></i></button>
-                    </td>
-                  </ng-container>
+<!--                  <ng-container matColumnDef="acciones">-->
+<!--                    <th *matHeaderCellDef class="table-th table-th-td-accion-style" mat-header-cell>-->
+<!--                      Acción-->
+<!--                    </th>-->
+<!--                    <td *matCellDef="let element" class="table-td table-th-td-accion-style"-->
+<!--                        mat-cell>-->
+<!--                      <button (click)="openDialogPerfil(element.id_perfil_psico)"-->
+<!--                              class="table-detalles-icon" mat-flat-button>-->
+<!--                        <i class="fas fa-eye"></i></button>-->
+<!--                    </td>-->
+<!--                  </ng-container>-->
                   <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
                   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
                 </table>

@@ -184,3 +184,9 @@ mat-grid-tile {
 .search__input{
     margin: 10px;
 }
+.no-realizo{
+    color: #fd397a;
+}
+.realizo{
+    /*color: blue;*/
+}

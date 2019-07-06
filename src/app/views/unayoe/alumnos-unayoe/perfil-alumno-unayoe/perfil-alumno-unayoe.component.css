@@ -296,3 +296,9 @@ mat-grid-tile {
     margin: 5px;
     padding: 10px 4px;
 }
+.no-realizo{
+    color: #fd397a;
+}
+.realizo{
+    /*color: blue;*/
+}

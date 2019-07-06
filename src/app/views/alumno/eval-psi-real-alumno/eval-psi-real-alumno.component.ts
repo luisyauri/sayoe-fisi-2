@@ -12,6 +12,7 @@ import {
     IdCuestionarioModel
 } from '../../../models/alumno/e-p-pendientes-alumno/recibirRespuesta.model';
 import {ResultadoBeckRealizadas, ResultadoIHERealizadas} from '../../../models/alumno/e-p-realizadas-alumno/recibirRespuesta.model';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'app-eval-psi-real-alumno',
@@ -24,8 +25,9 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
     enviarMesAnho: EnviarMesAnhoRealizadoModel = {codigo: '', anho: '', mes: ''};
     date = new Date();
     arrayGetEPRealizadas: getEPRealizadasModel[];
-    displayedColumns: string[] = ['titulo', 'preguntas', 'fecharesuelta', 'horaresuelta', 'acciones'];
+    displayedColumns: string[] = ['titulo', 'preguntas', 'fecharesuelta', 'horaresuelta'];
     banderaContenido = true;
+    realizo = '1';
 
     //Evaluaciones
     EVALUACION_BECK: ResultadoBeckRealizadas;
@@ -34,6 +36,7 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
     //Constructor
     constructor(private alumnoService: AlumnoService,
                 private epRealizadaAlumnoService: EPRealizadaAlumnoService,
+                private cdRef:ChangeDetectorRef
     ) {
     }
 
@@ -113,48 +116,31 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
                 });
             }
         }
-
-        // if(id_cuest_eval == 1){
-        //     this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
-        //         (res) => {
-        //             this.EVALUACION_IHE = res['data'];
-        //             console.log(this.EVALUACION_IHE);
-        //             Swal.fire({
-        //                 position: 'center',
-        //                 type: 'success',
-        //                 title: '¡Resultado Instantáneo!',
-        //                 html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.descripcion.titulo+"</strong>.<br/>"+
-        //                     "Es decir: "+this.EVALUACION_IHE.descripcion.contenido,
-        //                 animation: false,
-        //                 confirmButtonText: 'Cerrar',
-        //             });
-        //         },
-        //         error => {
-        //             console.log(error)
-        //         });
-        // }
-        // else if(id_cuest_eval == 2){
-        //     this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
-        //         (res) => {
-        //             // console.log(res);
-        //             this.EVALUACION_BECK = res['data'];
-        //             // console.log(this.EVALUACION_BECK);
-        //             Swal.fire({
-        //                 position: 'center',
-        //                 type: 'success',
-        //                 title: '¡Resultado Instantáneo!',
-        //                 html:'Usted '+this.EVALUACION_BECK.descripcion+".",
-        //                 animation: false,
-        //                 confirmButtonText: 'Cerrar',
-        //             });
-        //         },
-        //         error => {
-        //             console.log(error)
-        //         });
-        // }else{
-        // }
     }
 
+    // ngAfterViewChecked()
+    // {
+    //     console.log( "! changement de la date du composant !" );
+    //     this.cdRef.detectChanges();
+    // }
+
+    detectarNoRealizo(titulo: string, idCuest_eval: number, descripcion: string){
+        if (idCuest_eval == 1) {
+            if (descripcion == 'NO REALIZÓ') {
+                this.realizo = '0';
+            } else {
+                this.realizo = '1';
+            }
+        } else if (idCuest_eval == 2) {
+            // console.log(descripcion);
+            if (descripcion == 'NO REALIZÓ') {
+                this.realizo = '0';
+            } else {
+                this.realizo = '1';
+            }
+        }
+        return titulo;
+    }
     // respuestaEPR(id_estado_perfil: number, id_cuest_eval:number) {
     //     if(id_cuest_eval == 1){
     //         this.epRealizadaAlumnoService.getUnResultadoEP(id_estado_perfil.toString()).subscribe(
@@ -205,4 +191,6 @@ export class EvalPsiRealAlumnoComponent implements OnInit {
             this.arrayGetEPRealizadas[i].fecha_vencimiento = dateMostrarFormat;
         }
     }
+
+
 }

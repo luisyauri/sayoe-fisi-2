@@ -8,4 +8,5 @@ export interface ListPPAlumnoUnayoeModal {
     fecha_resuelto: FechaListPPAlumnoUnayoeModal;
     id_perfil_psico: number;
     semestre: number;
+    recomendacion: string;
 }

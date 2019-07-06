@@ -23,7 +23,7 @@ export interface ResultadoBeck {
 
 export interface EncuestaBeckModel {
     id_cuest_eval: number;
-    resultado: ResultadoBeck;
+    resultado: ResultadoBeck[];
 }
 
 export interface IdCuestionarioModel {

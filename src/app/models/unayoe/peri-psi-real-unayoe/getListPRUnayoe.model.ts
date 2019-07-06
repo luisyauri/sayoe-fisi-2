@@ -15,6 +15,7 @@ export interface PerfilesListPRUnayoeModel {
     codigo: string;
     escuela: string;
     situacion: string;
+    recomendacion: string;
 }
 export interface GetListPRUnayoeModel {
     anho: string;

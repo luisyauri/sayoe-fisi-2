@@ -181,9 +181,10 @@ export class EPPDAlumnoComponent implements OnInit {
                         Swal.fire({
                             position: 'center',
                             type: 'success',
-                            title: '¡Resultado Instantáneo!',
-                            html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.resultado.descripcion.titulo+"</strong>.<br/>"+
-                                "Es decir: "+this.EVALUACION_IHE.resultado.descripcion.contenido,
+                            title: '¡Evaluación psicológica Terminado!',
+                            html:'La psicóloga lo citará a usted, durante los siguientes días.',
+                            // html:'Usted es sus Hábitos de Estudio tiene una categoría: <strong>'+this.EVALUACION_IHE.resultado.descripcion.titulo+"</strong>.<br/>"+
+                            //     "Es decir: "+this.EVALUACION_IHE.resultado.descripcion.contenido,
                             animation: false,
                             confirmButtonText: 'Cerrar',
                         });
@@ -193,8 +194,9 @@ export class EPPDAlumnoComponent implements OnInit {
                         Swal.fire({
                             position: 'center',
                             type: 'success',
-                            title: '¡Resultado Instantáneo!',
-                            html:'Usted '+this.EVALUACION_BECK.resultado.descripcion+".",
+                            title: '¡Evaluación psicológica Terminado!',
+                            html:'La psicóloga lo citará a usted, durante los siguientes días.',
+                            // html:'Usted '+this.EVALUACION_BECK.resultado[0].descripcion+".",
                             animation: false,
                             confirmButtonText: 'Cerrar',
                         });

@@ -8,4 +8,5 @@ export interface ListEPModel {
     fecha_resuelto: FechaListEPModel;
     id_perfil_psico: number;
     semestre: number;
+    recomendacion: string;
 }

@@ -161,7 +161,7 @@
                                     </div>
                                     <ng-template #estado1>
                                         <div *ngIf="banderaDescripcionBanderaBeck; else norealizo">
-                                            <span class="beck--content">{{evaluacionBeck.descripcion.descripcion}}</span>
+                                            <span class="beck--content">{{evaluacionBeck.descripcion[0].descripcion}}</span>
                                         </div>
                                         <ng-template #norealizo>
                                             <span class="beck--content">{{evaluacionBeck.descripcion}}</span>

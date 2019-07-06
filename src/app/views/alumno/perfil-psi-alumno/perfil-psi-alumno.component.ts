@@ -16,7 +16,7 @@ export class PerfilPsiAlumnoComponent implements OnInit {
 
   codigo = '';
   getListPPAlumno: ListEPModel[];
-  displayedColumns: string[] = ['anho', 'fecharecomendacion', 'fecharesuelto','acciones'];
+  displayedColumns: string[] = ['anho', 'fecharecomendacion', 'fecharesuelto'];
   banderaContenido = false;
   dataSource = new MatTableDataSource();
 

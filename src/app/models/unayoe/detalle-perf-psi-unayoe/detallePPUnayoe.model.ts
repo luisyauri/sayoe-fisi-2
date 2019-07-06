@@ -29,7 +29,7 @@ export interface BECKDDPPUnayoeModel{
     titulo_evaluacion: string;
     estado: number;
     fecha_resuelto: FechaDPPUnayoeModel;
-    descripcion: DescriBECKDDPPUnayoeModel;
+    descripcion: DescriBECKDDPPUnayoeModel[];
 }
 
 /* FIN BECK */
