@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SendAnhoMesPPUnayoeModel} from '../../models/unayoe/perfi-psi-pend-unayoe/sendAnhoMesPPUnayoe.model';
 import {SendAnhoMesPNCUnayoeModel} from '../../models/unayoe/perf-psi-no-culm-unayoe/sendAnhoMesPNCUnayoe.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class PerfNoCulmPsiUnayoeService {
   headers = new HttpHeaders();
 
   // URL
-  API_LIST_NO_CULM_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/perfiles-no-culminados';
-  API_FINALIZAR_NO_CULM_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/finalizar-perfil/';
+  API_LIST_NO_CULM_PSICO = environment.api+'perfiles-no-culminados';
+  API_FINALIZAR_NO_CULM_PSICO = environment.api+'finalizar-perfil/';
 
   constructor(private http: HttpClient) { }
 

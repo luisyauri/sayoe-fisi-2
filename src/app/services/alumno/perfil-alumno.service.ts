@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,7 @@ export class PerfilAlumnoService {
     headers = new HttpHeaders();
 
     // URL
-    API_PERFIL_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumno/';
+    API_PERFIL_ALUMNO =  environment.api+'alumno/';
 
     constructor(private http: HttpClient) {
     }

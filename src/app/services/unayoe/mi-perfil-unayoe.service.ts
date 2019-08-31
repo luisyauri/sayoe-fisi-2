@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UnayoeService} from './unayoe.service';
 import {Observable} from 'rxjs';
 import {DatosActualizarUnayoe} from '../../models/unayoe/mi-perfil-unayoe/datosActualizarUnayoe.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class MiPerfilUnayoeService {
   // Variables
   headers = new HttpHeaders();
   // URL
-  API_PERFIL_UNAYOE= 'https://sayoe-v2.herokuapp.com/api/v1/unayoe-perfil/';
-  API_UPDATE_PERFIL_UNAYOE = 'https://sayoe-v2.herokuapp.com/api/v1/unayoe-perfil/';
+  API_PERFIL_UNAYOE= environment.api+'unayoe-perfil/';
+  API_UPDATE_PERFIL_UNAYOE = environment.api+'unayoe-perfil/';
 
   // Constructor
   constructor(private http: HttpClient, private unayoeService: UnayoeService) { }

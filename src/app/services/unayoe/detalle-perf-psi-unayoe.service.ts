@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SendRecomPPUnayoeModel} from '../../models/unayoe/perfi-psi-pend-unayoe/sendRecomPPUnayoe.model';
 import {SendRecomDetallePPUnayoeModel} from '../../models/unayoe/detalle-perf-psi-unayoe/sendRecomDetallePPUnayoe.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class DetallePerfPsiUnayoeService {
   headers = new HttpHeaders();
 
   // URL
-  API_DETALLE_DATA_PERFIL_PSICOLOGICO = 'https://sayoe-v2.herokuapp.com/api/v1/perfil/';
-  API_SEND_RECOMENDACION_DIALOG_PEND_PSICO = 'https://sayoe-v2.herokuapp.com/api/v1/recomendar';
+  API_DETALLE_DATA_PERFIL_PSICOLOGICO = environment.api+'perfil/';
+  API_SEND_RECOMENDACION_DIALOG_PEND_PSICO = environment.api+'recomendar';
 
   // Constructor
   constructor(private http: HttpClient) { }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SendRecomDetallePPUnayoeModel} from '../../models/unayoe/detalle-perf-psi-unayoe/sendRecomDetallePPUnayoe.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class DetallerAlumnoUnayoeService {
   headers = new HttpHeaders();
 
   // URL
-  API_DETALLE_DATA_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumno/';
-  API_LIST_PERFILES_PSICOLOGICOS = 'https://sayoe-v2.herokuapp.com/api/v1/perfiles/alumno/';
+  API_DETALLE_DATA_ALUMNO = environment.api+'alumno/';
+  API_LIST_PERFILES_PSICOLOGICOS = environment.api+'perfiles/alumno/';
 
   // Constructor
   constructor(private http: HttpClient) { }

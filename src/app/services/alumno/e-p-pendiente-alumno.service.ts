@@ -4,6 +4,7 @@ import {AlumnoService} from './alumno.service';
 import {Observable} from 'rxjs';
 import {EnviarMesAnhoPendienteModel} from '../../models/alumno/e-p-pendientes-alumno/enviarMesAnhoPendiente.model';
 import {EnviarRespuestaEPModel} from '../../models/alumno/e-p-pendientes-alumno/enviarRespuesaEP.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class EPPendienteAlumnoService {
   headers = new HttpHeaders();
 
   // URL
-  API_LISTA_E_P_PENDIENTES = 'https://sayoe-v2.herokuapp.com/api/v1/evaluaciones_asignadas/pendientes';
-  AP_UNA_EP = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion/';
-  API_ENVIAR_RESPUESTA_E_P = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion';
+  API_LISTA_E_P_PENDIENTES = environment.api+'evaluaciones_asignadas/pendientes';
+  AP_UNA_EP = environment.api+'cuestionario-evaluacion/';
+  API_ENVIAR_RESPUESTA_E_P = environment.api+'cuestionario-evaluacion';
 
   constructor(private http: HttpClient, private alumnoService: AlumnoService) {
   }

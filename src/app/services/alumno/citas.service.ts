@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CitasService {
   headers = new HttpHeaders();
 
   // URL
-  API_LIST_CITAS = 'https://sayoe-v2.herokuapp.com/api/v1/citas/alumno/';
+  API_LIST_CITAS = environment.api+'citas/alumno/';
 
   constructor(private http: HttpClient) {
   }

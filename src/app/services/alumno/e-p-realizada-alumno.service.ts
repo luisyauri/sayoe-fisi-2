@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AlumnoService} from './alumno.service';
 import {EnviarMesAnhoRealizadoModel} from '../../models/alumno/e-p-realizadas-alumno/enviarMesAnhoRealizado.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class EPRealizadaAlumnoService {
   headers = new HttpHeaders()
 
   // URL
-  API_LISTA_E_P_REALIZADAS = 'https://sayoe-v2.herokuapp.com/api/v1/evaluaciones_asignadas/realizadas';
-  API_RESULTADO_UNA_E_P_REALIZADA = 'https://sayoe-v2.herokuapp.com/api/v1/resultado/';
+  API_LISTA_E_P_REALIZADAS = environment.api+'evaluaciones_asignadas/realizadas';
+  API_RESULTADO_UNA_E_P_REALIZADA = environment.api+'resultado/';
 
   constructor(private http: HttpClient, private alumnoService: AlumnoService) {
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(correo: string, contrasenha: string): Observable<boolean> {
-    return this.http.post<{token: string}>('https://sayoe-v2.herokuapp.com/api/v1/auth/login', { correo, contrasenha })
+    return this.http.post<{token: string}>(environment.api+'auth/login', { correo, contrasenha })
         .pipe(
             map(result => {
               localStorage.setItem('access_token', result.token);

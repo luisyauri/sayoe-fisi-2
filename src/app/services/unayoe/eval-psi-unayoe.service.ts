@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {DatosActualizarUnayoe} from '../../models/unayoe/mi-perfil-unayoe/datosActualizarUnayoe.model';
 import {Observable} from 'rxjs';
 import {AsignarAlumnoUnayoe} from '../../models/unayoe/evaluaciones-psicologicas-unayoe/asignarAlumnoUnayoe.model';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ export class EvalPsiUnayoeService {
 
   // Variables
   headers = new HttpHeaders();
-  API_EVALUACIONES_PSICOLOGICAS = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluaciones';
-  API_DATOS_UN_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/alumnoShortAsignar/';
-  API_DATOS_UNA_EVALUACION_PSICOLOGICA = 'https://sayoe-v2.herokuapp.com/api/v1/cuestionario-evaluacion/';
-  API_ASIGNAR_ALUMNO = 'https://sayoe-v2.herokuapp.com/api/v1/asignarAlumno';
+  API_EVALUACIONES_PSICOLOGICAS = environment.api+'cuestionario-evaluaciones';
+  API_DATOS_UN_ALUMNO = environment.api+'alumnoShortAsignar/';
+  API_DATOS_UNA_EVALUACION_PSICOLOGICA = environment.api+'cuestionario-evaluacion/';
+  API_ASIGNAR_ALUMNO = environment.api+'asignarAlumno';
 
   // Constructor
   constructor(private http: HttpClient) { }
