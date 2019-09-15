@@ -16,7 +16,7 @@ export class CitasUnayoeService {
     // URL
     API_LISTA_CITAS = environment.api+'citas';
     API_ASIGNAR_CITA = environment.api+'cita';
-    API_CAMBIAR_ESTADO = environment.api+'estado'
+    API_CAMBIAR_ESTADO = environment.api+'cita/estado'
 
     constructor(private http: HttpClient) {
     }
